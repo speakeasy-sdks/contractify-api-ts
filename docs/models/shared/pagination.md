@@ -1,0 +1,14 @@
+# Pagination
+
+
+## Fields
+
+| Field                                                       | Type                                                        | Required                                                    | Description                                                 | Example                                                     |
+| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
+| `currentPage`                                               | *number*                                                    | :heavy_minus_sign:                                          | N/A                                                         | 1                                                           |
+| `from`                                                      | *number*                                                    | :heavy_minus_sign:                                          | N/A                                                         | 1                                                           |
+| `lastPage`                                                  | *number*                                                    | :heavy_minus_sign:                                          | N/A                                                         | 1                                                           |
+| `path`                                                      | *string*                                                    | :heavy_minus_sign:                                          | N/A                                                         | https://app.contractify.be/api/companies/{company}/endpoint |
+| `perPage`                                                   | *number*                                                    | :heavy_minus_sign:                                          | N/A                                                         | 100                                                         |
+| `to`                                                        | *number*                                                    | :heavy_minus_sign:                                          | N/A                                                         | 1                                                           |
+| `total`                                                     | *number*                                                    | :heavy_minus_sign:                                          | N/A                                                         | 1                                                           |

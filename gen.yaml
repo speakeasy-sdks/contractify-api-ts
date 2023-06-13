@@ -1,4 +1,9 @@
 configVersion: 1.0.0
+management:
+  docChecksum: 6e8fe3c3345f1d4a61796938f710a5d9
+  docVersion: "2022-08-16"
+  speakeasyVersion: 1.47.2
+  generationVersion: 2.39.8
 generation:
   comments:
     disableComments: false
@@ -8,7 +13,7 @@ generation:
   singleTagPerOp: false
   tagNamespacingDisabled: false
 typescript:
-  version: 0.0.1
+  version: 1.0.0
   author: Contractify
   maxMethodParams: 0
   packageName: contractify
