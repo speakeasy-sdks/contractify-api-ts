@@ -3,6 +3,7 @@
  */
 
 export * from "./address";
+export * from "./companyread";
 export * from "./contractautomaticrenewal";
 export * from "./contractcollection";
 export * from "./contractdocumentread";

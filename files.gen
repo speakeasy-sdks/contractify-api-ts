@@ -104,6 +104,7 @@ src/sdk/models/shared/taskwrite.ts
 src/sdk/models/shared/taskcollection.ts
 src/sdk/models/shared/taskupdate.ts
 src/sdk/models/shared/usercurrent.ts
+src/sdk/models/shared/companyread.ts
 src/sdk/models/shared/usercollection.ts
 src/sdk/models/shared/userread.ts
 src/sdk/models/shared/index.ts
@@ -403,6 +404,7 @@ docs/models/shared/taskupdateduedatedependson.md
 docs/models/shared/taskupdatestatus.md
 docs/models/shared/taskupdate.md
 docs/models/shared/usercurrent.md
+docs/models/shared/companyread.md
 docs/models/shared/usercollection.md
 docs/models/shared/userreadrole.md
 docs/models/shared/userread.md
