@@ -161,8 +161,6 @@ Get information about a contract
 ```typescript
 import { ContractifyProduction } from "contractify";
 import { GetContractResponse } from "contractify/dist/sdk/models/operations";
-import { ContractPhase } from "contractify/dist/sdk/models/shared";
-import { RFCDate } from "contractify/dist/sdk/types";
 
 const sdk = new ContractifyProduction();
 
@@ -202,8 +200,6 @@ List all the contracts within a company
 ```typescript
 import { ContractifyProduction } from "contractify";
 import { ListContractsResponse } from "contractify/dist/sdk/models/operations";
-import { ContractPhase } from "contractify/dist/sdk/models/shared";
-import { RFCDate } from "contractify/dist/sdk/types";
 
 const sdk = new ContractifyProduction();
 

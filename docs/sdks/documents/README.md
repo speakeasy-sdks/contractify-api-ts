@@ -55,8 +55,6 @@ Get information about a document
 ```typescript
 import { ContractifyProduction } from "contractify";
 import { GetDocumentResponse } from "contractify/dist/sdk/models/operations";
-import { ContractPhase } from "contractify/dist/sdk/models/shared";
-import { RFCDate } from "contractify/dist/sdk/types";
 
 const sdk = new ContractifyProduction();
 
@@ -96,8 +94,6 @@ List all the documents within a company
 ```typescript
 import { ContractifyProduction } from "contractify";
 import { ListDocumentsEsigningStatus, ListDocumentsResponse } from "contractify/dist/sdk/models/operations";
-import { ContractPhase } from "contractify/dist/sdk/models/shared";
-import { RFCDate } from "contractify/dist/sdk/types";
 
 const sdk = new ContractifyProduction();
 
@@ -141,8 +137,6 @@ Update a document
 ```typescript
 import { ContractifyProduction } from "contractify";
 import { UpdateDocumentResponse } from "contractify/dist/sdk/models/operations";
-import { ContractPhase } from "contractify/dist/sdk/models/shared";
-import { RFCDate } from "contractify/dist/sdk/types";
 
 const sdk = new ContractifyProduction();
 

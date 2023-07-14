@@ -49,7 +49,6 @@ List all the users within a company
 ```typescript
 import { ContractifyProduction } from "contractify";
 import { ListUsersResponse } from "contractify/dist/sdk/models/operations";
-import { UserReadRole } from "contractify/dist/sdk/models/shared";
 
 const sdk = new ContractifyProduction();
 

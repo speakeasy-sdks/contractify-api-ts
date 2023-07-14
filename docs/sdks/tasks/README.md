@@ -17,12 +17,7 @@ Create a task
 ```typescript
 import { ContractifyProduction } from "contractify";
 import { CreateTaskResponse } from "contractify/dist/sdk/models/operations";
-import {
-  TaskReadDueDateDependsOn,
-  TaskReadStatus,
-  TaskWriteDueDateDependsOn,
-  TaskWriteStatus,
-} from "contractify/dist/sdk/models/shared";
+import { TaskWriteDueDateDependsOn, TaskWriteStatus } from "contractify/dist/sdk/models/shared";
 import { RFCDate } from "contractify/dist/sdk/types";
 
 const sdk = new ContractifyProduction();
@@ -113,8 +108,6 @@ Get a task
 ```typescript
 import { ContractifyProduction } from "contractify";
 import { GetTaskResponse } from "contractify/dist/sdk/models/operations";
-import { TaskReadDueDateDependsOn, TaskReadStatus } from "contractify/dist/sdk/models/shared";
-import { RFCDate } from "contractify/dist/sdk/types";
 
 const sdk = new ContractifyProduction();
 
@@ -154,8 +147,6 @@ List all tasks within a company
 ```typescript
 import { ContractifyProduction } from "contractify";
 import { ListTasksResponse } from "contractify/dist/sdk/models/operations";
-import { TaskReadDueDateDependsOn, TaskReadStatus } from "contractify/dist/sdk/models/shared";
-import { RFCDate } from "contractify/dist/sdk/types";
 
 const sdk = new ContractifyProduction();
 
@@ -195,12 +186,7 @@ Update a task
 ```typescript
 import { ContractifyProduction } from "contractify";
 import { UpdateTaskResponse } from "contractify/dist/sdk/models/operations";
-import {
-  TaskReadDueDateDependsOn,
-  TaskReadStatus,
-  TaskUpdateDueDateDependsOn,
-  TaskUpdateStatus,
-} from "contractify/dist/sdk/models/shared";
+import { TaskUpdateDueDateDependsOn, TaskUpdateStatus } from "contractify/dist/sdk/models/shared";
 import { RFCDate } from "contractify/dist/sdk/types";
 
 const sdk = new ContractifyProduction();
