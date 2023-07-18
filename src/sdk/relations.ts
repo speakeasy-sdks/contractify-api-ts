@@ -3,6 +3,7 @@
  */
 
 import * as utils from "../internal/utils";
+import * as errors from "./models/errors";
 import * as operations from "./models/operations";
 import * as shared from "./models/shared";
 import { SDKConfiguration } from "./sdk";
@@ -90,6 +91,13 @@ export class Relations {
                         JSON.parse(decodedRes),
                         operations.CreateRelation201ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 401:
@@ -97,6 +105,13 @@ export class Relations {
                     res.createRelation401ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.CreateRelation401ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -106,6 +121,13 @@ export class Relations {
                         JSON.parse(decodedRes),
                         operations.CreateRelation403ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 422:
@@ -113,6 +135,13 @@ export class Relations {
                     res.createRelation422ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.CreateRelation422ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -191,6 +220,13 @@ export class Relations {
                         JSON.parse(decodedRes),
                         operations.DeleteRelation400ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 401:
@@ -198,6 +234,13 @@ export class Relations {
                     res.deleteRelation401ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.DeleteRelation401ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -207,6 +250,13 @@ export class Relations {
                         JSON.parse(decodedRes),
                         operations.DeleteRelation403ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 404:
@@ -214,6 +264,13 @@ export class Relations {
                     res.deleteRelation404ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.DeleteRelation404ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -290,6 +347,13 @@ export class Relations {
                         JSON.parse(decodedRes),
                         operations.GetRelation200ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 401:
@@ -297,6 +361,13 @@ export class Relations {
                     res.getRelation401ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.GetRelation401ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -306,6 +377,13 @@ export class Relations {
                         JSON.parse(decodedRes),
                         operations.GetRelation403ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 404:
@@ -313,6 +391,13 @@ export class Relations {
                     res.getRelation404ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.GetRelation404ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -385,6 +470,13 @@ export class Relations {
                         JSON.parse(decodedRes),
                         shared.RelationCollection
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 401:
@@ -393,6 +485,13 @@ export class Relations {
                         JSON.parse(decodedRes),
                         operations.ListRelations401ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 403:
@@ -400,6 +499,13 @@ export class Relations {
                     res.listRelations403ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.ListRelations403ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -487,6 +593,13 @@ export class Relations {
                         JSON.parse(decodedRes),
                         operations.UpdateRelation200ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 401:
@@ -494,6 +607,13 @@ export class Relations {
                     res.updateRelation401ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.UpdateRelation401ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -503,6 +623,13 @@ export class Relations {
                         JSON.parse(decodedRes),
                         operations.UpdateRelation403ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 404:
@@ -511,6 +638,13 @@ export class Relations {
                         JSON.parse(decodedRes),
                         operations.UpdateRelation404ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 422:
@@ -518,6 +652,13 @@ export class Relations {
                     res.updateRelation422ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.UpdateRelation422ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;

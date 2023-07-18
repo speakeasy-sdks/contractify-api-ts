@@ -3,6 +3,7 @@
  */
 
 import * as utils from "../internal/utils";
+import * as errors from "./models/errors";
 import * as operations from "./models/operations";
 import * as shared from "./models/shared";
 import { SDKConfiguration } from "./sdk";
@@ -90,6 +91,13 @@ export class Contracts {
                         JSON.parse(decodedRes),
                         operations.CreateContract201ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 401:
@@ -97,6 +105,13 @@ export class Contracts {
                     res.createContract401ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.CreateContract401ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -106,6 +121,13 @@ export class Contracts {
                         JSON.parse(decodedRes),
                         operations.CreateContract403ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 422:
@@ -113,6 +135,13 @@ export class Contracts {
                     res.createContract422ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.CreateContract422ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -191,6 +220,13 @@ export class Contracts {
                         JSON.parse(decodedRes),
                         operations.DeleteContract400ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 401:
@@ -198,6 +234,13 @@ export class Contracts {
                     res.deleteContract401ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.DeleteContract401ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -207,6 +250,13 @@ export class Contracts {
                         JSON.parse(decodedRes),
                         operations.DeleteContract403ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 404:
@@ -214,6 +264,13 @@ export class Contracts {
                     res.deleteContract404ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.DeleteContract404ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -290,6 +347,13 @@ export class Contracts {
                         JSON.parse(decodedRes),
                         operations.GetContract200ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 401:
@@ -297,6 +361,13 @@ export class Contracts {
                     res.getContract401ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.GetContract401ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -306,6 +377,13 @@ export class Contracts {
                         JSON.parse(decodedRes),
                         operations.GetContract403ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 404:
@@ -313,6 +391,13 @@ export class Contracts {
                     res.getContract404ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.GetContract404ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -385,6 +470,13 @@ export class Contracts {
                         JSON.parse(decodedRes),
                         shared.ContractCollection
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 401:
@@ -393,6 +485,13 @@ export class Contracts {
                         JSON.parse(decodedRes),
                         operations.ListContracts401ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 403:
@@ -400,6 +499,13 @@ export class Contracts {
                     res.listContracts403ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.ListContracts403ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -487,6 +593,13 @@ export class Contracts {
                         JSON.parse(decodedRes),
                         operations.UpdateContract200ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 401:
@@ -494,6 +607,13 @@ export class Contracts {
                     res.updateContract401ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.UpdateContract401ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -503,6 +623,13 @@ export class Contracts {
                         JSON.parse(decodedRes),
                         operations.UpdateContract403ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 404:
@@ -511,6 +638,13 @@ export class Contracts {
                         JSON.parse(decodedRes),
                         operations.UpdateContract404ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 422:
@@ -518,6 +652,13 @@ export class Contracts {
                     res.updateContract422ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.UpdateContract422ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;

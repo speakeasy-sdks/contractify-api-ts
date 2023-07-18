@@ -25,6 +25,7 @@ src/internal/utils/retries.ts
 src/internal/utils/security.ts
 src/internal/utils/utils.ts
 src/sdk/index.ts
+src/sdk/models/errors/sdkerror.ts
 src/sdk/types/index.ts
 src/sdk/types/rfcdate.ts
 tsconfig.json
@@ -107,6 +108,7 @@ src/sdk/models/shared/companyread.ts
 src/sdk/models/shared/usercollection.ts
 src/sdk/models/shared/userread.ts
 src/sdk/models/shared/index.ts
+src/sdk/models/errors/index.ts
 docs/sdks/contractifyproduction/README.md
 docs/sdks/contracttypes/README.md
 docs/sdks/contracts/README.md
