@@ -16,9 +16,13 @@ Create an office
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { CreateOfficeResponse } from "contractify/dist/sdk/models/operations";
+import { CreateOfficeResponse, CreateOfficeSecurity } from "contractify/dist/sdk/models/operations";
 
 const sdk = new ContractifyProduction();
+const operationSecurity: CreateOfficeSecurity = {
+  oAuth2: "",
+  personalAccessToken: "",
+};
 
 sdk.offices.createOffice({
   officeWrite: {
@@ -35,10 +39,7 @@ sdk.offices.createOffice({
     zip: "9940",
   },
   company: 653140,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: CreateOfficeResponse) => {
+}, operationSecurity).then((res: CreateOfficeResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -67,17 +68,18 @@ Delete an office
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { DeleteOfficeResponse } from "contractify/dist/sdk/models/operations";
+import { DeleteOfficeResponse, DeleteOfficeSecurity } from "contractify/dist/sdk/models/operations";
 
 const sdk = new ContractifyProduction();
+const operationSecurity: DeleteOfficeSecurity = {
+  oAuth2: "",
+  personalAccessToken: "",
+};
 
 sdk.offices.deleteOffice({
   company: 670638,
   office: 170909,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: DeleteOfficeResponse) => {
+}, operationSecurity).then((res: DeleteOfficeResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -106,17 +108,18 @@ Get information about an office
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { GetOfficeResponse } from "contractify/dist/sdk/models/operations";
+import { GetOfficeResponse, GetOfficeSecurity } from "contractify/dist/sdk/models/operations";
 
 const sdk = new ContractifyProduction();
+const operationSecurity: GetOfficeSecurity = {
+  oAuth2: "",
+  personalAccessToken: "",
+};
 
 sdk.offices.getOffice({
   company: 210382,
   office: 358152,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: GetOfficeResponse) => {
+}, operationSecurity).then((res: GetOfficeResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -145,16 +148,17 @@ List all the offices within a company
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { ListOfficesResponse } from "contractify/dist/sdk/models/operations";
+import { ListOfficesResponse, ListOfficesSecurity } from "contractify/dist/sdk/models/operations";
 
 const sdk = new ContractifyProduction();
+const operationSecurity: ListOfficesSecurity = {
+  oAuth2: "",
+  personalAccessToken: "",
+};
 
 sdk.offices.listOffices({
   company: 128926,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: ListOfficesResponse) => {
+}, operationSecurity).then((res: ListOfficesResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -183,9 +187,13 @@ Update an office
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { UpdateOfficeResponse } from "contractify/dist/sdk/models/operations";
+import { UpdateOfficeResponse, UpdateOfficeSecurity } from "contractify/dist/sdk/models/operations";
 
 const sdk = new ContractifyProduction();
+const operationSecurity: UpdateOfficeSecurity = {
+  oAuth2: "",
+  personalAccessToken: "",
+};
 
 sdk.offices.updateOffice({
   officeWrite: {
@@ -203,10 +211,7 @@ sdk.offices.updateOffice({
   },
   company: 750686,
   office: 315428,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: UpdateOfficeResponse) => {
+}, operationSecurity).then((res: UpdateOfficeResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

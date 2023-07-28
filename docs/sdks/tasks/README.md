@@ -16,11 +16,15 @@ Create a task
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { CreateTaskResponse } from "contractify/dist/sdk/models/operations";
+import { CreateTaskResponse, CreateTaskSecurity } from "contractify/dist/sdk/models/operations";
 import { TaskWriteDueDateDependsOn, TaskWriteStatus } from "contractify/dist/sdk/models/shared";
 import { RFCDate } from "contractify/dist/sdk/types";
 
 const sdk = new ContractifyProduction();
+const operationSecurity: CreateTaskSecurity = {
+  oAuth2: "",
+  personalAccessToken: "",
+};
 
 sdk.tasks.createTask({
   taskWrite: {
@@ -36,10 +40,7 @@ sdk.tasks.createTask({
     title: "My task",
   },
   company: 208876,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: CreateTaskResponse) => {
+}, operationSecurity).then((res: CreateTaskResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -68,17 +69,18 @@ Delete a task
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { DeleteTaskResponse } from "contractify/dist/sdk/models/operations";
+import { DeleteTaskResponse, DeleteTaskSecurity } from "contractify/dist/sdk/models/operations";
 
 const sdk = new ContractifyProduction();
+const operationSecurity: DeleteTaskSecurity = {
+  oAuth2: "",
+  personalAccessToken: "",
+};
 
 sdk.tasks.deleteTask({
   company: 635059,
   task: 161309,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: DeleteTaskResponse) => {
+}, operationSecurity).then((res: DeleteTaskResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -107,17 +109,18 @@ Get a task
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { GetTaskResponse } from "contractify/dist/sdk/models/operations";
+import { GetTaskResponse, GetTaskSecurity } from "contractify/dist/sdk/models/operations";
 
 const sdk = new ContractifyProduction();
+const operationSecurity: GetTaskSecurity = {
+  oAuth2: "",
+  personalAccessToken: "",
+};
 
 sdk.tasks.getTask({
   company: 995300,
   task: 653108,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: GetTaskResponse) => {
+}, operationSecurity).then((res: GetTaskResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -146,17 +149,18 @@ List all tasks within a company
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { ListTasksResponse } from "contractify/dist/sdk/models/operations";
+import { ListTasksResponse, ListTasksSecurity } from "contractify/dist/sdk/models/operations";
 
 const sdk = new ContractifyProduction();
+const operationSecurity: ListTasksSecurity = {
+  oAuth2: "",
+  personalAccessToken: "",
+};
 
 sdk.tasks.listTasks({
   company: 581850,
   page: 253291,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: ListTasksResponse) => {
+}, operationSecurity).then((res: ListTasksResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -185,11 +189,15 @@ Update a task
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { UpdateTaskResponse } from "contractify/dist/sdk/models/operations";
+import { UpdateTaskResponse, UpdateTaskSecurity } from "contractify/dist/sdk/models/operations";
 import { TaskUpdateDueDateDependsOn, TaskUpdateStatus } from "contractify/dist/sdk/models/shared";
 import { RFCDate } from "contractify/dist/sdk/types";
 
 const sdk = new ContractifyProduction();
+const operationSecurity: UpdateTaskSecurity = {
+  oAuth2: "",
+  personalAccessToken: "",
+};
 
 sdk.tasks.updateTask({
   taskUpdate: {
@@ -205,10 +213,7 @@ sdk.tasks.updateTask({
   },
   company: 414369,
   task: 466311,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: UpdateTaskResponse) => {
+}, operationSecurity).then((res: UpdateTaskResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

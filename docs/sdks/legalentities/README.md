@@ -12,16 +12,17 @@ List all the legal entities within a company
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { ListLegalEntitiesResponse } from "contractify/dist/sdk/models/operations";
+import { ListLegalEntitiesResponse, ListLegalEntitiesSecurity } from "contractify/dist/sdk/models/operations";
 
 const sdk = new ContractifyProduction();
+const operationSecurity: ListLegalEntitiesSecurity = {
+  oAuth2: "",
+  personalAccessToken: "",
+};
 
 sdk.legalEntities.listLegalEntities({
   company: 666767,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: ListLegalEntitiesResponse) => {
+}, operationSecurity).then((res: ListLegalEntitiesResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

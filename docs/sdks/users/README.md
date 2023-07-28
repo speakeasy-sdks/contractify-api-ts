@@ -13,14 +13,15 @@ Get the current user details
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { CurrentUserResponse } from "contractify/dist/sdk/models/operations";
+import { CurrentUserResponse, CurrentUserSecurity } from "contractify/dist/sdk/models/operations";
 
 const sdk = new ContractifyProduction();
-
-sdk.users.currentUser({
+const operationSecurity: CurrentUserSecurity = {
   oAuth2: "",
   personalAccessToken: "",
-}).then((res: CurrentUserResponse) => {
+};
+
+sdk.users.currentUser(operationSecurity).then((res: CurrentUserResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -48,17 +49,18 @@ List all the users within a company
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { ListUsersResponse } from "contractify/dist/sdk/models/operations";
+import { ListUsersResponse, ListUsersSecurity } from "contractify/dist/sdk/models/operations";
 
 const sdk = new ContractifyProduction();
+const operationSecurity: ListUsersSecurity = {
+  oAuth2: "",
+  personalAccessToken: "",
+};
 
 sdk.users.listUsers({
   company: 474697,
   page: 244425,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: ListUsersResponse) => {
+}, operationSecurity).then((res: ListUsersResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

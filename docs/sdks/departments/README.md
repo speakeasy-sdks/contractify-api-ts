@@ -16,19 +16,20 @@ Create a department
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { CreateDepartmentResponse } from "contractify/dist/sdk/models/operations";
+import { CreateDepartmentResponse, CreateDepartmentSecurity } from "contractify/dist/sdk/models/operations";
 
 const sdk = new ContractifyProduction();
+const operationSecurity: CreateDepartmentSecurity = {
+  oAuth2: "",
+  personalAccessToken: "",
+};
 
 sdk.departments.createDepartment({
   departmentWrite: {
     name: "Sales",
   },
   company: 264555,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: CreateDepartmentResponse) => {
+}, operationSecurity).then((res: CreateDepartmentResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -57,17 +58,18 @@ Delete a department
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { DeleteDepartmentResponse } from "contractify/dist/sdk/models/operations";
+import { DeleteDepartmentResponse, DeleteDepartmentSecurity } from "contractify/dist/sdk/models/operations";
 
 const sdk = new ContractifyProduction();
+const operationSecurity: DeleteDepartmentSecurity = {
+  oAuth2: "",
+  personalAccessToken: "",
+};
 
 sdk.departments.deleteDepartment({
   company: 186332,
   department: 774234,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: DeleteDepartmentResponse) => {
+}, operationSecurity).then((res: DeleteDepartmentResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -96,17 +98,18 @@ Get information about a department
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { GetDepartmentResponse } from "contractify/dist/sdk/models/operations";
+import { GetDepartmentResponse, GetDepartmentSecurity } from "contractify/dist/sdk/models/operations";
 
 const sdk = new ContractifyProduction();
+const operationSecurity: GetDepartmentSecurity = {
+  oAuth2: "",
+  personalAccessToken: "",
+};
 
 sdk.departments.getDepartment({
   company: 736918,
   department: 456150,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: GetDepartmentResponse) => {
+}, operationSecurity).then((res: GetDepartmentResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -135,16 +138,17 @@ List all the departments within a company
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { ListDepartmentsResponse } from "contractify/dist/sdk/models/operations";
+import { ListDepartmentsResponse, ListDepartmentsSecurity } from "contractify/dist/sdk/models/operations";
 
 const sdk = new ContractifyProduction();
+const operationSecurity: ListDepartmentsSecurity = {
+  oAuth2: "",
+  personalAccessToken: "",
+};
 
 sdk.departments.listDepartments({
   company: 216550,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: ListDepartmentsResponse) => {
+}, operationSecurity).then((res: ListDepartmentsResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -173,9 +177,13 @@ Update a department
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { UpdateDepartmentResponse } from "contractify/dist/sdk/models/operations";
+import { UpdateDepartmentResponse, UpdateDepartmentSecurity } from "contractify/dist/sdk/models/operations";
 
 const sdk = new ContractifyProduction();
+const operationSecurity: UpdateDepartmentSecurity = {
+  oAuth2: "",
+  personalAccessToken: "",
+};
 
 sdk.departments.updateDepartment({
   departmentWrite: {
@@ -183,10 +191,7 @@ sdk.departments.updateDepartment({
   },
   company: 568434,
   department: 135218,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: UpdateDepartmentResponse) => {
+}, operationSecurity).then((res: UpdateDepartmentResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

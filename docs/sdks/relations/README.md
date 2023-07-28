@@ -16,9 +16,13 @@ Create a relation
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { CreateRelationResponse } from "contractify/dist/sdk/models/operations";
+import { CreateRelationResponse, CreateRelationSecurity } from "contractify/dist/sdk/models/operations";
 
 const sdk = new ContractifyProduction();
+const operationSecurity: CreateRelationSecurity = {
+  oAuth2: "",
+  personalAccessToken: "",
+};
 
 sdk.relations.createRelation({
   relationWrite: {
@@ -39,10 +43,7 @@ sdk.relations.createRelation({
     website: "https://www.example.org",
   },
   company: 607831,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: CreateRelationResponse) => {
+}, operationSecurity).then((res: CreateRelationResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -71,17 +72,18 @@ Delete a relation
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { DeleteRelationResponse } from "contractify/dist/sdk/models/operations";
+import { DeleteRelationResponse, DeleteRelationSecurity } from "contractify/dist/sdk/models/operations";
 
 const sdk = new ContractifyProduction();
+const operationSecurity: DeleteRelationSecurity = {
+  oAuth2: "",
+  personalAccessToken: "",
+};
 
 sdk.relations.deleteRelation({
   company: 363711,
   relation: 325047,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: DeleteRelationResponse) => {
+}, operationSecurity).then((res: DeleteRelationResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -110,17 +112,18 @@ Get information about a relation
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { GetRelationResponse } from "contractify/dist/sdk/models/operations";
+import { GetRelationResponse, GetRelationSecurity } from "contractify/dist/sdk/models/operations";
 
 const sdk = new ContractifyProduction();
+const operationSecurity: GetRelationSecurity = {
+  oAuth2: "",
+  personalAccessToken: "",
+};
 
 sdk.relations.getRelation({
   company: 570197,
   relation: 38425,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: GetRelationResponse) => {
+}, operationSecurity).then((res: GetRelationResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -149,18 +152,19 @@ List all the relations within a company
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { ListRelationsResponse } from "contractify/dist/sdk/models/operations";
+import { ListRelationsResponse, ListRelationsSecurity } from "contractify/dist/sdk/models/operations";
 
 const sdk = new ContractifyProduction();
+const operationSecurity: ListRelationsSecurity = {
+  oAuth2: "",
+  personalAccessToken: "",
+};
 
 sdk.relations.listRelations({
   company: 438601,
   page: 634274,
   reference: "doloribus",
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: ListRelationsResponse) => {
+}, operationSecurity).then((res: ListRelationsResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -189,9 +193,13 @@ Update a relation
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { UpdateRelationResponse } from "contractify/dist/sdk/models/operations";
+import { UpdateRelationResponse, UpdateRelationSecurity } from "contractify/dist/sdk/models/operations";
 
 const sdk = new ContractifyProduction();
+const operationSecurity: UpdateRelationSecurity = {
+  oAuth2: "",
+  personalAccessToken: "",
+};
 
 sdk.relations.updateRelation({
   relationWrite: {
@@ -213,10 +221,7 @@ sdk.relations.updateRelation({
   },
   company: 958950,
   relation: 102044,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: UpdateRelationResponse) => {
+}, operationSecurity).then((res: UpdateRelationResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

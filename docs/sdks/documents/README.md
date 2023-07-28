@@ -15,17 +15,18 @@ Delete a document
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { DeleteDocumentResponse } from "contractify/dist/sdk/models/operations";
+import { DeleteDocumentResponse, DeleteDocumentSecurity } from "contractify/dist/sdk/models/operations";
 
 const sdk = new ContractifyProduction();
+const operationSecurity: DeleteDocumentSecurity = {
+  oAuth2: "",
+  personalAccessToken: "",
+};
 
 sdk.documents.deleteDocument({
   company: 18789,
   document: 324141,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: DeleteDocumentResponse) => {
+}, operationSecurity).then((res: DeleteDocumentResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -54,17 +55,18 @@ Get information about a document
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { GetDocumentResponse } from "contractify/dist/sdk/models/operations";
+import { GetDocumentResponse, GetDocumentSecurity } from "contractify/dist/sdk/models/operations";
 
 const sdk = new ContractifyProduction();
+const operationSecurity: GetDocumentSecurity = {
+  oAuth2: "",
+  personalAccessToken: "",
+};
 
 sdk.documents.getDocument({
   company: 617636,
   document: 149675,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: GetDocumentResponse) => {
+}, operationSecurity).then((res: GetDocumentResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -93,9 +95,13 @@ List all the documents within a company
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { ListDocumentsEsigningStatus, ListDocumentsResponse } from "contractify/dist/sdk/models/operations";
+import { ListDocumentsEsigningStatus, ListDocumentsResponse, ListDocumentsSecurity } from "contractify/dist/sdk/models/operations";
 
 const sdk = new ContractifyProduction();
+const operationSecurity: ListDocumentsSecurity = {
+  oAuth2: "",
+  personalAccessToken: "",
+};
 
 sdk.documents.listDocuments({
   company: 612096,
@@ -104,10 +110,7 @@ sdk.documents.listDocuments({
   page: 943749,
   relationId: 902599,
   signedAfter: new Date("2022-02-06T12:52:33.708Z"),
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: ListDocumentsResponse) => {
+}, operationSecurity).then((res: ListDocumentsResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -136,9 +139,13 @@ Update a document
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { UpdateDocumentResponse } from "contractify/dist/sdk/models/operations";
+import { UpdateDocumentResponse, UpdateDocumentSecurity } from "contractify/dist/sdk/models/operations";
 
 const sdk = new ContractifyProduction();
+const operationSecurity: UpdateDocumentSecurity = {
+  oAuth2: "",
+  personalAccessToken: "",
+};
 
 sdk.documents.updateDocument({
   documentWrite: {
@@ -169,10 +176,7 @@ sdk.documents.updateDocument({
   },
   company: 60225,
   document: 969810,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: UpdateDocumentResponse) => {
+}, operationSecurity).then((res: UpdateDocumentResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

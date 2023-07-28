@@ -12,16 +12,17 @@ List all the subfolders within a company
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { ListSubfoldersResponse } from "contractify/dist/sdk/models/operations";
+import { ListSubfoldersResponse, ListSubfoldersSecurity } from "contractify/dist/sdk/models/operations";
 
 const sdk = new ContractifyProduction();
+const operationSecurity: ListSubfoldersSecurity = {
+  oAuth2: "",
+  personalAccessToken: "",
+};
 
 sdk.subfolders.listSubfolders({
   company: 652790,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: ListSubfoldersResponse) => {
+}, operationSecurity).then((res: ListSubfoldersResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

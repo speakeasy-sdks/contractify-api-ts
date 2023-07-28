@@ -12,16 +12,17 @@ List all the custom fields within a company
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { ListCustomFieldsResponse } from "contractify/dist/sdk/models/operations";
+import { ListCustomFieldsResponse, ListCustomFieldsSecurity } from "contractify/dist/sdk/models/operations";
 
 const sdk = new ContractifyProduction();
+const operationSecurity: ListCustomFieldsSecurity = {
+  oAuth2: "",
+  personalAccessToken: "",
+};
 
 sdk.customFields.listCustomFields({
   company: 473600,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: ListCustomFieldsResponse) => {
+}, operationSecurity).then((res: ListCustomFieldsResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

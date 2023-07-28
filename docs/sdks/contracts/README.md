@@ -16,11 +16,15 @@ Create a contract
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { CreateContractResponse } from "contractify/dist/sdk/models/operations";
+import { CreateContractResponse, CreateContractSecurity } from "contractify/dist/sdk/models/operations";
 import { ContractPhase } from "contractify/dist/sdk/models/shared";
 import { RFCDate } from "contractify/dist/sdk/types";
 
 const sdk = new ContractifyProduction();
+const operationSecurity: CreateContractSecurity = {
+  oAuth2: "",
+  personalAccessToken: "",
+};
 
 sdk.contracts.createContract({
   contractWrite: {
@@ -89,10 +93,7 @@ sdk.contracts.createContract({
     },
   },
   company: 392785,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: CreateContractResponse) => {
+}, operationSecurity).then((res: CreateContractResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -121,17 +122,18 @@ Delete a contract
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { DeleteContractResponse } from "contractify/dist/sdk/models/operations";
+import { DeleteContractResponse, DeleteContractSecurity } from "contractify/dist/sdk/models/operations";
 
 const sdk = new ContractifyProduction();
+const operationSecurity: DeleteContractSecurity = {
+  oAuth2: "",
+  personalAccessToken: "",
+};
 
 sdk.contracts.deleteContract({
   company: 925597,
   contract: 836079,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: DeleteContractResponse) => {
+}, operationSecurity).then((res: DeleteContractResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -160,17 +162,18 @@ Get information about a contract
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { GetContractResponse } from "contractify/dist/sdk/models/operations";
+import { GetContractResponse, GetContractSecurity } from "contractify/dist/sdk/models/operations";
 
 const sdk = new ContractifyProduction();
+const operationSecurity: GetContractSecurity = {
+  oAuth2: "",
+  personalAccessToken: "",
+};
 
 sdk.contracts.getContract({
   company: 71036,
   contract: 337396,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: GetContractResponse) => {
+}, operationSecurity).then((res: GetContractResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -199,17 +202,18 @@ List all the contracts within a company
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { ListContractsResponse } from "contractify/dist/sdk/models/operations";
+import { ListContractsResponse, ListContractsSecurity } from "contractify/dist/sdk/models/operations";
 
 const sdk = new ContractifyProduction();
+const operationSecurity: ListContractsSecurity = {
+  oAuth2: "",
+  personalAccessToken: "",
+};
 
 sdk.contracts.listContracts({
   company: 87129,
   page: 648172,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: ListContractsResponse) => {
+}, operationSecurity).then((res: ListContractsResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -238,11 +242,15 @@ Update a contract
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { UpdateContractResponse } from "contractify/dist/sdk/models/operations";
+import { UpdateContractResponse, UpdateContractSecurity } from "contractify/dist/sdk/models/operations";
 import { ContractPhase } from "contractify/dist/sdk/models/shared";
 import { RFCDate } from "contractify/dist/sdk/types";
 
 const sdk = new ContractifyProduction();
+const operationSecurity: UpdateContractSecurity = {
+  oAuth2: "",
+  personalAccessToken: "",
+};
 
 sdk.contracts.updateContract({
   contractWrite: {
@@ -315,10 +323,7 @@ sdk.contracts.updateContract({
   },
   company: 105907,
   contract: 414662,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: UpdateContractResponse) => {
+}, operationSecurity).then((res: UpdateContractResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

@@ -3,16 +3,17 @@
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { ListContractTypesResponse } from "contractify/dist/sdk/models/operations";
+import { ListContractTypesResponse, ListContractTypesSecurity } from "contractify/dist/sdk/models/operations";
 
 const sdk = new ContractifyProduction();
+const operationSecurity: ListContractTypesSecurity = {
+  oAuth2: "",
+  personalAccessToken: "",
+};
 
 sdk.contractTypes.listContractTypes({
   company: 548814,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: ListContractTypesResponse) => {
+}, operationSecurity).then((res: ListContractTypesResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
