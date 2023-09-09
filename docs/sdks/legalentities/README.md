@@ -21,7 +21,7 @@ const operationSecurity: ListLegalEntitiesSecurity = {
 };
 
 sdk.legalEntities.listLegalEntities({
-  company: 666767,
+  company: 678880,
 }, operationSecurity).then((res: ListLegalEntitiesResponse) => {
   if (res.statusCode == 200) {
     // handle response

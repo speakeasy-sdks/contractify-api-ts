@@ -21,7 +21,7 @@ const operationSecurity: ListSubfoldersSecurity = {
 };
 
 sdk.subfolders.listSubfolders({
-  company: 652790,
+  company: 568434,
 }, operationSecurity).then((res: ListSubfoldersResponse) => {
   if (res.statusCode == 200) {
     // handle response

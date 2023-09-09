@@ -58,8 +58,8 @@ const operationSecurity: ListUsersSecurity = {
 };
 
 sdk.users.listUsers({
-  company: 474697,
-  page: 244425,
+  company: 943749,
+  page: 902599,
 }, operationSecurity).then((res: ListUsersResponse) => {
   if (res.statusCode == 200) {
     // handle response

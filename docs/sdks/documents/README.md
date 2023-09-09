@@ -24,8 +24,8 @@ const operationSecurity: DeleteDocumentSecurity = {
 };
 
 sdk.documents.deleteDocument({
-  company: 18789,
-  document: 324141,
+  company: 20218,
+  document: 368241,
 }, operationSecurity).then((res: DeleteDocumentResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -64,8 +64,8 @@ const operationSecurity: GetDocumentSecurity = {
 };
 
 sdk.documents.getDocument({
-  company: 617636,
-  document: 149675,
+  company: 832620,
+  document: 957156,
 }, operationSecurity).then((res: GetDocumentResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -104,12 +104,12 @@ const operationSecurity: ListDocumentsSecurity = {
 };
 
 sdk.documents.listDocuments({
-  company: 612096,
+  company: 778157,
   esigningStatus: ListDocumentsEsigningStatus.SentToLegal,
-  esigningUpdatedAfter: new Date("2022-03-24T20:42:46.563Z"),
-  page: 943749,
-  relationId: 902599,
-  signedAfter: new Date("2022-02-06T12:52:33.708Z"),
+  esigningUpdatedAfter: new Date("2020-05-23T06:06:25.221Z"),
+  page: 978619,
+  relationId: 473608,
+  signedAfter: new Date("2020-08-07T00:03:55.328Z"),
 }, operationSecurity).then((res: ListDocumentsResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -151,20 +151,11 @@ sdk.documents.updateDocument({
   documentWrite: {
     contracts: [
       1,
-      1,
     ],
     customFieldValues: [
       {
         customFieldId: 2,
-        value: "iure",
-      },
-      {
-        customFieldId: 2,
-        value: "saepe",
-      },
-      {
-        customFieldId: 2,
-        value: "quidem",
+        value: "esse",
       },
     ],
     description: "Lorem ipsum dolor sit amet.",
@@ -174,8 +165,8 @@ sdk.documents.updateDocument({
     name: "filename.pdf",
     ownerId: 1,
   },
-  company: 60225,
-  document: 969810,
+  company: 520478,
+  document: 780529,
 }, operationSecurity).then((res: UpdateDocumentResponse) => {
   if (res.statusCode == 200) {
     // handle response

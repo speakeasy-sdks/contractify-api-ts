@@ -42,7 +42,7 @@ sdk.relations.createRelation({
     vat: "BE12345678",
     website: "https://www.example.org",
   },
-  company: 607831,
+  company: 521848,
 }, operationSecurity).then((res: CreateRelationResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -81,8 +81,8 @@ const operationSecurity: DeleteRelationSecurity = {
 };
 
 sdk.relations.deleteRelation({
-  company: 363711,
-  relation: 325047,
+  company: 105907,
+  relation: 414662,
 }, operationSecurity).then((res: DeleteRelationResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -121,8 +121,8 @@ const operationSecurity: GetRelationSecurity = {
 };
 
 sdk.relations.getRelation({
-  company: 570197,
-  relation: 38425,
+  company: 473600,
+  relation: 264555,
 }, operationSecurity).then((res: GetRelationResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -161,9 +161,9 @@ const operationSecurity: ListRelationsSecurity = {
 };
 
 sdk.relations.listRelations({
-  company: 438601,
-  page: 634274,
-  reference: "doloribus",
+  company: 186332,
+  page: 774234,
+  reference: "cum",
 }, operationSecurity).then((res: ListRelationsResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -219,8 +219,8 @@ sdk.relations.updateRelation({
     vat: "BE12345678",
     website: "https://www.example.org",
   },
-  company: 958950,
-  relation: 102044,
+  company: 456150,
+  relation: 216550,
 }, operationSecurity).then((res: UpdateRelationResponse) => {
   if (res.statusCode == 200) {
     // handle response

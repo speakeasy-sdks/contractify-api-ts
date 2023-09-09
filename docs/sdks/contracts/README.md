@@ -29,33 +29,18 @@ const operationSecurity: CreateContractSecurity = {
 sdk.contracts.createContract({
   contractWrite: {
     contractTypes: [
-      844266,
-      602763,
-      857946,
+      715190,
     ],
     customFieldValues: [
       {
         customFieldId: 2,
-        value: "illum",
-      },
-      {
-        customFieldId: 2,
-        value: "vel",
-      },
-      {
-        customFieldId: 2,
-        value: "error",
+        value: "quibusdam",
       },
     ],
     departments: [
-      384382,
-      437587,
-      297534,
+      602763,
     ],
     documents: [
-      1,
-      1,
-      1,
       1,
     ],
     dossierId: 1,
@@ -63,20 +48,16 @@ sdk.contracts.createContract({
     endDate: new RFCDate("2021-12-31"),
     isOpenEnded: false,
     legalEntities: [
-      963663,
+      857946,
     ],
     name: "Partnership agreement",
     offices: [
-      383441,
-      477665,
+      544883,
     ],
     ownerId: 1,
     phase: ContractPhase.Ongoing,
     relations: [
-      812169,
-      528895,
-      479977,
-      568045,
+      847252,
     ],
     renewal: {
       automaticRenewal: {
@@ -92,7 +73,7 @@ sdk.contracts.createContract({
       terminationDuration: "P1M",
     },
   },
-  company: 392785,
+  company: 423655,
 }, operationSecurity).then((res: CreateContractResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -131,8 +112,8 @@ const operationSecurity: DeleteContractSecurity = {
 };
 
 sdk.contracts.deleteContract({
-  company: 925597,
-  contract: 836079,
+  company: 623564,
+  contract: 645894,
 }, operationSecurity).then((res: DeleteContractResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -171,8 +152,8 @@ const operationSecurity: GetContractSecurity = {
 };
 
 sdk.contracts.getContract({
-  company: 71036,
-  contract: 337396,
+  company: 384382,
+  contract: 437587,
 }, operationSecurity).then((res: GetContractResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -211,8 +192,8 @@ const operationSecurity: ListContractsSecurity = {
 };
 
 sdk.contracts.listContracts({
-  company: 87129,
-  page: 648172,
+  company: 297534,
+  page: 891773,
 }, operationSecurity).then((res: ListContractsResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -255,34 +236,18 @@ const operationSecurity: UpdateContractSecurity = {
 sdk.contracts.updateContract({
   contractWrite: {
     contractTypes: [
-      368241,
+      56713,
     ],
     customFieldValues: [
       {
         customFieldId: 2,
-        value: "sapiente",
-      },
-      {
-        customFieldId: 2,
-        value: "quo",
-      },
-      {
-        customFieldId: 2,
-        value: "odit",
-      },
-      {
-        customFieldId: 2,
-        value: "at",
+        value: "delectus",
       },
     ],
     departments: [
-      978619,
-      473608,
-      799159,
-      800911,
+      272656,
     ],
     documents: [
-      1,
       1,
     ],
     dossierId: 1,
@@ -290,22 +255,16 @@ sdk.contracts.updateContract({
     endDate: new RFCDate("2021-12-31"),
     isOpenEnded: false,
     legalEntities: [
-      780529,
-      678880,
-      118274,
+      383441,
     ],
     name: "Partnership agreement",
     offices: [
-      639921,
-      582020,
-      143353,
+      477665,
     ],
     ownerId: 1,
     phase: ContractPhase.Ongoing,
     relations: [
-      944669,
-      758616,
-      521848,
+      791725,
     ],
     renewal: {
       automaticRenewal: {
@@ -321,8 +280,8 @@ sdk.contracts.updateContract({
       terminationDuration: "P1M",
     },
   },
-  company: 105907,
-  contract: 414662,
+  company: 812169,
+  contract: 528895,
 }, operationSecurity).then((res: UpdateContractResponse) => {
   if (res.statusCode == 200) {
     // handle response

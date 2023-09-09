@@ -28,7 +28,7 @@ sdk.departments.createDepartment({
   departmentWrite: {
     name: "Sales",
   },
-  company: 264555,
+  company: 568045,
 }, operationSecurity).then((res: CreateDepartmentResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -67,8 +67,8 @@ const operationSecurity: DeleteDepartmentSecurity = {
 };
 
 sdk.departments.deleteDepartment({
-  company: 186332,
-  department: 774234,
+  company: 392785,
+  department: 925597,
 }, operationSecurity).then((res: DeleteDepartmentResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -107,8 +107,8 @@ const operationSecurity: GetDepartmentSecurity = {
 };
 
 sdk.departments.getDepartment({
-  company: 736918,
-  department: 456150,
+  company: 836079,
+  department: 71036,
 }, operationSecurity).then((res: GetDepartmentResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -147,7 +147,7 @@ const operationSecurity: ListDepartmentsSecurity = {
 };
 
 sdk.departments.listDepartments({
-  company: 216550,
+  company: 337396,
 }, operationSecurity).then((res: ListDepartmentsResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -189,8 +189,8 @@ sdk.departments.updateDepartment({
   departmentWrite: {
     name: "Sales",
   },
-  company: 568434,
-  department: 135218,
+  company: 87129,
+  department: 648172,
 }, operationSecurity).then((res: UpdateDepartmentResponse) => {
   if (res.statusCode == 200) {
     // handle response

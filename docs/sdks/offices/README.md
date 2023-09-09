@@ -38,7 +38,7 @@ sdk.offices.createOffice({
     street: "Polenstraat 163",
     zip: "9940",
   },
-  company: 653140,
+  company: 118274,
 }, operationSecurity).then((res: CreateOfficeResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -77,8 +77,8 @@ const operationSecurity: DeleteOfficeSecurity = {
 };
 
 sdk.offices.deleteOffice({
-  company: 670638,
-  office: 170909,
+  company: 720633,
+  office: 639921,
 }, operationSecurity).then((res: DeleteOfficeResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -117,8 +117,8 @@ const operationSecurity: GetOfficeSecurity = {
 };
 
 sdk.offices.getOffice({
-  company: 210382,
-  office: 358152,
+  company: 582020,
+  office: 143353,
 }, operationSecurity).then((res: GetOfficeResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -157,7 +157,7 @@ const operationSecurity: ListOfficesSecurity = {
 };
 
 sdk.offices.listOffices({
-  company: 128926,
+  company: 537373,
 }, operationSecurity).then((res: ListOfficesResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -209,8 +209,8 @@ sdk.offices.updateOffice({
     street: "Polenstraat 163",
     zip: "9940",
   },
-  company: 750686,
-  office: 315428,
+  company: 944669,
+  office: 758616,
 }, operationSecurity).then((res: UpdateOfficeResponse) => {
   if (res.statusCode == 200) {
     // handle response

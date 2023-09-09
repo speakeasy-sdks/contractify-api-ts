@@ -7,9 +7,6 @@ import { ContractRead } from "./contractread";
 import { Pagination } from "./pagination";
 import { Expose, Type } from "class-transformer";
 
-/**
- * OK
- */
 export class ContractCollection extends SpeakeasyBase {
     @SpeakeasyMetadata({ elemType: ContractRead })
     @Expose({ name: "data" })

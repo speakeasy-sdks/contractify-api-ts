@@ -21,7 +21,7 @@ const operationSecurity: ListCustomFieldsSecurity = {
 };
 
 sdk.customFields.listCustomFields({
-  company: 473600,
+  company: 479977,
 }, operationSecurity).then((res: ListCustomFieldsResponse) => {
   if (res.statusCode == 200) {
     // handle response

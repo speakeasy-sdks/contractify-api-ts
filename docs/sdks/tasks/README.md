@@ -39,7 +39,7 @@ sdk.tasks.createTask({
     status: TaskWriteStatus.Accomplished,
     title: "My task",
   },
-  company: 208876,
+  company: 135218,
 }, operationSecurity).then((res: CreateTaskResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -78,8 +78,8 @@ const operationSecurity: DeleteTaskSecurity = {
 };
 
 sdk.tasks.deleteTask({
-  company: 635059,
-  task: 161309,
+  company: 18789,
+  task: 324141,
 }, operationSecurity).then((res: DeleteTaskResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -118,8 +118,8 @@ const operationSecurity: GetTaskSecurity = {
 };
 
 sdk.tasks.getTask({
-  company: 995300,
-  task: 653108,
+  company: 617636,
+  task: 149675,
 }, operationSecurity).then((res: GetTaskResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -158,8 +158,8 @@ const operationSecurity: ListTasksSecurity = {
 };
 
 sdk.tasks.listTasks({
-  company: 581850,
-  page: 253291,
+  company: 612096,
+  page: 222321,
 }, operationSecurity).then((res: ListTasksResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -211,8 +211,8 @@ sdk.tasks.updateTask({
     status: TaskUpdateStatus.Accomplished,
     title: "My task",
   },
-  company: 414369,
-  task: 466311,
+  company: 616934,
+  task: 386489,
 }, operationSecurity).then((res: UpdateTaskResponse) => {
   if (res.statusCode == 200) {
     // handle response
