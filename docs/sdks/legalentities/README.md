@@ -1,4 +1,4 @@
-# legalEntities
+# LegalEntities
 
 ### Available Operations
 
