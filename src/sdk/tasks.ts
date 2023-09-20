@@ -37,7 +37,7 @@ export class Tasks {
         );
         const url: string = utils.generateURL(baseURL, "/api/companies/{company}/tasks", req);
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "taskWrite", "json");
@@ -509,7 +509,7 @@ export class Tasks {
             req
         );
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "taskUpdate", "json");

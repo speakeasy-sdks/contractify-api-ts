@@ -37,7 +37,7 @@ export class Relations {
         );
         const url: string = utils.generateURL(baseURL, "/api/companies/{company}/relations", req);
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "relationWrite", "json");
@@ -524,7 +524,7 @@ export class Relations {
             req
         );
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "relationWrite", "json");

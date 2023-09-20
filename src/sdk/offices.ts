@@ -37,7 +37,7 @@ export class Offices {
         );
         const url: string = utils.generateURL(baseURL, "/api/companies/{company}/offices", req);
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "officeWrite", "json");
@@ -523,7 +523,7 @@ export class Offices {
             req
         );
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "officeWrite", "json");

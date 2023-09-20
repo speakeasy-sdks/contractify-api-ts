@@ -37,7 +37,7 @@ export class Contracts {
         );
         const url: string = utils.generateURL(baseURL, "/api/companies/{company}/contracts", req);
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "contractWrite", "json");
@@ -524,7 +524,7 @@ export class Contracts {
             req
         );
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "contractWrite", "json");
