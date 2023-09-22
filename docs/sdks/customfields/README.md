@@ -12,17 +12,18 @@ List all the custom fields within a company
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { ListCustomFieldsResponse, ListCustomFieldsSecurity } from "contractify/dist/sdk/models/operations";
+import { ListCustomFieldsResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction();
-const operationSecurity: ListCustomFieldsSecurity = {
-  oAuth2: "",
-  personalAccessToken: "",
-};
+const sdk = new ContractifyProduction({
+  security: {
+    oAuth2: "",
+    personalAccessToken: "",
+  },
+});
 
 sdk.customFields.listCustomFields({
-  company: 479977,
-}, operationSecurity).then((res: ListCustomFieldsResponse) => {
+  company: 568045,
+}).then((res: ListCustomFieldsResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -31,11 +32,10 @@ sdk.customFields.listCustomFields({
 
 ### Parameters
 
-| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `request`                                                                                  | [operations.ListCustomFieldsRequest](../../models/operations/listcustomfieldsrequest.md)   | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
-| `security`                                                                                 | [operations.ListCustomFieldsSecurity](../../models/operations/listcustomfieldssecurity.md) | :heavy_check_mark:                                                                         | The security requirements to use for the request.                                          |
-| `config`                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                               | :heavy_minus_sign:                                                                         | Available config options for making requests.                                              |
+| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `request`                                                                                | [operations.ListCustomFieldsRequest](../../models/operations/listcustomfieldsrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
+| `config`                                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                             | :heavy_minus_sign:                                                                       | Available config options for making requests.                                            |
 
 
 ### Response

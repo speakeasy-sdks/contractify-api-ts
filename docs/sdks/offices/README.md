@@ -16,13 +16,14 @@ Create an office
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { CreateOfficeResponse, CreateOfficeSecurity } from "contractify/dist/sdk/models/operations";
+import { CreateOfficeResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction();
-const operationSecurity: CreateOfficeSecurity = {
-  oAuth2: "",
-  personalAccessToken: "",
-};
+const sdk = new ContractifyProduction({
+  security: {
+    oAuth2: "",
+    personalAccessToken: "",
+  },
+});
 
 sdk.offices.createOffice({
   officeWrite: {
@@ -38,8 +39,8 @@ sdk.offices.createOffice({
     street: "Polenstraat 163",
     zip: "9940",
   },
-  company: 118274,
-}, operationSecurity).then((res: CreateOfficeResponse) => {
+  company: 720633,
+}).then((res: CreateOfficeResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -48,11 +49,10 @@ sdk.offices.createOffice({
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `request`                                                                          | [operations.CreateOfficeRequest](../../models/operations/createofficerequest.md)   | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
-| `security`                                                                         | [operations.CreateOfficeSecurity](../../models/operations/createofficesecurity.md) | :heavy_check_mark:                                                                 | The security requirements to use for the request.                                  |
-| `config`                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                       | :heavy_minus_sign:                                                                 | Available config options for making requests.                                      |
+| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `request`                                                                        | [operations.CreateOfficeRequest](../../models/operations/createofficerequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
+| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |
 
 
 ### Response
@@ -68,18 +68,19 @@ Delete an office
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { DeleteOfficeResponse, DeleteOfficeSecurity } from "contractify/dist/sdk/models/operations";
+import { DeleteOfficeResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction();
-const operationSecurity: DeleteOfficeSecurity = {
-  oAuth2: "",
-  personalAccessToken: "",
-};
+const sdk = new ContractifyProduction({
+  security: {
+    oAuth2: "",
+    personalAccessToken: "",
+  },
+});
 
 sdk.offices.deleteOffice({
-  company: 720633,
-  office: 639921,
-}, operationSecurity).then((res: DeleteOfficeResponse) => {
+  company: 639921,
+  office: 582020,
+}).then((res: DeleteOfficeResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -88,11 +89,10 @@ sdk.offices.deleteOffice({
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `request`                                                                          | [operations.DeleteOfficeRequest](../../models/operations/deleteofficerequest.md)   | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
-| `security`                                                                         | [operations.DeleteOfficeSecurity](../../models/operations/deleteofficesecurity.md) | :heavy_check_mark:                                                                 | The security requirements to use for the request.                                  |
-| `config`                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                       | :heavy_minus_sign:                                                                 | Available config options for making requests.                                      |
+| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `request`                                                                        | [operations.DeleteOfficeRequest](../../models/operations/deleteofficerequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
+| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |
 
 
 ### Response
@@ -108,18 +108,19 @@ Get information about an office
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { GetOfficeResponse, GetOfficeSecurity } from "contractify/dist/sdk/models/operations";
+import { GetOfficeResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction();
-const operationSecurity: GetOfficeSecurity = {
-  oAuth2: "",
-  personalAccessToken: "",
-};
+const sdk = new ContractifyProduction({
+  security: {
+    oAuth2: "",
+    personalAccessToken: "",
+  },
+});
 
 sdk.offices.getOffice({
-  company: 582020,
-  office: 143353,
-}, operationSecurity).then((res: GetOfficeResponse) => {
+  company: 143353,
+  office: 537373,
+}).then((res: GetOfficeResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -128,11 +129,10 @@ sdk.offices.getOffice({
 
 ### Parameters
 
-| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `request`                                                                    | [operations.GetOfficeRequest](../../models/operations/getofficerequest.md)   | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
-| `security`                                                                   | [operations.GetOfficeSecurity](../../models/operations/getofficesecurity.md) | :heavy_check_mark:                                                           | The security requirements to use for the request.                            |
-| `config`                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                 | :heavy_minus_sign:                                                           | Available config options for making requests.                                |
+| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `request`                                                                  | [operations.GetOfficeRequest](../../models/operations/getofficerequest.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
+| `config`                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)               | :heavy_minus_sign:                                                         | Available config options for making requests.                              |
 
 
 ### Response
@@ -148,17 +148,18 @@ List all the offices within a company
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { ListOfficesResponse, ListOfficesSecurity } from "contractify/dist/sdk/models/operations";
+import { ListOfficesResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction();
-const operationSecurity: ListOfficesSecurity = {
-  oAuth2: "",
-  personalAccessToken: "",
-};
+const sdk = new ContractifyProduction({
+  security: {
+    oAuth2: "",
+    personalAccessToken: "",
+  },
+});
 
 sdk.offices.listOffices({
-  company: 537373,
-}, operationSecurity).then((res: ListOfficesResponse) => {
+  company: 944669,
+}).then((res: ListOfficesResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -167,11 +168,10 @@ sdk.offices.listOffices({
 
 ### Parameters
 
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `request`                                                                        | [operations.ListOfficesRequest](../../models/operations/listofficesrequest.md)   | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
-| `security`                                                                       | [operations.ListOfficesSecurity](../../models/operations/listofficessecurity.md) | :heavy_check_mark:                                                               | The security requirements to use for the request.                                |
-| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `request`                                                                      | [operations.ListOfficesRequest](../../models/operations/listofficesrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |
 
 
 ### Response
@@ -187,13 +187,14 @@ Update an office
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { UpdateOfficeResponse, UpdateOfficeSecurity } from "contractify/dist/sdk/models/operations";
+import { UpdateOfficeResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction();
-const operationSecurity: UpdateOfficeSecurity = {
-  oAuth2: "",
-  personalAccessToken: "",
-};
+const sdk = new ContractifyProduction({
+  security: {
+    oAuth2: "",
+    personalAccessToken: "",
+  },
+});
 
 sdk.offices.updateOffice({
   officeWrite: {
@@ -209,9 +210,9 @@ sdk.offices.updateOffice({
     street: "Polenstraat 163",
     zip: "9940",
   },
-  company: 944669,
-  office: 758616,
-}, operationSecurity).then((res: UpdateOfficeResponse) => {
+  company: 758616,
+  office: 521848,
+}).then((res: UpdateOfficeResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -220,11 +221,10 @@ sdk.offices.updateOffice({
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `request`                                                                          | [operations.UpdateOfficeRequest](../../models/operations/updateofficerequest.md)   | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
-| `security`                                                                         | [operations.UpdateOfficeSecurity](../../models/operations/updateofficesecurity.md) | :heavy_check_mark:                                                                 | The security requirements to use for the request.                                  |
-| `config`                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                       | :heavy_minus_sign:                                                                 | Available config options for making requests.                                      |
+| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `request`                                                                        | [operations.UpdateOfficeRequest](../../models/operations/updateofficerequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
+| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |
 
 
 ### Response

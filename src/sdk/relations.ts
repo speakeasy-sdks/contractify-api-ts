@@ -24,7 +24,6 @@ export class Relations {
      */
     async createRelation(
         req: operations.CreateRelationRequest,
-        security: operations.CreateRelationSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.CreateRelationResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -47,10 +46,14 @@ export class Relations {
             }
         }
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.CreateRelationSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = {
             ...reqBodyHeaders,
             ...config?.headers,
@@ -158,7 +161,6 @@ export class Relations {
      */
     async deleteRelation(
         req: operations.DeleteRelationRequest,
-        security: operations.DeleteRelationSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.DeleteRelationResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -175,10 +177,14 @@ export class Relations {
             req
         );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.DeleteRelationSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         headers["Accept"] = "application/json";
 
@@ -283,7 +289,6 @@ export class Relations {
      */
     async getRelation(
         req: operations.GetRelationRequest,
-        security: operations.GetRelationSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.GetRelationResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -300,10 +305,14 @@ export class Relations {
             req
         );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.GetRelationSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         headers["Accept"] = "application/json";
 
@@ -406,7 +415,6 @@ export class Relations {
      */
     async listRelations(
         req: operations.ListRelationsRequest,
-        security: operations.ListRelationsSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.ListRelationsResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -419,10 +427,14 @@ export class Relations {
         );
         const url: string = utils.generateURL(baseURL, "/api/companies/{company}/relations", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.ListRelationsSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         const queryParams: string = utils.serializeQueryParams(req);
         headers["Accept"] = "application/json";
@@ -511,7 +523,6 @@ export class Relations {
      */
     async updateRelation(
         req: operations.UpdateRelationRequest,
-        security: operations.UpdateRelationSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.UpdateRelationResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -538,10 +549,14 @@ export class Relations {
             }
         }
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.UpdateRelationSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = {
             ...reqBodyHeaders,
             ...config?.headers,

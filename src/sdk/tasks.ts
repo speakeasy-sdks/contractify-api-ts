@@ -24,7 +24,6 @@ export class Tasks {
      */
     async createTask(
         req: operations.CreateTaskRequest,
-        security: operations.CreateTaskSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.CreateTaskResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -47,10 +46,14 @@ export class Tasks {
             }
         }
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.CreateTaskSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = {
             ...reqBodyHeaders,
             ...config?.headers,
@@ -158,7 +161,6 @@ export class Tasks {
      */
     async deleteTask(
         req: operations.DeleteTaskRequest,
-        security: operations.DeleteTaskSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.DeleteTaskResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -175,10 +177,14 @@ export class Tasks {
             req
         );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.DeleteTaskSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         headers["Accept"] = "application/json";
 
@@ -268,7 +274,6 @@ export class Tasks {
      */
     async getTask(
         req: operations.GetTaskRequest,
-        security: operations.GetTaskSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.GetTaskResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -285,10 +290,14 @@ export class Tasks {
             req
         );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.GetTaskSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         headers["Accept"] = "application/json";
 
@@ -391,7 +400,6 @@ export class Tasks {
      */
     async listTasks(
         req: operations.ListTasksRequest,
-        security: operations.ListTasksSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.ListTasksResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -404,10 +412,14 @@ export class Tasks {
         );
         const url: string = utils.generateURL(baseURL, "/api/companies/{company}/tasks", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.ListTasksSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         const queryParams: string = utils.serializeQueryParams(req);
         headers["Accept"] = "application/json";
@@ -496,7 +508,6 @@ export class Tasks {
      */
     async updateTask(
         req: operations.UpdateTaskRequest,
-        security: operations.UpdateTaskSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.UpdateTaskResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -523,10 +534,14 @@ export class Tasks {
             }
         }
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.UpdateTaskSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = {
             ...reqBodyHeaders,
             ...config?.headers,

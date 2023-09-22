@@ -24,7 +24,6 @@ export class Offices {
      */
     async createOffice(
         req: operations.CreateOfficeRequest,
-        security: operations.CreateOfficeSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.CreateOfficeResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -47,10 +46,14 @@ export class Offices {
             }
         }
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.CreateOfficeSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = {
             ...reqBodyHeaders,
             ...config?.headers,
@@ -158,7 +161,6 @@ export class Offices {
      */
     async deleteOffice(
         req: operations.DeleteOfficeRequest,
-        security: operations.DeleteOfficeSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.DeleteOfficeResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -175,10 +177,14 @@ export class Offices {
             req
         );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.DeleteOfficeSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         headers["Accept"] = "application/json";
 
@@ -283,7 +289,6 @@ export class Offices {
      */
     async getOffice(
         req: operations.GetOfficeRequest,
-        security: operations.GetOfficeSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.GetOfficeResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -300,10 +305,14 @@ export class Offices {
             req
         );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.GetOfficeSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         headers["Accept"] = "application/json";
 
@@ -406,7 +415,6 @@ export class Offices {
      */
     async listOffices(
         req: operations.ListOfficesRequest,
-        security: operations.ListOfficesSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.ListOfficesResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -419,10 +427,14 @@ export class Offices {
         );
         const url: string = utils.generateURL(baseURL, "/api/companies/{company}/offices", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.ListOfficesSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         headers["Accept"] = "application/json";
 
@@ -510,7 +522,6 @@ export class Offices {
      */
     async updateOffice(
         req: operations.UpdateOfficeRequest,
-        security: operations.UpdateOfficeSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.UpdateOfficeResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -537,10 +548,14 @@ export class Offices {
             }
         }
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.UpdateOfficeSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = {
             ...reqBodyHeaders,
             ...config?.headers,

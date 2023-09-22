@@ -16,29 +16,30 @@ Create a contract
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { CreateContractResponse, CreateContractSecurity } from "contractify/dist/sdk/models/operations";
+import { CreateContractResponse } from "contractify/dist/sdk/models/operations";
 import { ContractPhase } from "contractify/dist/sdk/models/shared";
 import { RFCDate } from "contractify/dist/sdk/types";
 
-const sdk = new ContractifyProduction();
-const operationSecurity: CreateContractSecurity = {
-  oAuth2: "",
-  personalAccessToken: "",
-};
+const sdk = new ContractifyProduction({
+  security: {
+    oAuth2: "",
+    personalAccessToken: "",
+  },
+});
 
 sdk.contracts.createContract({
   contractWrite: {
     contractTypes: [
-      715190,
+      844266,
     ],
     customFieldValues: [
       {
         customFieldId: 2,
-        value: "quibusdam",
+        value: "unde",
       },
     ],
     departments: [
-      602763,
+      857946,
     ],
     documents: [
       1,
@@ -48,16 +49,16 @@ sdk.contracts.createContract({
     endDate: new RFCDate("2021-12-31"),
     isOpenEnded: false,
     legalEntities: [
-      857946,
+      544883,
     ],
     name: "Partnership agreement",
     offices: [
-      544883,
+      847252,
     ],
     ownerId: 1,
     phase: ContractPhase.Ongoing,
     relations: [
-      847252,
+      423655,
     ],
     renewal: {
       automaticRenewal: {
@@ -73,8 +74,8 @@ sdk.contracts.createContract({
       terminationDuration: "P1M",
     },
   },
-  company: 423655,
-}, operationSecurity).then((res: CreateContractResponse) => {
+  company: 623564,
+}).then((res: CreateContractResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -83,11 +84,10 @@ sdk.contracts.createContract({
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `request`                                                                              | [operations.CreateContractRequest](../../models/operations/createcontractrequest.md)   | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
-| `security`                                                                             | [operations.CreateContractSecurity](../../models/operations/createcontractsecurity.md) | :heavy_check_mark:                                                                     | The security requirements to use for the request.                                      |
-| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `request`                                                                            | [operations.CreateContractRequest](../../models/operations/createcontractrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
 
 
 ### Response
@@ -103,18 +103,19 @@ Delete a contract
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { DeleteContractResponse, DeleteContractSecurity } from "contractify/dist/sdk/models/operations";
+import { DeleteContractResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction();
-const operationSecurity: DeleteContractSecurity = {
-  oAuth2: "",
-  personalAccessToken: "",
-};
+const sdk = new ContractifyProduction({
+  security: {
+    oAuth2: "",
+    personalAccessToken: "",
+  },
+});
 
 sdk.contracts.deleteContract({
-  company: 623564,
-  contract: 645894,
-}, operationSecurity).then((res: DeleteContractResponse) => {
+  company: 645894,
+  contract: 384382,
+}).then((res: DeleteContractResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -123,11 +124,10 @@ sdk.contracts.deleteContract({
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `request`                                                                              | [operations.DeleteContractRequest](../../models/operations/deletecontractrequest.md)   | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
-| `security`                                                                             | [operations.DeleteContractSecurity](../../models/operations/deletecontractsecurity.md) | :heavy_check_mark:                                                                     | The security requirements to use for the request.                                      |
-| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `request`                                                                            | [operations.DeleteContractRequest](../../models/operations/deletecontractrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
 
 
 ### Response
@@ -143,18 +143,19 @@ Get information about a contract
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { GetContractResponse, GetContractSecurity } from "contractify/dist/sdk/models/operations";
+import { GetContractResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction();
-const operationSecurity: GetContractSecurity = {
-  oAuth2: "",
-  personalAccessToken: "",
-};
+const sdk = new ContractifyProduction({
+  security: {
+    oAuth2: "",
+    personalAccessToken: "",
+  },
+});
 
 sdk.contracts.getContract({
-  company: 384382,
-  contract: 437587,
-}, operationSecurity).then((res: GetContractResponse) => {
+  company: 437587,
+  contract: 297534,
+}).then((res: GetContractResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -163,11 +164,10 @@ sdk.contracts.getContract({
 
 ### Parameters
 
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `request`                                                                        | [operations.GetContractRequest](../../models/operations/getcontractrequest.md)   | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
-| `security`                                                                       | [operations.GetContractSecurity](../../models/operations/getcontractsecurity.md) | :heavy_check_mark:                                                               | The security requirements to use for the request.                                |
-| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `request`                                                                      | [operations.GetContractRequest](../../models/operations/getcontractrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |
 
 
 ### Response
@@ -183,18 +183,19 @@ List all the contracts within a company
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { ListContractsResponse, ListContractsSecurity } from "contractify/dist/sdk/models/operations";
+import { ListContractsResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction();
-const operationSecurity: ListContractsSecurity = {
-  oAuth2: "",
-  personalAccessToken: "",
-};
+const sdk = new ContractifyProduction({
+  security: {
+    oAuth2: "",
+    personalAccessToken: "",
+  },
+});
 
 sdk.contracts.listContracts({
-  company: 297534,
-  page: 891773,
-}, operationSecurity).then((res: ListContractsResponse) => {
+  company: 891773,
+  page: 56713,
+}).then((res: ListContractsResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -203,11 +204,10 @@ sdk.contracts.listContracts({
 
 ### Parameters
 
-| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `request`                                                                            | [operations.ListContractsRequest](../../models/operations/listcontractsrequest.md)   | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
-| `security`                                                                           | [operations.ListContractsSecurity](../../models/operations/listcontractssecurity.md) | :heavy_check_mark:                                                                   | The security requirements to use for the request.                                    |
-| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `request`                                                                          | [operations.ListContractsRequest](../../models/operations/listcontractsrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
+| `config`                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                       | :heavy_minus_sign:                                                                 | Available config options for making requests.                                      |
 
 
 ### Response
@@ -223,29 +223,30 @@ Update a contract
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { UpdateContractResponse, UpdateContractSecurity } from "contractify/dist/sdk/models/operations";
+import { UpdateContractResponse } from "contractify/dist/sdk/models/operations";
 import { ContractPhase } from "contractify/dist/sdk/models/shared";
 import { RFCDate } from "contractify/dist/sdk/types";
 
-const sdk = new ContractifyProduction();
-const operationSecurity: UpdateContractSecurity = {
-  oAuth2: "",
-  personalAccessToken: "",
-};
+const sdk = new ContractifyProduction({
+  security: {
+    oAuth2: "",
+    personalAccessToken: "",
+  },
+});
 
 sdk.contracts.updateContract({
   contractWrite: {
     contractTypes: [
-      56713,
+      963663,
     ],
     customFieldValues: [
       {
         customFieldId: 2,
-        value: "delectus",
+        value: "tempora",
       },
     ],
     departments: [
-      272656,
+      383441,
     ],
     documents: [
       1,
@@ -255,16 +256,16 @@ sdk.contracts.updateContract({
     endDate: new RFCDate("2021-12-31"),
     isOpenEnded: false,
     legalEntities: [
-      383441,
+      477665,
     ],
     name: "Partnership agreement",
     offices: [
-      477665,
+      791725,
     ],
     ownerId: 1,
     phase: ContractPhase.Ongoing,
     relations: [
-      791725,
+      812169,
     ],
     renewal: {
       automaticRenewal: {
@@ -280,9 +281,9 @@ sdk.contracts.updateContract({
       terminationDuration: "P1M",
     },
   },
-  company: 812169,
-  contract: 528895,
-}, operationSecurity).then((res: UpdateContractResponse) => {
+  company: 528895,
+  contract: 479977,
+}).then((res: UpdateContractResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -291,11 +292,10 @@ sdk.contracts.updateContract({
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `request`                                                                              | [operations.UpdateContractRequest](../../models/operations/updatecontractrequest.md)   | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
-| `security`                                                                             | [operations.UpdateContractSecurity](../../models/operations/updatecontractsecurity.md) | :heavy_check_mark:                                                                     | The security requirements to use for the request.                                      |
-| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `request`                                                                            | [operations.UpdateContractRequest](../../models/operations/updatecontractrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
 
 
 ### Response

@@ -15,18 +15,19 @@ Delete a document
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { DeleteDocumentResponse, DeleteDocumentSecurity } from "contractify/dist/sdk/models/operations";
+import { DeleteDocumentResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction();
-const operationSecurity: DeleteDocumentSecurity = {
-  oAuth2: "",
-  personalAccessToken: "",
-};
+const sdk = new ContractifyProduction({
+  security: {
+    oAuth2: "",
+    personalAccessToken: "",
+  },
+});
 
 sdk.documents.deleteDocument({
-  company: 20218,
-  document: 368241,
-}, operationSecurity).then((res: DeleteDocumentResponse) => {
+  company: 368241,
+  document: 832620,
+}).then((res: DeleteDocumentResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -35,11 +36,10 @@ sdk.documents.deleteDocument({
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `request`                                                                              | [operations.DeleteDocumentRequest](../../models/operations/deletedocumentrequest.md)   | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
-| `security`                                                                             | [operations.DeleteDocumentSecurity](../../models/operations/deletedocumentsecurity.md) | :heavy_check_mark:                                                                     | The security requirements to use for the request.                                      |
-| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `request`                                                                            | [operations.DeleteDocumentRequest](../../models/operations/deletedocumentrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
 
 
 ### Response
@@ -55,18 +55,19 @@ Get information about a document
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { GetDocumentResponse, GetDocumentSecurity } from "contractify/dist/sdk/models/operations";
+import { GetDocumentResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction();
-const operationSecurity: GetDocumentSecurity = {
-  oAuth2: "",
-  personalAccessToken: "",
-};
+const sdk = new ContractifyProduction({
+  security: {
+    oAuth2: "",
+    personalAccessToken: "",
+  },
+});
 
 sdk.documents.getDocument({
-  company: 832620,
-  document: 957156,
-}, operationSecurity).then((res: GetDocumentResponse) => {
+  company: 957156,
+  document: 778157,
+}).then((res: GetDocumentResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -75,11 +76,10 @@ sdk.documents.getDocument({
 
 ### Parameters
 
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `request`                                                                        | [operations.GetDocumentRequest](../../models/operations/getdocumentrequest.md)   | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
-| `security`                                                                       | [operations.GetDocumentSecurity](../../models/operations/getdocumentsecurity.md) | :heavy_check_mark:                                                               | The security requirements to use for the request.                                |
-| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `request`                                                                      | [operations.GetDocumentRequest](../../models/operations/getdocumentrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |
 
 
 ### Response
@@ -95,22 +95,23 @@ List all the documents within a company
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { ListDocumentsEsigningStatus, ListDocumentsResponse, ListDocumentsSecurity } from "contractify/dist/sdk/models/operations";
+import { ListDocumentsEsigningStatus, ListDocumentsResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction();
-const operationSecurity: ListDocumentsSecurity = {
-  oAuth2: "",
-  personalAccessToken: "",
-};
+const sdk = new ContractifyProduction({
+  security: {
+    oAuth2: "",
+    personalAccessToken: "",
+  },
+});
 
 sdk.documents.listDocuments({
-  company: 778157,
-  esigningStatus: ListDocumentsEsigningStatus.SentToLegal,
-  esigningUpdatedAfter: new Date("2020-05-23T06:06:25.221Z"),
-  page: 978619,
-  relationId: 473608,
-  signedAfter: new Date("2020-08-07T00:03:55.328Z"),
-}, operationSecurity).then((res: ListDocumentsResponse) => {
+  company: 140350,
+  esigningStatus: ListDocumentsEsigningStatus.FinishedButPartiallySigned,
+  esigningUpdatedAfter: new Date("2020-01-25T09:54:35.794Z"),
+  page: 473608,
+  relationId: 799159,
+  signedAfter: new Date("2021-08-13T16:19:19.906Z"),
+}).then((res: ListDocumentsResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -119,11 +120,10 @@ sdk.documents.listDocuments({
 
 ### Parameters
 
-| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `request`                                                                            | [operations.ListDocumentsRequest](../../models/operations/listdocumentsrequest.md)   | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
-| `security`                                                                           | [operations.ListDocumentsSecurity](../../models/operations/listdocumentssecurity.md) | :heavy_check_mark:                                                                   | The security requirements to use for the request.                                    |
-| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `request`                                                                          | [operations.ListDocumentsRequest](../../models/operations/listdocumentsrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
+| `config`                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                       | :heavy_minus_sign:                                                                 | Available config options for making requests.                                      |
 
 
 ### Response
@@ -139,13 +139,14 @@ Update a document
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { UpdateDocumentResponse, UpdateDocumentSecurity } from "contractify/dist/sdk/models/operations";
+import { UpdateDocumentResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction();
-const operationSecurity: UpdateDocumentSecurity = {
-  oAuth2: "",
-  personalAccessToken: "",
-};
+const sdk = new ContractifyProduction({
+  security: {
+    oAuth2: "",
+    personalAccessToken: "",
+  },
+});
 
 sdk.documents.updateDocument({
   documentWrite: {
@@ -155,7 +156,7 @@ sdk.documents.updateDocument({
     customFieldValues: [
       {
         customFieldId: 2,
-        value: "esse",
+        value: "totam",
       },
     ],
     description: "Lorem ipsum dolor sit amet.",
@@ -165,9 +166,9 @@ sdk.documents.updateDocument({
     name: "filename.pdf",
     ownerId: 1,
   },
-  company: 520478,
-  document: 780529,
-}, operationSecurity).then((res: UpdateDocumentResponse) => {
+  company: 780529,
+  document: 678880,
+}).then((res: UpdateDocumentResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -176,11 +177,10 @@ sdk.documents.updateDocument({
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `request`                                                                              | [operations.UpdateDocumentRequest](../../models/operations/updatedocumentrequest.md)   | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
-| `security`                                                                             | [operations.UpdateDocumentSecurity](../../models/operations/updatedocumentsecurity.md) | :heavy_check_mark:                                                                     | The security requirements to use for the request.                                      |
-| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `request`                                                                            | [operations.UpdateDocumentRequest](../../models/operations/updatedocumentrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
 
 
 ### Response

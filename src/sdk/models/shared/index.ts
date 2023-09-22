@@ -37,6 +37,7 @@ export * from "./pagination";
 export * from "./relationcollection";
 export * from "./relationread";
 export * from "./relationwrite";
+export * from "./security";
 export * from "./taskcollection";
 export * from "./taskread";
 export * from "./taskupdate";

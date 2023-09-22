@@ -24,7 +24,6 @@ export class CustomFields {
      */
     async listCustomFields(
         req: operations.ListCustomFieldsRequest,
-        security: operations.ListCustomFieldsSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.ListCustomFieldsResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -41,10 +40,14 @@ export class CustomFields {
             req
         );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.ListCustomFieldsSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         headers["Accept"] = "application/json";
 

@@ -24,7 +24,6 @@ export class Departments {
      */
     async createDepartment(
         req: operations.CreateDepartmentRequest,
-        security: operations.CreateDepartmentSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.CreateDepartmentResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -47,10 +46,14 @@ export class Departments {
             }
         }
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.CreateDepartmentSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = {
             ...reqBodyHeaders,
             ...config?.headers,
@@ -158,7 +161,6 @@ export class Departments {
      */
     async deleteDepartment(
         req: operations.DeleteDepartmentRequest,
-        security: operations.DeleteDepartmentSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.DeleteDepartmentResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -175,10 +177,14 @@ export class Departments {
             req
         );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.DeleteDepartmentSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         headers["Accept"] = "application/json";
 
@@ -283,7 +289,6 @@ export class Departments {
      */
     async getDepartment(
         req: operations.GetDepartmentRequest,
-        security: operations.GetDepartmentSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.GetDepartmentResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -300,10 +305,14 @@ export class Departments {
             req
         );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.GetDepartmentSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         headers["Accept"] = "application/json";
 
@@ -406,7 +415,6 @@ export class Departments {
      */
     async listDepartments(
         req: operations.ListDepartmentsRequest,
-        security: operations.ListDepartmentsSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.ListDepartmentsResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -419,10 +427,14 @@ export class Departments {
         );
         const url: string = utils.generateURL(baseURL, "/api/companies/{company}/departments", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.ListDepartmentsSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         headers["Accept"] = "application/json";
 
@@ -510,7 +522,6 @@ export class Departments {
      */
     async updateDepartment(
         req: operations.UpdateDepartmentRequest,
-        security: operations.UpdateDepartmentSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.UpdateDepartmentResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -537,10 +548,14 @@ export class Departments {
             }
         }
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.UpdateDepartmentSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = {
             ...reqBodyHeaders,
             ...config?.headers,

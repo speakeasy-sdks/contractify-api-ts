@@ -22,20 +22,21 @@ export class Users {
      * @remarks
      * Get the current user details
      */
-    async currentUser(
-        security: operations.CurrentUserSecurity,
-        config?: AxiosRequestConfig
-    ): Promise<operations.CurrentUserResponse> {
+    async currentUser(config?: AxiosRequestConfig): Promise<operations.CurrentUserResponse> {
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
         const url: string = baseURL.replace(/\/$/, "") + "/api/user";
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.CurrentUserSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         headers["Accept"] = "application/json";
 
@@ -123,7 +124,6 @@ export class Users {
      */
     async listUsers(
         req: operations.ListUsersRequest,
-        security: operations.ListUsersSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.ListUsersResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -136,10 +136,14 @@ export class Users {
         );
         const url: string = utils.generateURL(baseURL, "/api/companies/{company}/users", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.ListUsersSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         const queryParams: string = utils.serializeQueryParams(req);
         headers["Accept"] = "application/json";
