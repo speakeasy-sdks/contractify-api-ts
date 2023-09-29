@@ -30,7 +30,7 @@ sdk.departments.createDepartment({
   departmentWrite: {
     name: "Sales",
   },
-  company: 392785,
+  company: 33324,
 }).then((res: CreateDepartmentResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -69,8 +69,8 @@ const sdk = new ContractifyProduction({
 });
 
 sdk.departments.deleteDepartment({
-  company: 925597,
-  department: 836079,
+  company: 701942,
+  department: 751163,
 }).then((res: DeleteDepartmentResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -109,8 +109,8 @@ const sdk = new ContractifyProduction({
 });
 
 sdk.departments.getDepartment({
-  company: 71036,
-  department: 337396,
+  company: 255130,
+  department: 855529,
 }).then((res: GetDepartmentResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -149,7 +149,7 @@ const sdk = new ContractifyProduction({
 });
 
 sdk.departments.listDepartments({
-  company: 87129,
+  company: 117069,
 }).then((res: ListDepartmentsResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -191,8 +191,8 @@ sdk.departments.updateDepartment({
   departmentWrite: {
     name: "Sales",
   },
-  company: 648172,
-  department: 20218,
+  company: 431122,
+  department: 2342,
 }).then((res: UpdateDepartmentResponse) => {
   if (res.statusCode == 200) {
     // handle response

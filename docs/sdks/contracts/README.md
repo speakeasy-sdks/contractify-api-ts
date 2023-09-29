@@ -31,16 +31,16 @@ const sdk = new ContractifyProduction({
 sdk.contracts.createContract({
   contractWrite: {
     contractTypes: [
-      844266,
+      940947,
     ],
     customFieldValues: [
       {
         customFieldId: 2,
-        value: "unde",
+        value: "Palladium",
       },
     ],
     departments: [
-      857946,
+      559447,
     ],
     documents: [
       1,
@@ -50,16 +50,16 @@ sdk.contracts.createContract({
     endDate: new RFCDate("2021-12-31"),
     isOpenEnded: false,
     legalEntities: [
-      544883,
+      657681,
     ],
     name: "Partnership agreement",
     offices: [
-      847252,
+      410255,
     ],
     ownerId: 1,
     phase: ContractPhase.Ongoing,
     relations: [
-      423655,
+      867240,
     ],
     renewal: {
       automaticRenewal: {
@@ -75,7 +75,7 @@ sdk.contracts.createContract({
       terminationDuration: "P1M",
     },
   },
-  company: 623564,
+  company: 647814,
 }).then((res: CreateContractResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -114,8 +114,8 @@ const sdk = new ContractifyProduction({
 });
 
 sdk.contracts.deleteContract({
-  company: 645894,
-  contract: 384382,
+  company: 791005,
+  contract: 200974,
 }).then((res: DeleteContractResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -154,8 +154,8 @@ const sdk = new ContractifyProduction({
 });
 
 sdk.contracts.getContract({
-  company: 437587,
-  contract: 297534,
+  company: 362495,
+  contract: 163842,
 }).then((res: GetContractResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -194,8 +194,8 @@ const sdk = new ContractifyProduction({
 });
 
 sdk.contracts.listContracts({
-  company: 891773,
-  page: 56713,
+  company: 567515,
+  page: 62076,
 }).then((res: ListContractsResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -238,16 +238,16 @@ const sdk = new ContractifyProduction({
 sdk.contracts.updateContract({
   contractWrite: {
     contractTypes: [
-      963663,
+      60280,
     ],
     customFieldValues: [
       {
         customFieldId: 2,
-        value: "tempora",
+        value: "synergies",
       },
     ],
     departments: [
-      383441,
+      178046,
     ],
     documents: [
       1,
@@ -257,16 +257,16 @@ sdk.contracts.updateContract({
     endDate: new RFCDate("2021-12-31"),
     isOpenEnded: false,
     legalEntities: [
-      477665,
+      331597,
     ],
     name: "Partnership agreement",
     offices: [
-      791725,
+      693387,
     ],
     ownerId: 1,
     phase: ContractPhase.Ongoing,
     relations: [
-      812169,
+      670029,
     ],
     renewal: {
       automaticRenewal: {
@@ -282,8 +282,8 @@ sdk.contracts.updateContract({
       terminationDuration: "P1M",
     },
   },
-  company: 528895,
-  contract: 479977,
+  company: 213877,
+  contract: 177820,
 }).then((res: UpdateContractResponse) => {
   if (res.statusCode == 200) {
     // handle response

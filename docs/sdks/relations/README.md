@@ -44,7 +44,7 @@ sdk.relations.createRelation({
     vat: "BE12345678",
     website: "https://www.example.org",
   },
-  company: 105907,
+  company: 528070,
 }).then((res: CreateRelationResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -83,8 +83,8 @@ const sdk = new ContractifyProduction({
 });
 
 sdk.relations.deleteRelation({
-  company: 414662,
-  relation: 473600,
+  company: 773418,
+  relation: 890630,
 }).then((res: DeleteRelationResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -123,8 +123,8 @@ const sdk = new ContractifyProduction({
 });
 
 sdk.relations.getRelation({
-  company: 264555,
-  relation: 186332,
+  company: 734058,
+  relation: 979643,
 }).then((res: GetRelationResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -163,9 +163,9 @@ const sdk = new ContractifyProduction({
 });
 
 sdk.relations.listRelations({
-  company: 774234,
-  page: 736918,
-  reference: "esse",
+  company: 454135,
+  page: 761434,
+  reference: "systemic South",
 }).then((res: ListRelationsResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -221,8 +221,8 @@ sdk.relations.updateRelation({
     vat: "BE12345678",
     website: "https://www.example.org",
   },
-  company: 216550,
-  relation: 568434,
+  company: 573397,
+  relation: 281147,
 }).then((res: UpdateRelationResponse) => {
   if (res.statusCode == 200) {
     // handle response

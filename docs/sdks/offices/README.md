@@ -40,7 +40,7 @@ sdk.offices.createOffice({
     street: "Polenstraat 163",
     zip: "9940",
   },
-  company: 720633,
+  company: 244393,
 }).then((res: CreateOfficeResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -79,8 +79,8 @@ const sdk = new ContractifyProduction({
 });
 
 sdk.offices.deleteOffice({
-  company: 639921,
-  office: 582020,
+  company: 327183,
+  office: 668605,
 }).then((res: DeleteOfficeResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -119,8 +119,8 @@ const sdk = new ContractifyProduction({
 });
 
 sdk.offices.getOffice({
-  company: 143353,
-  office: 537373,
+  company: 616050,
+  office: 134885,
 }).then((res: GetOfficeResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -159,7 +159,7 @@ const sdk = new ContractifyProduction({
 });
 
 sdk.offices.listOffices({
-  company: 944669,
+  company: 303557,
 }).then((res: ListOfficesResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -211,8 +211,8 @@ sdk.offices.updateOffice({
     street: "Polenstraat 163",
     zip: "9940",
   },
-  company: 758616,
-  office: 521848,
+  company: 989026,
+  office: 647378,
 }).then((res: UpdateOfficeResponse) => {
   if (res.statusCode == 200) {
     // handle response

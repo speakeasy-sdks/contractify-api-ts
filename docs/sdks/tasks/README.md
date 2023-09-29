@@ -41,7 +41,7 @@ sdk.tasks.createTask({
     status: TaskWriteStatus.Accomplished,
     title: "My task",
   },
-  company: 18789,
+  company: 296904,
 }).then((res: CreateTaskResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -80,8 +80,8 @@ const sdk = new ContractifyProduction({
 });
 
 sdk.tasks.deleteTask({
-  company: 324141,
-  task: 617636,
+  company: 357574,
+  task: 394977,
 }).then((res: DeleteTaskResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -120,8 +120,8 @@ const sdk = new ContractifyProduction({
 });
 
 sdk.tasks.getTask({
-  company: 149675,
-  task: 612096,
+  company: 717011,
+  task: 649018,
 }).then((res: GetTaskResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -160,8 +160,8 @@ const sdk = new ContractifyProduction({
 });
 
 sdk.tasks.listTasks({
-  company: 222321,
-  page: 616934,
+  company: 715197,
+  page: 192941,
 }).then((res: ListTasksResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -213,8 +213,8 @@ sdk.tasks.updateTask({
     status: TaskUpdateStatus.Accomplished,
     title: "My task",
   },
-  company: 386489,
-  task: 943749,
+  company: 449699,
+  task: 675064,
 }).then((res: UpdateTaskResponse) => {
   if (res.statusCode == 200) {
     // handle response

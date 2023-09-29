@@ -23,7 +23,7 @@ const sdk = new ContractifyProduction({
 });
 
 sdk.subfolders.listSubfolders({
-  company: 135218,
+  company: 749068,
 }).then((res: ListSubfoldersResponse) => {
   if (res.statusCode == 200) {
     // handle response

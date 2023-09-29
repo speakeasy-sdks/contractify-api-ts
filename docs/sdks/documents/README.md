@@ -26,8 +26,8 @@ const sdk = new ContractifyProduction({
 });
 
 sdk.documents.deleteDocument({
-  company: 368241,
-  document: 832620,
+  company: 431806,
+  document: 379848,
 }).then((res: DeleteDocumentResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -66,8 +66,8 @@ const sdk = new ContractifyProduction({
 });
 
 sdk.documents.getDocument({
-  company: 957156,
-  document: 778157,
+  company: 67810,
+  document: 267106,
 }).then((res: GetDocumentResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -106,12 +106,12 @@ const sdk = new ContractifyProduction({
 });
 
 sdk.documents.listDocuments({
-  company: 140350,
-  esigningStatus: ListDocumentsEsigningStatus.FinishedButPartiallySigned,
-  esigningUpdatedAfter: new Date("2020-01-25T09:54:35.794Z"),
-  page: 473608,
-  relationId: 799159,
-  signedAfter: new Date("2021-08-13T16:19:19.906Z"),
+  company: 581480,
+  esigningStatus: ListDocumentsEsigningStatus.LegalDeclined,
+  esigningUpdatedAfter: new Date("2022-04-10T07:42:42.736Z"),
+  page: 893340,
+  relationId: 873217,
+  signedAfter: new Date("2021-04-10T09:49:45.540Z"),
 }).then((res: ListDocumentsResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -157,7 +157,7 @@ sdk.documents.updateDocument({
     customFieldValues: [
       {
         customFieldId: 2,
-        value: "totam",
+        value: "Product",
       },
     ],
     description: "Lorem ipsum dolor sit amet.",
@@ -167,8 +167,8 @@ sdk.documents.updateDocument({
     name: "filename.pdf",
     ownerId: 1,
   },
-  company: 780529,
-  document: 678880,
+  company: 659951,
+  document: 513682,
 }).then((res: UpdateDocumentResponse) => {
   if (res.statusCode == 200) {
     // handle response

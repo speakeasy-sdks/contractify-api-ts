@@ -23,7 +23,7 @@ const sdk = new ContractifyProduction({
 });
 
 sdk.contractTypes.listContractTypes({
-  company: 715190,
+  company: 839467,
 }).then((res: ListContractTypesResponse) => {
   if (res.statusCode == 200) {
     // handle response

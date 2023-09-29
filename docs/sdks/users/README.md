@@ -60,8 +60,8 @@ const sdk = new ContractifyProduction({
 });
 
 sdk.users.listUsers({
-  company: 902599,
-  page: 681820,
+  company: 606239,
+  page: 283983,
 }).then((res: ListUsersResponse) => {
   if (res.statusCode == 200) {
     // handle response

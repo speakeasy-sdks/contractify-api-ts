@@ -23,7 +23,7 @@ const sdk = new ContractifyProduction({
 });
 
 sdk.customFields.listCustomFields({
-  company: 568045,
+  company: 318971,
 }).then((res: ListCustomFieldsResponse) => {
   if (res.statusCode == 200) {
     // handle response

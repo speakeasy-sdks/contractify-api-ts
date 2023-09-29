@@ -23,7 +23,7 @@ const sdk = new ContractifyProduction({
 });
 
 sdk.legalEntities.listLegalEntities({
-  company: 118274,
+  company: 730248,
 }).then((res: ListLegalEntitiesResponse) => {
   if (res.statusCode == 200) {
     // handle response
