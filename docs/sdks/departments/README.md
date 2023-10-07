@@ -17,25 +17,26 @@ Create a department
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { CreateDepartmentResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction({
-  security: {
-    oAuth2: "",
-    personalAccessToken: "",
-  },
-});
+(async() => {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "",
+      personalAccessToken: "",
+    },
+  });
 
-sdk.departments.createDepartment({
-  departmentWrite: {
-    name: "Sales",
-  },
-  company: 33324,
-}).then((res: CreateDepartmentResponse) => {
+  const res = await sdk.departments.createDepartment({
+    departmentWrite: {
+      name: "Sales",
+    },
+    company: 33324,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -59,23 +60,24 @@ Delete a department
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { DeleteDepartmentResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction({
-  security: {
-    oAuth2: "",
-    personalAccessToken: "",
-  },
-});
+(async() => {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "",
+      personalAccessToken: "",
+    },
+  });
 
-sdk.departments.deleteDepartment({
-  company: 701942,
-  department: 751163,
-}).then((res: DeleteDepartmentResponse) => {
+  const res = await sdk.departments.deleteDepartment({
+    company: 701942,
+    department: 751163,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -99,23 +101,24 @@ Get information about a department
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { GetDepartmentResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction({
-  security: {
-    oAuth2: "",
-    personalAccessToken: "",
-  },
-});
+(async() => {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "",
+      personalAccessToken: "",
+    },
+  });
 
-sdk.departments.getDepartment({
-  company: 255130,
-  department: 855529,
-}).then((res: GetDepartmentResponse) => {
+  const res = await sdk.departments.getDepartment({
+    company: 255130,
+    department: 855529,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -139,22 +142,23 @@ List all the departments within a company
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { ListDepartmentsResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction({
-  security: {
-    oAuth2: "",
-    personalAccessToken: "",
-  },
-});
+(async() => {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "",
+      personalAccessToken: "",
+    },
+  });
 
-sdk.departments.listDepartments({
-  company: 117069,
-}).then((res: ListDepartmentsResponse) => {
+  const res = await sdk.departments.listDepartments({
+    company: 117069,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -178,26 +182,27 @@ Update a department
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { UpdateDepartmentResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction({
-  security: {
-    oAuth2: "",
-    personalAccessToken: "",
-  },
-});
+(async() => {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "",
+      personalAccessToken: "",
+    },
+  });
 
-sdk.departments.updateDepartment({
-  departmentWrite: {
-    name: "Sales",
-  },
-  company: 431122,
-  department: 2342,
-}).then((res: UpdateDepartmentResponse) => {
+  const res = await sdk.departments.updateDepartment({
+    departmentWrite: {
+      name: "Sales",
+    },
+    company: 431122,
+    department: 2342,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

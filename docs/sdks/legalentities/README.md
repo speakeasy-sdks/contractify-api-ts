@@ -13,22 +13,23 @@ List all the legal entities within a company
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { ListLegalEntitiesResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction({
-  security: {
-    oAuth2: "",
-    personalAccessToken: "",
-  },
-});
+(async() => {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "",
+      personalAccessToken: "",
+    },
+  });
 
-sdk.legalEntities.listLegalEntities({
-  company: 730248,
-}).then((res: ListLegalEntitiesResponse) => {
+  const res = await sdk.legalEntities.listLegalEntities({
+    company: 730248,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

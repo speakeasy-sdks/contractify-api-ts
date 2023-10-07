@@ -13,22 +13,23 @@ List all the subfolders within a company
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { ListSubfoldersResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction({
-  security: {
-    oAuth2: "",
-    personalAccessToken: "",
-  },
-});
+(async() => {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "",
+      personalAccessToken: "",
+    },
+  });
 
-sdk.subfolders.listSubfolders({
-  company: 749068,
-}).then((res: ListSubfoldersResponse) => {
+  const res = await sdk.subfolders.listSubfolders({
+    company: 749068,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

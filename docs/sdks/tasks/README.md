@@ -17,36 +17,37 @@ Create a task
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { CreateTaskResponse } from "contractify/dist/sdk/models/operations";
 import { TaskWriteDueDateDependsOn, TaskWriteStatus } from "contractify/dist/sdk/models/shared";
 import { RFCDate } from "contractify/dist/sdk/types";
 
-const sdk = new ContractifyProduction({
-  security: {
-    oAuth2: "",
-    personalAccessToken: "",
-  },
-});
+(async() => {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "",
+      personalAccessToken: "",
+    },
+  });
 
-sdk.tasks.createTask({
-  taskWrite: {
-    contractId: 1,
-    description: "Lorem ipsum dolor sit amet.",
-    dueDate: new RFCDate("2021-12-31"),
-    dueDateDependsOn: TaskWriteDueDateDependsOn.EndDate,
-    dueDateInterval: "-P10D",
-    ownerId: 1,
-    reminderDuration: "P1M",
-    repetitionInterval: "P1Y",
-    status: TaskWriteStatus.Accomplished,
-    title: "My task",
-  },
-  company: 296904,
-}).then((res: CreateTaskResponse) => {
+  const res = await sdk.tasks.createTask({
+    taskWrite: {
+      contractId: 1,
+      description: "Lorem ipsum dolor sit amet.",
+      dueDate: new RFCDate("2021-12-31"),
+      dueDateDependsOn: TaskWriteDueDateDependsOn.EndDate,
+      dueDateInterval: "-P10D",
+      ownerId: 1,
+      reminderDuration: "P1M",
+      repetitionInterval: "P1Y",
+      status: TaskWriteStatus.Accomplished,
+      title: "My task",
+    },
+    company: 296904,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -70,23 +71,24 @@ Delete a task
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { DeleteTaskResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction({
-  security: {
-    oAuth2: "",
-    personalAccessToken: "",
-  },
-});
+(async() => {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "",
+      personalAccessToken: "",
+    },
+  });
 
-sdk.tasks.deleteTask({
-  company: 357574,
-  task: 394977,
-}).then((res: DeleteTaskResponse) => {
+  const res = await sdk.tasks.deleteTask({
+    company: 357574,
+    task: 394977,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -110,23 +112,24 @@ Get a task
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { GetTaskResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction({
-  security: {
-    oAuth2: "",
-    personalAccessToken: "",
-  },
-});
+(async() => {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "",
+      personalAccessToken: "",
+    },
+  });
 
-sdk.tasks.getTask({
-  company: 717011,
-  task: 649018,
-}).then((res: GetTaskResponse) => {
+  const res = await sdk.tasks.getTask({
+    company: 717011,
+    task: 649018,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -150,23 +153,23 @@ List all tasks within a company
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { ListTasksResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction({
-  security: {
-    oAuth2: "",
-    personalAccessToken: "",
-  },
-});
+(async() => {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "",
+      personalAccessToken: "",
+    },
+  });
 
-sdk.tasks.listTasks({
-  company: 715197,
-  page: 192941,
-}).then((res: ListTasksResponse) => {
+  const res = await sdk.tasks.listTasks({
+    company: 715197,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -190,36 +193,37 @@ Update a task
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { UpdateTaskResponse } from "contractify/dist/sdk/models/operations";
 import { TaskUpdateDueDateDependsOn, TaskUpdateStatus } from "contractify/dist/sdk/models/shared";
 import { RFCDate } from "contractify/dist/sdk/types";
 
-const sdk = new ContractifyProduction({
-  security: {
-    oAuth2: "",
-    personalAccessToken: "",
-  },
-});
+(async() => {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "",
+      personalAccessToken: "",
+    },
+  });
 
-sdk.tasks.updateTask({
-  taskUpdate: {
-    description: "Lorem ipsum dolor sit amet.",
-    dueDate: new RFCDate("2021-12-31"),
-    dueDateDependsOn: TaskUpdateDueDateDependsOn.EndDate,
-    dueDateInterval: "-P10D",
-    ownerId: 1,
-    reminderDuration: "P1M",
-    repetitionInterval: "P1Y",
-    status: TaskUpdateStatus.Accomplished,
-    title: "My task",
-  },
-  company: 449699,
-  task: 675064,
-}).then((res: UpdateTaskResponse) => {
+  const res = await sdk.tasks.updateTask({
+    taskUpdate: {
+      description: "Lorem ipsum dolor sit amet.",
+      dueDate: new RFCDate("2021-12-31"),
+      dueDateDependsOn: TaskUpdateDueDateDependsOn.EndDate,
+      dueDateInterval: "-P10D",
+      ownerId: 1,
+      reminderDuration: "P1M",
+      repetitionInterval: "P1Y",
+      status: TaskUpdateStatus.Accomplished,
+      title: "My task",
+    },
+    company: 449699,
+    task: 675064,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

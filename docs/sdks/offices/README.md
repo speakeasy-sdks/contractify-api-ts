@@ -17,35 +17,36 @@ Create an office
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { CreateOfficeResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction({
-  security: {
-    oAuth2: "",
-    personalAccessToken: "",
-  },
-});
+(async() => {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "",
+      personalAccessToken: "",
+    },
+  });
 
-sdk.offices.createOffice({
-  officeWrite: {
-    bus: "1",
-    city: "Sleidinge",
-    contactPerson: "Ada Lovelace",
-    country: "Belgium",
-    email: "info@contractify.be",
-    id: 1,
-    name: "Ghent",
-    numberIdentity: "OFF-GHENT",
-    phone: "+32 9 234 28 97",
-    street: "Polenstraat 163",
-    zip: "9940",
-  },
-  company: 244393,
-}).then((res: CreateOfficeResponse) => {
+  const res = await sdk.offices.createOffice({
+    officeWrite: {
+      bus: "1",
+      city: "Sleidinge",
+      contactPerson: "Ada Lovelace",
+      country: "Belgium",
+      email: "info@contractify.be",
+      id: 1,
+      name: "Ghent",
+      numberIdentity: "OFF-GHENT",
+      phone: "+32 9 234 28 97",
+      street: "Polenstraat 163",
+      zip: "9940",
+    },
+    company: 244393,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -69,23 +70,24 @@ Delete an office
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { DeleteOfficeResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction({
-  security: {
-    oAuth2: "",
-    personalAccessToken: "",
-  },
-});
+(async() => {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "",
+      personalAccessToken: "",
+    },
+  });
 
-sdk.offices.deleteOffice({
-  company: 327183,
-  office: 668605,
-}).then((res: DeleteOfficeResponse) => {
+  const res = await sdk.offices.deleteOffice({
+    company: 327183,
+    office: 668605,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -109,23 +111,24 @@ Get information about an office
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { GetOfficeResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction({
-  security: {
-    oAuth2: "",
-    personalAccessToken: "",
-  },
-});
+(async() => {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "",
+      personalAccessToken: "",
+    },
+  });
 
-sdk.offices.getOffice({
-  company: 616050,
-  office: 134885,
-}).then((res: GetOfficeResponse) => {
+  const res = await sdk.offices.getOffice({
+    company: 616050,
+    office: 134885,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -149,22 +152,23 @@ List all the offices within a company
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { ListOfficesResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction({
-  security: {
-    oAuth2: "",
-    personalAccessToken: "",
-  },
-});
+(async() => {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "",
+      personalAccessToken: "",
+    },
+  });
 
-sdk.offices.listOffices({
-  company: 303557,
-}).then((res: ListOfficesResponse) => {
+  const res = await sdk.offices.listOffices({
+    company: 303557,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -188,36 +192,37 @@ Update an office
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { UpdateOfficeResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction({
-  security: {
-    oAuth2: "",
-    personalAccessToken: "",
-  },
-});
+(async() => {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "",
+      personalAccessToken: "",
+    },
+  });
 
-sdk.offices.updateOffice({
-  officeWrite: {
-    bus: "1",
-    city: "Sleidinge",
-    contactPerson: "Ada Lovelace",
-    country: "Belgium",
-    email: "info@contractify.be",
-    id: 1,
-    name: "Ghent",
-    numberIdentity: "OFF-GHENT",
-    phone: "+32 9 234 28 97",
-    street: "Polenstraat 163",
-    zip: "9940",
-  },
-  company: 989026,
-  office: 647378,
-}).then((res: UpdateOfficeResponse) => {
+  const res = await sdk.offices.updateOffice({
+    officeWrite: {
+      bus: "1",
+      city: "Sleidinge",
+      contactPerson: "Ada Lovelace",
+      country: "Belgium",
+      email: "info@contractify.be",
+      id: 1,
+      name: "Ghent",
+      numberIdentity: "OFF-GHENT",
+      phone: "+32 9 234 28 97",
+      street: "Polenstraat 163",
+      zip: "9940",
+    },
+    company: 989026,
+    office: 647378,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

@@ -16,23 +16,24 @@ Delete a document
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { DeleteDocumentResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction({
-  security: {
-    oAuth2: "",
-    personalAccessToken: "",
-  },
-});
+(async() => {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "",
+      personalAccessToken: "",
+    },
+  });
 
-sdk.documents.deleteDocument({
-  company: 431806,
-  document: 379848,
-}).then((res: DeleteDocumentResponse) => {
+  const res = await sdk.documents.deleteDocument({
+    company: 431806,
+    document: 379848,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -56,23 +57,24 @@ Get information about a document
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { GetDocumentResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction({
-  security: {
-    oAuth2: "",
-    personalAccessToken: "",
-  },
-});
+(async() => {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "",
+      personalAccessToken: "",
+    },
+  });
 
-sdk.documents.getDocument({
-  company: 67810,
-  document: 267106,
-}).then((res: GetDocumentResponse) => {
+  const res = await sdk.documents.getDocument({
+    company: 67810,
+    document: 267106,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -96,27 +98,24 @@ List all the documents within a company
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { ListDocumentsEsigningStatus, ListDocumentsResponse } from "contractify/dist/sdk/models/operations";
+import { ListDocumentsEsigningStatus } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction({
-  security: {
-    oAuth2: "",
-    personalAccessToken: "",
-  },
-});
+(async() => {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "",
+      personalAccessToken: "",
+    },
+  });
 
-sdk.documents.listDocuments({
-  company: 581480,
-  esigningStatus: ListDocumentsEsigningStatus.LegalDeclined,
-  esigningUpdatedAfter: new Date("2022-04-10T07:42:42.736Z"),
-  page: 893340,
-  relationId: 873217,
-  signedAfter: new Date("2021-04-10T09:49:45.540Z"),
-}).then((res: ListDocumentsResponse) => {
+  const res = await sdk.documents.listDocuments({
+    company: 581480,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -140,40 +139,41 @@ Update a document
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { UpdateDocumentResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction({
-  security: {
-    oAuth2: "",
-    personalAccessToken: "",
-  },
-});
+(async() => {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "",
+      personalAccessToken: "",
+    },
+  });
 
-sdk.documents.updateDocument({
-  documentWrite: {
-    contracts: [
-      1,
-    ],
-    customFieldValues: [
-      {
-        customFieldId: 2,
-        value: "Product",
-      },
-    ],
-    description: "Lorem ipsum dolor sit amet.",
-    dossiers: [
-      1,
-    ],
-    name: "filename.pdf",
-    ownerId: 1,
-  },
-  company: 659951,
-  document: 513682,
-}).then((res: UpdateDocumentResponse) => {
+  const res = await sdk.documents.updateDocument({
+    documentWrite: {
+      contracts: [
+        1,
+      ],
+      customFieldValues: [
+        {
+          customFieldId: 2,
+          value: "software",
+        },
+      ],
+      description: "Lorem ipsum dolor sit amet.",
+      dossiers: [
+        1,
+      ],
+      name: "filename.pdf",
+      ownerId: 1,
+    },
+    company: 653381,
+    document: 312704,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

@@ -13,22 +13,23 @@ List all the custom fields within a company
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { ListCustomFieldsResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction({
-  security: {
-    oAuth2: "",
-    personalAccessToken: "",
-  },
-});
+(async() => {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "",
+      personalAccessToken: "",
+    },
+  });
 
-sdk.customFields.listCustomFields({
-  company: 318971,
-}).then((res: ListCustomFieldsResponse) => {
+  const res = await sdk.customFields.listCustomFields({
+    company: 318971,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

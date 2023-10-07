@@ -17,70 +17,73 @@ Create a contract
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { CreateContractResponse } from "contractify/dist/sdk/models/operations";
 import { ContractPhase } from "contractify/dist/sdk/models/shared";
 import { RFCDate } from "contractify/dist/sdk/types";
 
-const sdk = new ContractifyProduction({
-  security: {
-    oAuth2: "",
-    personalAccessToken: "",
-  },
-});
+(async() => {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "",
+      personalAccessToken: "",
+    },
+  });
 
-sdk.contracts.createContract({
-  contractWrite: {
-    contractTypes: [
-      940947,
-    ],
-    customFieldValues: [
-      {
-        customFieldId: 2,
-        value: "Palladium",
+  const res = await sdk.contracts.createContract({
+    contractWrite: {
+      contractTypes: [
+        1,
+        2,
+      ],
+      customFieldValues: [
+        {
+          customFieldId: 2,
+          value: "software",
+        },
+      ],
+      departments: [
+        1,
+        2,
+      ],
+      documents: [
+        1,
+      ],
+      dossierId: 1,
+      duration: "P1Y",
+      endDate: new RFCDate("2021-12-31"),
+      legalEntities: [
+        1,
+        2,
+      ],
+      name: "Partnership agreement",
+      offices: [
+        1,
+        2,
+      ],
+      ownerId: 1,
+      phase: ContractPhase.Ongoing,
+      relations: [
+        1,
+        2,
+      ],
+      renewal: {
+        automaticRenewal: {
+          numberOfRenewals: 1,
+          renewalPeriod: "P3Y",
+        },
       },
-    ],
-    departments: [
-      559447,
-    ],
-    documents: [
-      1,
-    ],
-    dossierId: 1,
-    duration: "P1Y",
-    endDate: new RFCDate("2021-12-31"),
-    isOpenEnded: false,
-    legalEntities: [
-      657681,
-    ],
-    name: "Partnership agreement",
-    offices: [
-      410255,
-    ],
-    ownerId: 1,
-    phase: ContractPhase.Ongoing,
-    relations: [
-      867240,
-    ],
-    renewal: {
-      automaticRenewal: {
-        numberOfRenewals: 1,
-        renewalPeriod: "P3Y",
+      startDate: new RFCDate("2021-01-01"),
+      termination: {
+        terminationDate: new RFCDate("2021-11-30"),
+        terminationDuration: "P1M",
       },
-      isAutomaticallyRenewed: false,
     },
-    startDate: new RFCDate("2021-01-01"),
-    termination: {
-      isTerminableAtAnyTime: false,
-      terminationDate: new RFCDate("2021-11-30"),
-      terminationDuration: "P1M",
-    },
-  },
-  company: 647814,
-}).then((res: CreateContractResponse) => {
+    company: 940947,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -104,23 +107,24 @@ Delete a contract
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { DeleteContractResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction({
-  security: {
-    oAuth2: "",
-    personalAccessToken: "",
-  },
-});
+(async() => {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "",
+      personalAccessToken: "",
+    },
+  });
 
-sdk.contracts.deleteContract({
-  company: 791005,
-  contract: 200974,
-}).then((res: DeleteContractResponse) => {
+  const res = await sdk.contracts.deleteContract({
+    company: 791005,
+    contract: 200974,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -144,23 +148,24 @@ Get information about a contract
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { GetContractResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction({
-  security: {
-    oAuth2: "",
-    personalAccessToken: "",
-  },
-});
+(async() => {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "",
+      personalAccessToken: "",
+    },
+  });
 
-sdk.contracts.getContract({
-  company: 362495,
-  contract: 163842,
-}).then((res: GetContractResponse) => {
+  const res = await sdk.contracts.getContract({
+    company: 362495,
+    contract: 163842,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -184,23 +189,23 @@ List all the contracts within a company
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { ListContractsResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction({
-  security: {
-    oAuth2: "",
-    personalAccessToken: "",
-  },
-});
+(async() => {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "",
+      personalAccessToken: "",
+    },
+  });
 
-sdk.contracts.listContracts({
-  company: 567515,
-  page: 62076,
-}).then((res: ListContractsResponse) => {
+  const res = await sdk.contracts.listContracts({
+    company: 567515,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -224,71 +229,74 @@ Update a contract
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { UpdateContractResponse } from "contractify/dist/sdk/models/operations";
 import { ContractPhase } from "contractify/dist/sdk/models/shared";
 import { RFCDate } from "contractify/dist/sdk/types";
 
-const sdk = new ContractifyProduction({
-  security: {
-    oAuth2: "",
-    personalAccessToken: "",
-  },
-});
+(async() => {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "",
+      personalAccessToken: "",
+    },
+  });
 
-sdk.contracts.updateContract({
-  contractWrite: {
-    contractTypes: [
-      60280,
-    ],
-    customFieldValues: [
-      {
-        customFieldId: 2,
-        value: "synergies",
+  const res = await sdk.contracts.updateContract({
+    contractWrite: {
+      contractTypes: [
+        1,
+        2,
+      ],
+      customFieldValues: [
+        {
+          customFieldId: 2,
+          value: "software",
+        },
+      ],
+      departments: [
+        1,
+        2,
+      ],
+      documents: [
+        1,
+      ],
+      dossierId: 1,
+      duration: "P1Y",
+      endDate: new RFCDate("2021-12-31"),
+      legalEntities: [
+        1,
+        2,
+      ],
+      name: "Partnership agreement",
+      offices: [
+        1,
+        2,
+      ],
+      ownerId: 1,
+      phase: ContractPhase.Ongoing,
+      relations: [
+        1,
+        2,
+      ],
+      renewal: {
+        automaticRenewal: {
+          numberOfRenewals: 1,
+          renewalPeriod: "P3Y",
+        },
       },
-    ],
-    departments: [
-      178046,
-    ],
-    documents: [
-      1,
-    ],
-    dossierId: 1,
-    duration: "P1Y",
-    endDate: new RFCDate("2021-12-31"),
-    isOpenEnded: false,
-    legalEntities: [
-      331597,
-    ],
-    name: "Partnership agreement",
-    offices: [
-      693387,
-    ],
-    ownerId: 1,
-    phase: ContractPhase.Ongoing,
-    relations: [
-      670029,
-    ],
-    renewal: {
-      automaticRenewal: {
-        numberOfRenewals: 1,
-        renewalPeriod: "P3Y",
+      startDate: new RFCDate("2021-01-01"),
+      termination: {
+        terminationDate: new RFCDate("2021-11-30"),
+        terminationDuration: "P1M",
       },
-      isAutomaticallyRenewed: false,
     },
-    startDate: new RFCDate("2021-01-01"),
-    termination: {
-      isTerminableAtAnyTime: false,
-      terminationDate: new RFCDate("2021-11-30"),
-      terminationDuration: "P1M",
-    },
-  },
-  company: 213877,
-  contract: 177820,
-}).then((res: UpdateContractResponse) => {
+    company: 60280,
+    contract: 331790,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
