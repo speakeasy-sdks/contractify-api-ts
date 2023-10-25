@@ -3,10 +3,11 @@
  */
 
 import * as utils from "../internal/utils";
+import * as errors from "./models/errors";
 import * as operations from "./models/operations";
 import * as shared from "./models/shared";
 import { SDKConfiguration } from "./sdk";
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
 export class Contracts {
     private sdkConfiguration: SDKConfiguration;
@@ -23,7 +24,6 @@ export class Contracts {
      */
     async createContract(
         req: operations.CreateContractRequest,
-        security: operations.CreateContractSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.CreateContractResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -36,7 +36,7 @@ export class Contracts {
         );
         const url: string = utils.generateURL(baseURL, "/api/companies/{company}/contracts", req);
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "contractWrite", "json");
@@ -45,21 +45,23 @@ export class Contracts {
                 throw new Error(`Error serializing request body, cause: ${e.message}`);
             }
         }
-
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.CreateContractSecurity(security);
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const client: AxiosInstance = utils.createSecurityClient(
-            this.sdkConfiguration.defaultClient,
-            security
-        );
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers: RawAxiosRequestHeaders = {
+            ...reqBodyHeaders,
+            ...config?.headers,
+            ...properties.headers,
+        };
+        headers["Accept"] = "application/json";
 
-        const headers = { ...reqBodyHeaders, ...config?.headers };
-        headers["Accept"] =
-            "application/json;q=1, application/json;q=0.8, application/json;q=0.5, application/json;q=0";
-        headers[
-            "user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -90,6 +92,13 @@ export class Contracts {
                         JSON.parse(decodedRes),
                         operations.CreateContract201ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 401:
@@ -97,6 +106,13 @@ export class Contracts {
                     res.createContract401ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.CreateContract401ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -106,6 +122,13 @@ export class Contracts {
                         JSON.parse(decodedRes),
                         operations.CreateContract403ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 422:
@@ -113,6 +136,13 @@ export class Contracts {
                     res.createContract422ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.CreateContract422ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -129,7 +159,6 @@ export class Contracts {
      */
     async deleteContract(
         req: operations.DeleteContractRequest,
-        security: operations.DeleteContractSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.DeleteContractResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -145,21 +174,19 @@ export class Contracts {
             "/api/companies/{company}/contracts/{contract}",
             req
         );
-
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.DeleteContractSecurity(security);
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const client: AxiosInstance = utils.createSecurityClient(
-            this.sdkConfiguration.defaultClient,
-            security
-        );
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
+        headers["Accept"] = "application/json";
 
-        const headers = { ...config?.headers };
-        headers["Accept"] =
-            "application/json;q=1, application/json;q=0.8, application/json;q=0.5, application/json;q=0";
-        headers[
-            "user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -191,6 +218,13 @@ export class Contracts {
                         JSON.parse(decodedRes),
                         operations.DeleteContract400ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 401:
@@ -198,6 +232,13 @@ export class Contracts {
                     res.deleteContract401ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.DeleteContract401ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -207,6 +248,13 @@ export class Contracts {
                         JSON.parse(decodedRes),
                         operations.DeleteContract403ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 404:
@@ -214,6 +262,13 @@ export class Contracts {
                     res.deleteContract404ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.DeleteContract404ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -230,7 +285,6 @@ export class Contracts {
      */
     async getContract(
         req: operations.GetContractRequest,
-        security: operations.GetContractSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.GetContractResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -246,21 +300,19 @@ export class Contracts {
             "/api/companies/{company}/contracts/{contract}",
             req
         );
-
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.GetContractSecurity(security);
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const client: AxiosInstance = utils.createSecurityClient(
-            this.sdkConfiguration.defaultClient,
-            security
-        );
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
+        headers["Accept"] = "application/json";
 
-        const headers = { ...config?.headers };
-        headers["Accept"] =
-            "application/json;q=1, application/json;q=0.8, application/json;q=0.5, application/json;q=0";
-        headers[
-            "user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -290,6 +342,13 @@ export class Contracts {
                         JSON.parse(decodedRes),
                         operations.GetContract200ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 401:
@@ -297,6 +356,13 @@ export class Contracts {
                     res.getContract401ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.GetContract401ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -306,6 +372,13 @@ export class Contracts {
                         JSON.parse(decodedRes),
                         operations.GetContract403ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 404:
@@ -313,6 +386,13 @@ export class Contracts {
                     res.getContract404ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.GetContract404ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -329,7 +409,6 @@ export class Contracts {
      */
     async listContracts(
         req: operations.ListContractsRequest,
-        security: operations.ListContractsSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.ListContractsResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -341,21 +420,20 @@ export class Contracts {
             this.sdkConfiguration.serverDefaults
         );
         const url: string = utils.generateURL(baseURL, "/api/companies/{company}/contracts", req);
-
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.ListContractsSecurity(security);
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const client: AxiosInstance = utils.createSecurityClient(
-            this.sdkConfiguration.defaultClient,
-            security
-        );
-
-        const headers = { ...config?.headers };
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         const queryParams: string = utils.serializeQueryParams(req);
-        headers["Accept"] = "application/json;q=1, application/json;q=0.7, application/json;q=0";
-        headers[
-            "user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["Accept"] = "application/json";
+
+        headers["user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -385,6 +463,13 @@ export class Contracts {
                         JSON.parse(decodedRes),
                         shared.ContractCollection
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 401:
@@ -393,6 +478,13 @@ export class Contracts {
                         JSON.parse(decodedRes),
                         operations.ListContracts401ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 403:
@@ -400,6 +492,13 @@ export class Contracts {
                     res.listContracts403ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.ListContracts403ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -416,7 +515,6 @@ export class Contracts {
      */
     async updateContract(
         req: operations.UpdateContractRequest,
-        security: operations.UpdateContractSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.UpdateContractResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -433,7 +531,7 @@ export class Contracts {
             req
         );
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "contractWrite", "json");
@@ -442,21 +540,23 @@ export class Contracts {
                 throw new Error(`Error serializing request body, cause: ${e.message}`);
             }
         }
-
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.UpdateContractSecurity(security);
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const client: AxiosInstance = utils.createSecurityClient(
-            this.sdkConfiguration.defaultClient,
-            security
-        );
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers: RawAxiosRequestHeaders = {
+            ...reqBodyHeaders,
+            ...config?.headers,
+            ...properties.headers,
+        };
+        headers["Accept"] = "application/json";
 
-        const headers = { ...reqBodyHeaders, ...config?.headers };
-        headers["Accept"] =
-            "application/json;q=1, application/json;q=0.8, application/json;q=0.6, application/json;q=0.4, application/json;q=0";
-        headers[
-            "user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -487,6 +587,13 @@ export class Contracts {
                         JSON.parse(decodedRes),
                         operations.UpdateContract200ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 401:
@@ -494,6 +601,13 @@ export class Contracts {
                     res.updateContract401ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.UpdateContract401ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -503,6 +617,13 @@ export class Contracts {
                         JSON.parse(decodedRes),
                         operations.UpdateContract403ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 404:
@@ -511,6 +632,13 @@ export class Contracts {
                         JSON.parse(decodedRes),
                         operations.UpdateContract404ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 422:
@@ -518,6 +646,13 @@ export class Contracts {
                     res.updateContract422ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.UpdateContract422ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;

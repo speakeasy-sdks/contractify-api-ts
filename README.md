@@ -20,20 +20,24 @@ yarn add https://github.com/speakeasy-sdks/contractify-api-ts
 <!-- Start SDK Example Usage -->
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { ListContractTypesResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction();
+(async () => {
+    const sdk = new ContractifyProduction({
+        security: {
+            oAuth2: "",
+            personalAccessToken: "",
+        },
+    });
 
-sdk.contractTypes.listContractTypes({
-  company: 548814,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: ListContractTypesResponse) => {
-  if (res.statusCode == 200) {
-    // handle response
-  }
-});
+    const res = await sdk.contractTypes.listContractTypes({
+        company: 839467,
+    });
+
+    if (res.statusCode == 200) {
+        // handle response
+    }
+})();
+
 ```
 <!-- End SDK Example Usage -->
 
@@ -109,6 +113,28 @@ sdk.contractTypes.listContractTypes({
 * [currentUser](docs/sdks/users/README.md#currentuser) - Current User
 * [listUsers](docs/sdks/users/README.md#listusers) - List users
 <!-- End SDK Available Operations -->
+
+
+
+<!-- Start Dev Containers -->
+
+<!-- End Dev Containers -->
+
+
+
+<!-- Start Pagination -->
+# Pagination
+
+Some of the endpoints in this SDK support pagination. To use pagination, you make your SDK calls as usual, but the
+returned response object will have a `next` method that can be called to pull down the next group of results. If the
+return value of `next` is `null`, then there are no more pages to be fetched.
+
+Here's an example of one such pagination call:
+<!-- End Pagination -->
+
+<!-- Placeholder for Future Speakeasy SDK Sections -->
+
+
 
 ### Maturity
 

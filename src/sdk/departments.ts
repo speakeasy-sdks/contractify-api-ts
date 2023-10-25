@@ -3,10 +3,11 @@
  */
 
 import * as utils from "../internal/utils";
+import * as errors from "./models/errors";
 import * as operations from "./models/operations";
 import * as shared from "./models/shared";
 import { SDKConfiguration } from "./sdk";
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
 export class Departments {
     private sdkConfiguration: SDKConfiguration;
@@ -23,7 +24,6 @@ export class Departments {
      */
     async createDepartment(
         req: operations.CreateDepartmentRequest,
-        security: operations.CreateDepartmentSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.CreateDepartmentResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -36,7 +36,7 @@ export class Departments {
         );
         const url: string = utils.generateURL(baseURL, "/api/companies/{company}/departments", req);
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "departmentWrite", "json");
@@ -45,21 +45,23 @@ export class Departments {
                 throw new Error(`Error serializing request body, cause: ${e.message}`);
             }
         }
-
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.CreateDepartmentSecurity(security);
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const client: AxiosInstance = utils.createSecurityClient(
-            this.sdkConfiguration.defaultClient,
-            security
-        );
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers: RawAxiosRequestHeaders = {
+            ...reqBodyHeaders,
+            ...config?.headers,
+            ...properties.headers,
+        };
+        headers["Accept"] = "application/json";
 
-        const headers = { ...reqBodyHeaders, ...config?.headers };
-        headers["Accept"] =
-            "application/json;q=1, application/json;q=0.8, application/json;q=0.5, application/json;q=0";
-        headers[
-            "user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -90,6 +92,13 @@ export class Departments {
                         JSON.parse(decodedRes),
                         operations.CreateDepartment201ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 401:
@@ -97,6 +106,13 @@ export class Departments {
                     res.createDepartment401ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.CreateDepartment401ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -106,6 +122,13 @@ export class Departments {
                         JSON.parse(decodedRes),
                         operations.CreateDepartment403ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 422:
@@ -113,6 +136,13 @@ export class Departments {
                     res.createDepartment422ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.CreateDepartment422ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -129,7 +159,6 @@ export class Departments {
      */
     async deleteDepartment(
         req: operations.DeleteDepartmentRequest,
-        security: operations.DeleteDepartmentSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.DeleteDepartmentResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -145,21 +174,19 @@ export class Departments {
             "/api/companies/{company}/departments/{department}",
             req
         );
-
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.DeleteDepartmentSecurity(security);
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const client: AxiosInstance = utils.createSecurityClient(
-            this.sdkConfiguration.defaultClient,
-            security
-        );
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
+        headers["Accept"] = "application/json";
 
-        const headers = { ...config?.headers };
-        headers["Accept"] =
-            "application/json;q=1, application/json;q=0.8, application/json;q=0.5, application/json;q=0";
-        headers[
-            "user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -191,6 +218,13 @@ export class Departments {
                         JSON.parse(decodedRes),
                         operations.DeleteDepartment400ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 401:
@@ -198,6 +232,13 @@ export class Departments {
                     res.deleteDepartment401ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.DeleteDepartment401ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -207,6 +248,13 @@ export class Departments {
                         JSON.parse(decodedRes),
                         operations.DeleteDepartment403ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 404:
@@ -214,6 +262,13 @@ export class Departments {
                     res.deleteDepartment404ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.DeleteDepartment404ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -230,7 +285,6 @@ export class Departments {
      */
     async getDepartment(
         req: operations.GetDepartmentRequest,
-        security: operations.GetDepartmentSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.GetDepartmentResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -246,21 +300,19 @@ export class Departments {
             "/api/companies/{company}/departments/{department}",
             req
         );
-
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.GetDepartmentSecurity(security);
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const client: AxiosInstance = utils.createSecurityClient(
-            this.sdkConfiguration.defaultClient,
-            security
-        );
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
+        headers["Accept"] = "application/json";
 
-        const headers = { ...config?.headers };
-        headers["Accept"] =
-            "application/json;q=1, application/json;q=0.8, application/json;q=0.5, application/json;q=0";
-        headers[
-            "user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -290,6 +342,13 @@ export class Departments {
                         JSON.parse(decodedRes),
                         operations.GetDepartment200ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 401:
@@ -297,6 +356,13 @@ export class Departments {
                     res.getDepartment401ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.GetDepartment401ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -306,6 +372,13 @@ export class Departments {
                         JSON.parse(decodedRes),
                         operations.GetDepartment403ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 404:
@@ -313,6 +386,13 @@ export class Departments {
                     res.getDepartment404ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.GetDepartment404ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -329,7 +409,6 @@ export class Departments {
      */
     async listDepartments(
         req: operations.ListDepartmentsRequest,
-        security: operations.ListDepartmentsSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.ListDepartmentsResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -341,20 +420,19 @@ export class Departments {
             this.sdkConfiguration.serverDefaults
         );
         const url: string = utils.generateURL(baseURL, "/api/companies/{company}/departments", req);
-
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.ListDepartmentsSecurity(security);
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const client: AxiosInstance = utils.createSecurityClient(
-            this.sdkConfiguration.defaultClient,
-            security
-        );
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
+        headers["Accept"] = "application/json";
 
-        const headers = { ...config?.headers };
-        headers["Accept"] = "application/json;q=1, application/json;q=0.7, application/json;q=0";
-        headers[
-            "user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -384,6 +462,13 @@ export class Departments {
                         JSON.parse(decodedRes),
                         shared.DepartmentCollection
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 401:
@@ -392,6 +477,13 @@ export class Departments {
                         JSON.parse(decodedRes),
                         operations.ListDepartments401ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 403:
@@ -399,6 +491,13 @@ export class Departments {
                     res.listDepartments403ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.ListDepartments403ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -415,7 +514,6 @@ export class Departments {
      */
     async updateDepartment(
         req: operations.UpdateDepartmentRequest,
-        security: operations.UpdateDepartmentSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.UpdateDepartmentResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -432,7 +530,7 @@ export class Departments {
             req
         );
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "departmentWrite", "json");
@@ -441,21 +539,23 @@ export class Departments {
                 throw new Error(`Error serializing request body, cause: ${e.message}`);
             }
         }
-
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.UpdateDepartmentSecurity(security);
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const client: AxiosInstance = utils.createSecurityClient(
-            this.sdkConfiguration.defaultClient,
-            security
-        );
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers: RawAxiosRequestHeaders = {
+            ...reqBodyHeaders,
+            ...config?.headers,
+            ...properties.headers,
+        };
+        headers["Accept"] = "application/json";
 
-        const headers = { ...reqBodyHeaders, ...config?.headers };
-        headers["Accept"] =
-            "application/json;q=1, application/json;q=0.8, application/json;q=0.6, application/json;q=0.4, application/json;q=0";
-        headers[
-            "user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -486,6 +586,13 @@ export class Departments {
                         JSON.parse(decodedRes),
                         operations.UpdateDepartment200ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 401:
@@ -493,6 +600,13 @@ export class Departments {
                     res.updateDepartment401ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.UpdateDepartment401ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -502,6 +616,13 @@ export class Departments {
                         JSON.parse(decodedRes),
                         operations.UpdateDepartment403ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 404:
@@ -510,6 +631,13 @@ export class Departments {
                         JSON.parse(decodedRes),
                         operations.UpdateDepartment404ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 422:
@@ -517,6 +645,13 @@ export class Departments {
                     res.updateDepartment422ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.UpdateDepartment422ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;

@@ -6,9 +6,6 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { LegalEntityRead } from "./legalentityread";
 import { Expose, Type } from "class-transformer";
 
-/**
- * OK
- */
 export class LegalEntityCollection extends SpeakeasyBase {
     @SpeakeasyMetadata({ elemType: LegalEntityRead })
     @Expose({ name: "data" })

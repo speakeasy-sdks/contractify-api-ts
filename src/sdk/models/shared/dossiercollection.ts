@@ -7,9 +7,6 @@ import { DossierRead } from "./dossierread";
 import { Pagination } from "./pagination";
 import { Expose, Type } from "class-transformer";
 
-/**
- * OK
- */
 export class DossierCollection extends SpeakeasyBase {
     @SpeakeasyMetadata({ elemType: DossierRead })
     @Expose({ name: "data" })

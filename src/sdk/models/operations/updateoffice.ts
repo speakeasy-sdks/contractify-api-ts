@@ -7,16 +7,6 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
-export class UpdateOfficeSecurity extends SpeakeasyBase {
-    @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2;name=Authorization" })
-    oAuth2: string;
-
-    @SpeakeasyMetadata({
-        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-    })
-    personalAccessToken: string;
-}
-
 export class UpdateOfficeRequest extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "request, media_type=application/json" })
     officeWrite?: shared.OfficeWrite;
@@ -96,12 +86,21 @@ export class UpdateOffice200ApplicationJSON extends SpeakeasyBase {
 }
 
 export class UpdateOfficeResponse extends SpeakeasyBase {
+    /**
+     * HTTP response content type for this operation
+     */
     @SpeakeasyMetadata()
     contentType: string;
 
+    /**
+     * HTTP response status code for this operation
+     */
     @SpeakeasyMetadata()
     statusCode: number;
 
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
 

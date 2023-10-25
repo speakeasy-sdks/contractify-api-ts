@@ -3,10 +3,11 @@
  */
 
 import * as utils from "../internal/utils";
+import * as errors from "./models/errors";
 import * as operations from "./models/operations";
 import * as shared from "./models/shared";
 import { SDKConfiguration } from "./sdk";
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
 export class Offices {
     private sdkConfiguration: SDKConfiguration;
@@ -23,7 +24,6 @@ export class Offices {
      */
     async createOffice(
         req: operations.CreateOfficeRequest,
-        security: operations.CreateOfficeSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.CreateOfficeResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -36,7 +36,7 @@ export class Offices {
         );
         const url: string = utils.generateURL(baseURL, "/api/companies/{company}/offices", req);
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "officeWrite", "json");
@@ -45,21 +45,23 @@ export class Offices {
                 throw new Error(`Error serializing request body, cause: ${e.message}`);
             }
         }
-
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.CreateOfficeSecurity(security);
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const client: AxiosInstance = utils.createSecurityClient(
-            this.sdkConfiguration.defaultClient,
-            security
-        );
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers: RawAxiosRequestHeaders = {
+            ...reqBodyHeaders,
+            ...config?.headers,
+            ...properties.headers,
+        };
+        headers["Accept"] = "application/json";
 
-        const headers = { ...reqBodyHeaders, ...config?.headers };
-        headers["Accept"] =
-            "application/json;q=1, application/json;q=0.8, application/json;q=0.5, application/json;q=0";
-        headers[
-            "user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -90,6 +92,13 @@ export class Offices {
                         JSON.parse(decodedRes),
                         operations.CreateOffice201ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 401:
@@ -97,6 +106,13 @@ export class Offices {
                     res.createOffice401ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.CreateOffice401ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -106,6 +122,13 @@ export class Offices {
                         JSON.parse(decodedRes),
                         operations.CreateOffice403ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 422:
@@ -113,6 +136,13 @@ export class Offices {
                     res.createOffice422ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.CreateOffice422ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -129,7 +159,6 @@ export class Offices {
      */
     async deleteOffice(
         req: operations.DeleteOfficeRequest,
-        security: operations.DeleteOfficeSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.DeleteOfficeResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -145,21 +174,19 @@ export class Offices {
             "/api/companies/{company}/offices/{office}",
             req
         );
-
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.DeleteOfficeSecurity(security);
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const client: AxiosInstance = utils.createSecurityClient(
-            this.sdkConfiguration.defaultClient,
-            security
-        );
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
+        headers["Accept"] = "application/json";
 
-        const headers = { ...config?.headers };
-        headers["Accept"] =
-            "application/json;q=1, application/json;q=0.8, application/json;q=0.5, application/json;q=0";
-        headers[
-            "user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -191,6 +218,13 @@ export class Offices {
                         JSON.parse(decodedRes),
                         operations.DeleteOffice400ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 401:
@@ -198,6 +232,13 @@ export class Offices {
                     res.deleteOffice401ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.DeleteOffice401ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -207,6 +248,13 @@ export class Offices {
                         JSON.parse(decodedRes),
                         operations.DeleteOffice403ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 404:
@@ -214,6 +262,13 @@ export class Offices {
                     res.deleteOffice404ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.DeleteOffice404ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -230,7 +285,6 @@ export class Offices {
      */
     async getOffice(
         req: operations.GetOfficeRequest,
-        security: operations.GetOfficeSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.GetOfficeResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -246,21 +300,19 @@ export class Offices {
             "/api/companies/{company}/offices/{office}",
             req
         );
-
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.GetOfficeSecurity(security);
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const client: AxiosInstance = utils.createSecurityClient(
-            this.sdkConfiguration.defaultClient,
-            security
-        );
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
+        headers["Accept"] = "application/json";
 
-        const headers = { ...config?.headers };
-        headers["Accept"] =
-            "application/json;q=1, application/json;q=0.8, application/json;q=0.5, application/json;q=0";
-        headers[
-            "user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -290,6 +342,13 @@ export class Offices {
                         JSON.parse(decodedRes),
                         operations.GetOffice200ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 401:
@@ -297,6 +356,13 @@ export class Offices {
                     res.getOffice401ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.GetOffice401ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -306,6 +372,13 @@ export class Offices {
                         JSON.parse(decodedRes),
                         operations.GetOffice403ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 404:
@@ -313,6 +386,13 @@ export class Offices {
                     res.getOffice404ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.GetOffice404ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -329,7 +409,6 @@ export class Offices {
      */
     async listOffices(
         req: operations.ListOfficesRequest,
-        security: operations.ListOfficesSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.ListOfficesResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -341,20 +420,19 @@ export class Offices {
             this.sdkConfiguration.serverDefaults
         );
         const url: string = utils.generateURL(baseURL, "/api/companies/{company}/offices", req);
-
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.ListOfficesSecurity(security);
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const client: AxiosInstance = utils.createSecurityClient(
-            this.sdkConfiguration.defaultClient,
-            security
-        );
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
+        headers["Accept"] = "application/json";
 
-        const headers = { ...config?.headers };
-        headers["Accept"] = "application/json;q=1, application/json;q=0.7, application/json;q=0";
-        headers[
-            "user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -384,6 +462,13 @@ export class Offices {
                         JSON.parse(decodedRes),
                         shared.OfficeCollection
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 401:
@@ -392,6 +477,13 @@ export class Offices {
                         JSON.parse(decodedRes),
                         operations.ListOffices401ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 403:
@@ -399,6 +491,13 @@ export class Offices {
                     res.listOffices403ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.ListOffices403ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -415,7 +514,6 @@ export class Offices {
      */
     async updateOffice(
         req: operations.UpdateOfficeRequest,
-        security: operations.UpdateOfficeSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.UpdateOfficeResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -432,7 +530,7 @@ export class Offices {
             req
         );
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "officeWrite", "json");
@@ -441,21 +539,23 @@ export class Offices {
                 throw new Error(`Error serializing request body, cause: ${e.message}`);
             }
         }
-
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.UpdateOfficeSecurity(security);
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const client: AxiosInstance = utils.createSecurityClient(
-            this.sdkConfiguration.defaultClient,
-            security
-        );
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers: RawAxiosRequestHeaders = {
+            ...reqBodyHeaders,
+            ...config?.headers,
+            ...properties.headers,
+        };
+        headers["Accept"] = "application/json";
 
-        const headers = { ...reqBodyHeaders, ...config?.headers };
-        headers["Accept"] =
-            "application/json;q=1, application/json;q=0.8, application/json;q=0.6, application/json;q=0.4, application/json;q=0";
-        headers[
-            "user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -486,6 +586,13 @@ export class Offices {
                         JSON.parse(decodedRes),
                         operations.UpdateOffice200ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 401:
@@ -493,6 +600,13 @@ export class Offices {
                     res.updateOffice401ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.UpdateOffice401ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -502,6 +616,13 @@ export class Offices {
                         JSON.parse(decodedRes),
                         operations.UpdateOffice403ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 404:
@@ -510,6 +631,13 @@ export class Offices {
                         JSON.parse(decodedRes),
                         operations.UpdateOffice404ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 422:
@@ -517,6 +645,13 @@ export class Offices {
                     res.updateOffice422ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.UpdateOffice422ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;

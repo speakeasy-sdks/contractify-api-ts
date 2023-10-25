@@ -6,16 +6,6 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
-export class DeleteDocumentSecurity extends SpeakeasyBase {
-    @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2;name=Authorization" })
-    oAuth2: string;
-
-    @SpeakeasyMetadata({
-        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-    })
-    personalAccessToken: string;
-}
-
 export class DeleteDocumentRequest extends SpeakeasyBase {
     /**
      * Id of the company
@@ -82,12 +72,21 @@ export class DeleteDocument401ApplicationJSON extends SpeakeasyBase {
 }
 
 export class DeleteDocumentResponse extends SpeakeasyBase {
+    /**
+     * HTTP response content type for this operation
+     */
     @SpeakeasyMetadata()
     contentType: string;
 
+    /**
+     * HTTP response status code for this operation
+     */
     @SpeakeasyMetadata()
     statusCode: number;
 
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
 

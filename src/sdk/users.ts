@@ -3,10 +3,11 @@
  */
 
 import * as utils from "../internal/utils";
+import * as errors from "./models/errors";
 import * as operations from "./models/operations";
 import * as shared from "./models/shared";
 import { SDKConfiguration } from "./sdk";
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
 export class Users {
     private sdkConfiguration: SDKConfiguration;
@@ -21,29 +22,25 @@ export class Users {
      * @remarks
      * Get the current user details
      */
-    async currentUser(
-        security: operations.CurrentUserSecurity,
-        config?: AxiosRequestConfig
-    ): Promise<operations.CurrentUserResponse> {
+    async currentUser(config?: AxiosRequestConfig): Promise<operations.CurrentUserResponse> {
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
         const url: string = baseURL.replace(/\/$/, "") + "/api/user";
-
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.CurrentUserSecurity(security);
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const client: AxiosInstance = utils.createSecurityClient(
-            this.sdkConfiguration.defaultClient,
-            security
-        );
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
+        headers["Accept"] = "application/json";
 
-        const headers = { ...config?.headers };
-        headers["Accept"] = "application/json;q=1, application/json;q=0.7, application/json;q=0";
-        headers[
-            "user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -73,6 +70,13 @@ export class Users {
                         JSON.parse(decodedRes),
                         operations.CurrentUser200ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 401:
@@ -81,6 +85,13 @@ export class Users {
                         JSON.parse(decodedRes),
                         operations.CurrentUser401ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 403:
@@ -88,6 +99,13 @@ export class Users {
                     res.currentUser403ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.CurrentUser403ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -104,7 +122,6 @@ export class Users {
      */
     async listUsers(
         req: operations.ListUsersRequest,
-        security: operations.ListUsersSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.ListUsersResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -116,21 +133,20 @@ export class Users {
             this.sdkConfiguration.serverDefaults
         );
         const url: string = utils.generateURL(baseURL, "/api/companies/{company}/users", req);
-
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.ListUsersSecurity(security);
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const client: AxiosInstance = utils.createSecurityClient(
-            this.sdkConfiguration.defaultClient,
-            security
-        );
-
-        const headers = { ...config?.headers };
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         const queryParams: string = utils.serializeQueryParams(req);
-        headers["Accept"] = "application/json;q=1, application/json;q=0.7, application/json;q=0";
-        headers[
-            "user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["Accept"] = "application/json";
+
+        headers["user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -160,6 +176,13 @@ export class Users {
                         JSON.parse(decodedRes),
                         shared.UserCollection
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 401:
@@ -168,6 +191,13 @@ export class Users {
                         JSON.parse(decodedRes),
                         operations.ListUsers401ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 403:
@@ -175,6 +205,13 @@ export class Users {
                     res.listUsers403ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.ListUsers403ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;

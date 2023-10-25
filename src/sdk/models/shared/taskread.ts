@@ -4,7 +4,7 @@
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { RFCDate } from "../../types";
-import { Expose, Transform } from "class-transformer";
+import { Expose, Transform, Type } from "class-transformer";
 
 export enum TaskReadDueDateDependsOn {
     TerminationDate = "termination_date",
@@ -29,6 +29,7 @@ export class TaskRead extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "due_date" })
+    @Type(() => String)
     @Transform(({ value }) => new RFCDate(value), { toClassOnly: true })
     dueDate?: RFCDate;
 
@@ -42,6 +43,7 @@ export class TaskRead extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "escalation_date" })
+    @Type(() => String)
     @Transform(({ value }) => new RFCDate(value), { toClassOnly: true })
     escalationDate?: RFCDate;
 
@@ -59,6 +61,7 @@ export class TaskRead extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "reminder_date" })
+    @Type(() => String)
     @Transform(({ value }) => new RFCDate(value), { toClassOnly: true })
     reminderDate?: RFCDate;
 
