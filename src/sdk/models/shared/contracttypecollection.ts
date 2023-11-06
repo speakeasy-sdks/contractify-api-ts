@@ -6,9 +6,6 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { ContractTypeRead } from "./contracttyperead";
 import { Expose, Type } from "class-transformer";
 
-/**
- * OK
- */
 export class ContractTypeCollection extends SpeakeasyBase {
     @SpeakeasyMetadata({ elemType: ContractTypeRead })
     @Expose({ name: "data" })

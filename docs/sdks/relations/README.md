@@ -1,4 +1,5 @@
-# relations
+# Relations
+(*relations*)
 
 ### Available Operations
 
@@ -16,46 +17,49 @@ Create a relation
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { CreateRelationResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction();
-
-sdk.relations.createRelation({
-  relationWrite: {
-    address: {
-      addressLine1: "221B Baker Street",
-      addressLine2: "Marylebone",
-      city: "London",
-      country: "United Kingdom",
-      postalCode: "NW1 6XE",
+(async() => {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "",
+      personalAccessToken: "",
     },
-    email: "sherlock@example.org",
-    fax: "+3211324354",
-    mobilePhone: "+23477123456",
-    name: "Sherlock Holmes Detective Services",
-    phone: "+23477123456",
-    reference: "REF123",
-    vat: "BE12345678",
-    website: "https://www.example.org",
-  },
-  company: 607831,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: CreateRelationResponse) => {
+  });
+
+  const res = await sdk.relations.createRelation({
+    relationWrite: {
+      address: {
+        addressLine1: "221B Baker Street",
+        addressLine2: "Marylebone",
+        city: "London",
+        country: "United Kingdom",
+        postalCode: "NW1 6XE",
+      },
+      email: "sherlock@example.org",
+      fax: "+3211324354",
+      mobilePhone: "+23477123456",
+      name: "Sherlock Holmes Detective Services",
+      phone: "+23477123456",
+      reference: "REF123",
+      vat: "BE12345678",
+      website: "https://www.example.org",
+    },
+    company: 528070,
+  });
+
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `request`                                                                              | [operations.CreateRelationRequest](../../models/operations/createrelationrequest.md)   | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
-| `security`                                                                             | [operations.CreateRelationSecurity](../../models/operations/createrelationsecurity.md) | :heavy_check_mark:                                                                     | The security requirements to use for the request.                                      |
-| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `request`                                                                            | [operations.CreateRelationRequest](../../models/operations/createrelationrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
 
 
 ### Response
@@ -71,30 +75,33 @@ Delete a relation
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { DeleteRelationResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction();
+(async() => {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "",
+      personalAccessToken: "",
+    },
+  });
 
-sdk.relations.deleteRelation({
-  company: 363711,
-  relation: 325047,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: DeleteRelationResponse) => {
+  const res = await sdk.relations.deleteRelation({
+    company: 773418,
+    relation: 890630,
+  });
+
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `request`                                                                              | [operations.DeleteRelationRequest](../../models/operations/deleterelationrequest.md)   | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
-| `security`                                                                             | [operations.DeleteRelationSecurity](../../models/operations/deleterelationsecurity.md) | :heavy_check_mark:                                                                     | The security requirements to use for the request.                                      |
-| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `request`                                                                            | [operations.DeleteRelationRequest](../../models/operations/deleterelationrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
 
 
 ### Response
@@ -110,30 +117,33 @@ Get information about a relation
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { GetRelationResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction();
+(async() => {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "",
+      personalAccessToken: "",
+    },
+  });
 
-sdk.relations.getRelation({
-  company: 570197,
-  relation: 38425,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: GetRelationResponse) => {
+  const res = await sdk.relations.getRelation({
+    company: 734058,
+    relation: 979643,
+  });
+
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
 
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `request`                                                                        | [operations.GetRelationRequest](../../models/operations/getrelationrequest.md)   | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
-| `security`                                                                       | [operations.GetRelationSecurity](../../models/operations/getrelationsecurity.md) | :heavy_check_mark:                                                               | The security requirements to use for the request.                                |
-| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `request`                                                                      | [operations.GetRelationRequest](../../models/operations/getrelationrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |
 
 
 ### Response
@@ -149,31 +159,32 @@ List all the relations within a company
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { ListRelationsResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction();
+(async() => {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "",
+      personalAccessToken: "",
+    },
+  });
 
-sdk.relations.listRelations({
-  company: 438601,
-  page: 634274,
-  reference: "doloribus",
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: ListRelationsResponse) => {
+  const res = await sdk.relations.listRelations({
+    company: 454135,
+  });
+
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
 
-| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `request`                                                                            | [operations.ListRelationsRequest](../../models/operations/listrelationsrequest.md)   | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
-| `security`                                                                           | [operations.ListRelationsSecurity](../../models/operations/listrelationssecurity.md) | :heavy_check_mark:                                                                   | The security requirements to use for the request.                                    |
-| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `request`                                                                          | [operations.ListRelationsRequest](../../models/operations/listrelationsrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
+| `config`                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                       | :heavy_minus_sign:                                                                 | Available config options for making requests.                                      |
 
 
 ### Response
@@ -189,47 +200,50 @@ Update a relation
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { UpdateRelationResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction();
-
-sdk.relations.updateRelation({
-  relationWrite: {
-    address: {
-      addressLine1: "221B Baker Street",
-      addressLine2: "Marylebone",
-      city: "London",
-      country: "United Kingdom",
-      postalCode: "NW1 6XE",
+(async() => {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "",
+      personalAccessToken: "",
     },
-    email: "sherlock@example.org",
-    fax: "+3211324354",
-    mobilePhone: "+23477123456",
-    name: "Sherlock Holmes Detective Services",
-    phone: "+23477123456",
-    reference: "REF123",
-    vat: "BE12345678",
-    website: "https://www.example.org",
-  },
-  company: 958950,
-  relation: 102044,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: UpdateRelationResponse) => {
+  });
+
+  const res = await sdk.relations.updateRelation({
+    relationWrite: {
+      address: {
+        addressLine1: "221B Baker Street",
+        addressLine2: "Marylebone",
+        city: "London",
+        country: "United Kingdom",
+        postalCode: "NW1 6XE",
+      },
+      email: "sherlock@example.org",
+      fax: "+3211324354",
+      mobilePhone: "+23477123456",
+      name: "Sherlock Holmes Detective Services",
+      phone: "+23477123456",
+      reference: "REF123",
+      vat: "BE12345678",
+      website: "https://www.example.org",
+    },
+    company: 573397,
+    relation: 281147,
+  });
+
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `request`                                                                              | [operations.UpdateRelationRequest](../../models/operations/updaterelationrequest.md)   | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
-| `security`                                                                             | [operations.UpdateRelationSecurity](../../models/operations/updaterelationsecurity.md) | :heavy_check_mark:                                                                     | The security requirements to use for the request.                                      |
-| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `request`                                                                            | [operations.UpdateRelationRequest](../../models/operations/updaterelationrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
 
 
 ### Response

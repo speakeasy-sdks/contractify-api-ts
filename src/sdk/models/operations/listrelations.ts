@@ -7,16 +7,6 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Expose } from "class-transformer";
 
-export class ListRelationsSecurity extends SpeakeasyBase {
-    @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2;name=Authorization" })
-    oAuth2: string;
-
-    @SpeakeasyMetadata({
-        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-    })
-    personalAccessToken: string;
-}
-
 export class ListRelationsRequest extends SpeakeasyBase {
     /**
      * Id of the company
@@ -56,6 +46,9 @@ export class ListRelations401ApplicationJSON extends SpeakeasyBase {
 }
 
 export class ListRelationsResponse extends SpeakeasyBase {
+    /**
+     * HTTP response content type for this operation
+     */
     @SpeakeasyMetadata()
     contentType: string;
 
@@ -65,9 +58,15 @@ export class ListRelationsResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     relationCollection?: shared.RelationCollection;
 
+    /**
+     * HTTP response status code for this operation
+     */
     @SpeakeasyMetadata()
     statusCode: number;
 
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
 

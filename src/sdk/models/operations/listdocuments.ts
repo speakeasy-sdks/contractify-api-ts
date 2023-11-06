@@ -7,16 +7,6 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Expose } from "class-transformer";
 
-export class ListDocumentsSecurity extends SpeakeasyBase {
-    @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2;name=Authorization" })
-    oAuth2: string;
-
-    @SpeakeasyMetadata({
-        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-    })
-    personalAccessToken: string;
-}
-
 /**
  * Return documents currently having this status in the eSigning process, can be comma separated
  */
@@ -88,6 +78,9 @@ export class ListDocuments401ApplicationJSON extends SpeakeasyBase {
 }
 
 export class ListDocumentsResponse extends SpeakeasyBase {
+    /**
+     * HTTP response content type for this operation
+     */
     @SpeakeasyMetadata()
     contentType: string;
 
@@ -97,9 +90,15 @@ export class ListDocumentsResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     documentCollection?: shared.DocumentCollection;
 
+    /**
+     * HTTP response status code for this operation
+     */
     @SpeakeasyMetadata()
     statusCode: number;
 
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
 

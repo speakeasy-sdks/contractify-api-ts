@@ -3,9 +3,15 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { Expose, Transform } from "class-transformer";
+import { CompanyRead } from "./companyread";
+import { Expose, Transform, Type } from "class-transformer";
 
 export class UserCurrent extends SpeakeasyBase {
+    @SpeakeasyMetadata({ elemType: CompanyRead })
+    @Expose({ name: "companies_where_admin" })
+    @Type(() => CompanyRead)
+    companiesWhereAdmin?: CompanyRead[];
+
     @SpeakeasyMetadata()
     @Expose({ name: "created_at" })
     @Transform(({ value }) => new Date(value), { toClassOnly: true })

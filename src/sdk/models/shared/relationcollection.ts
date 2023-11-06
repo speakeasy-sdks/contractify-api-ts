@@ -7,9 +7,6 @@ import { Pagination } from "./pagination";
 import { RelationRead } from "./relationread";
 import { Expose, Type } from "class-transformer";
 
-/**
- * OK
- */
 export class RelationCollection extends SpeakeasyBase {
     @SpeakeasyMetadata({ elemType: RelationRead })
     @Expose({ name: "data" })

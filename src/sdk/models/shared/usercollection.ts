@@ -7,9 +7,6 @@ import { Pagination } from "./pagination";
 import { UserRead } from "./userread";
 import { Expose, Type } from "class-transformer";
 
-/**
- * OK
- */
 export class UserCollection extends SpeakeasyBase {
     @SpeakeasyMetadata({ elemType: UserRead })
     @Expose({ name: "data" })

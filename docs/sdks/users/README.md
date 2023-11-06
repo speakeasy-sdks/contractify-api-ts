@@ -1,4 +1,5 @@
-# users
+# Users
+(*users*)
 
 ### Available Operations
 
@@ -13,26 +14,29 @@ Get the current user details
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { CurrentUserResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction();
+(async() => {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "",
+      personalAccessToken: "",
+    },
+  });
 
-sdk.users.currentUser({
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: CurrentUserResponse) => {
+  const res = await sdk.users.currentUser();
+
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
 
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `security`                                                                       | [operations.CurrentUserSecurity](../../models/operations/currentusersecurity.md) | :heavy_check_mark:                                                               | The security requirements to use for the request.                                |
-| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
 
 
 ### Response
@@ -48,31 +52,32 @@ List all the users within a company
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { ListUsersResponse } from "contractify/dist/sdk/models/operations";
-import { UserReadRole } from "contractify/dist/sdk/models/shared";
 
-const sdk = new ContractifyProduction();
+(async() => {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "",
+      personalAccessToken: "",
+    },
+  });
 
-sdk.users.listUsers({
-  company: 474697,
-  page: 244425,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: ListUsersResponse) => {
+  const res = await sdk.users.listUsers({
+    company: 606239,
+  });
+
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
 
-| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `request`                                                                    | [operations.ListUsersRequest](../../models/operations/listusersrequest.md)   | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
-| `security`                                                                   | [operations.ListUsersSecurity](../../models/operations/listuserssecurity.md) | :heavy_check_mark:                                                           | The security requirements to use for the request.                            |
-| `config`                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                 | :heavy_minus_sign:                                                           | Available config options for making requests.                                |
+| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `request`                                                                  | [operations.ListUsersRequest](../../models/operations/listusersrequest.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
+| `config`                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)               | :heavy_minus_sign:                                                         | Available config options for making requests.                              |
 
 
 ### Response

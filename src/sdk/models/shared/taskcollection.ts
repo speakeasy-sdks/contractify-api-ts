@@ -7,9 +7,6 @@ import { Pagination } from "./pagination";
 import { TaskRead } from "./taskread";
 import { Expose, Type } from "class-transformer";
 
-/**
- * OK
- */
 export class TaskCollection extends SpeakeasyBase {
     @SpeakeasyMetadata({ elemType: TaskRead })
     @Expose({ name: "data" })

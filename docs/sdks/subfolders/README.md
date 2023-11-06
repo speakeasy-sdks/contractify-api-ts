@@ -1,4 +1,5 @@
-# subfolders
+# Subfolders
+(*subfolders*)
 
 ### Available Operations
 
@@ -12,29 +13,32 @@ List all the subfolders within a company
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { ListSubfoldersResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction();
+(async() => {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "",
+      personalAccessToken: "",
+    },
+  });
 
-sdk.subfolders.listSubfolders({
-  company: 652790,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: ListSubfoldersResponse) => {
+  const res = await sdk.subfolders.listSubfolders({
+    company: 749068,
+  });
+
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `request`                                                                              | [operations.ListSubfoldersRequest](../../models/operations/listsubfoldersrequest.md)   | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
-| `security`                                                                             | [operations.ListSubfoldersSecurity](../../models/operations/listsubfolderssecurity.md) | :heavy_check_mark:                                                                     | The security requirements to use for the request.                                      |
-| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `request`                                                                            | [operations.ListSubfoldersRequest](../../models/operations/listsubfoldersrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
 
 
 ### Response
