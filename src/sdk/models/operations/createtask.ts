@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
@@ -18,7 +18,7 @@ export class CreateTaskRequest extends SpeakeasyBase {
     company: number;
 }
 
-export class CreateTask422ApplicationJSONErrors extends SpeakeasyBase {
+export class CreateTaskErrors extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "errors" })
     errors?: string[];
@@ -31,11 +31,11 @@ export class CreateTask422ApplicationJSONErrors extends SpeakeasyBase {
 /**
  * Invalid data posted
  */
-export class CreateTask422ApplicationJSON extends SpeakeasyBase {
-    @SpeakeasyMetadata({ elemType: CreateTask422ApplicationJSONErrors })
+export class CreateTaskTasksResponse422ResponseBody extends SpeakeasyBase {
+    @SpeakeasyMetadata({ elemType: CreateTaskErrors })
     @Expose({ name: "errors" })
-    @Type(() => CreateTask422ApplicationJSONErrors)
-    errors?: CreateTask422ApplicationJSONErrors[];
+    @Type(() => CreateTaskErrors)
+    errors?: CreateTaskErrors[];
 
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
@@ -45,7 +45,7 @@ export class CreateTask422ApplicationJSON extends SpeakeasyBase {
 /**
  * Forbidden
  */
-export class CreateTask403ApplicationJSON extends SpeakeasyBase {
+export class CreateTaskTasksResponseResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -54,7 +54,7 @@ export class CreateTask403ApplicationJSON extends SpeakeasyBase {
 /**
  * Unauthenticated
  */
-export class CreateTask401ApplicationJSON extends SpeakeasyBase {
+export class CreateTaskTasksResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -63,7 +63,7 @@ export class CreateTask401ApplicationJSON extends SpeakeasyBase {
 /**
  * OK
  */
-export class CreateTask200ApplicationJSON extends SpeakeasyBase {
+export class CreateTaskResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "data" })
     @Type(() => shared.TaskRead)
@@ -71,6 +71,30 @@ export class CreateTask200ApplicationJSON extends SpeakeasyBase {
 }
 
 export class CreateTaskResponse extends SpeakeasyBase {
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    twoHundredApplicationJsonObject?: CreateTaskResponseBody;
+
+    /**
+     * Unauthenticated
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndOneApplicationJsonObject?: CreateTaskTasksResponseBody;
+
+    /**
+     * Forbidden
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndThreeApplicationJsonObject?: CreateTaskTasksResponseResponseBody;
+
+    /**
+     * Invalid data posted
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndTwentyTwoApplicationJsonObject?: CreateTaskTasksResponse422ResponseBody;
+
     /**
      * HTTP response content type for this operation
      */
@@ -88,28 +112,4 @@ export class CreateTaskResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
-
-    /**
-     * OK
-     */
-    @SpeakeasyMetadata()
-    createTask200ApplicationJSONObject?: CreateTask200ApplicationJSON;
-
-    /**
-     * Unauthenticated
-     */
-    @SpeakeasyMetadata()
-    createTask401ApplicationJSONObject?: CreateTask401ApplicationJSON;
-
-    /**
-     * Forbidden
-     */
-    @SpeakeasyMetadata()
-    createTask403ApplicationJSONObject?: CreateTask403ApplicationJSON;
-
-    /**
-     * Invalid data posted
-     */
-    @SpeakeasyMetadata()
-    createTask422ApplicationJSONObject?: CreateTask422ApplicationJSON;
 }

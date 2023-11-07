@@ -3,9 +3,9 @@
  */
 
 import * as utils from "../internal/utils";
-import * as errors from "./models/errors";
-import * as operations from "./models/operations";
-import * as shared from "./models/shared";
+import * as errors from "../sdk/models/errors";
+import * as operations from "../sdk/models/operations";
+import * as shared from "../sdk/models/shared";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
@@ -88,9 +88,9 @@ export class Contracts {
         switch (true) {
             case httpRes?.status == 201:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createContract201ApplicationJSONObject = utils.objectToClass(
+                    res.twoHundredAndOneApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.CreateContract201ApplicationJSON
+                        operations.CreateContractResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -103,9 +103,9 @@ export class Contracts {
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createContract401ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndOneApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.CreateContract401ApplicationJSON
+                        operations.CreateContractContractsResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -118,9 +118,9 @@ export class Contracts {
                 break;
             case httpRes?.status == 403:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createContract403ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndThreeApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.CreateContract403ApplicationJSON
+                        operations.CreateContractContractsResponseResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -133,9 +133,9 @@ export class Contracts {
                 break;
             case httpRes?.status == 422:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createContract422ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndTwentyTwoApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.CreateContract422ApplicationJSON
+                        operations.CreateContractContractsResponse422ResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -214,9 +214,9 @@ export class Contracts {
                 break;
             case httpRes?.status == 400:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.deleteContract400ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.DeleteContract400ApplicationJSON
+                        operations.DeleteContractResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -229,9 +229,9 @@ export class Contracts {
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.deleteContract401ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndOneApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.DeleteContract401ApplicationJSON
+                        operations.DeleteContractContractsResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -244,9 +244,9 @@ export class Contracts {
                 break;
             case httpRes?.status == 403:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.deleteContract403ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndThreeApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.DeleteContract403ApplicationJSON
+                        operations.DeleteContractContractsResponseResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -259,9 +259,9 @@ export class Contracts {
                 break;
             case httpRes?.status == 404:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.deleteContract404ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndFourApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.DeleteContract404ApplicationJSON
+                        operations.DeleteContractContractsResponse404ResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -338,9 +338,9 @@ export class Contracts {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getContract200ApplicationJSONObject = utils.objectToClass(
+                    res.twoHundredApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.GetContract200ApplicationJSON
+                        operations.GetContractResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -353,9 +353,9 @@ export class Contracts {
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getContract401ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndOneApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.GetContract401ApplicationJSON
+                        operations.GetContractContractsResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -368,9 +368,9 @@ export class Contracts {
                 break;
             case httpRes?.status == 403:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getContract403ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndThreeApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.GetContract403ApplicationJSON
+                        operations.GetContractContractsResponseResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -383,9 +383,9 @@ export class Contracts {
                 break;
             case httpRes?.status == 404:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getContract404ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndFourApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.GetContract404ApplicationJSON
+                        operations.GetContractContractsResponse404ResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -474,9 +474,9 @@ export class Contracts {
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.listContracts401ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndOneApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.ListContracts401ApplicationJSON
+                        operations.ListContractsResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -489,9 +489,9 @@ export class Contracts {
                 break;
             case httpRes?.status == 403:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.listContracts403ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndThreeApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.ListContracts403ApplicationJSON
+                        operations.ListContractsContractsResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -583,9 +583,9 @@ export class Contracts {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.updateContract200ApplicationJSONObject = utils.objectToClass(
+                    res.twoHundredApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.UpdateContract200ApplicationJSON
+                        operations.UpdateContractResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -598,9 +598,9 @@ export class Contracts {
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.updateContract401ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndOneApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.UpdateContract401ApplicationJSON
+                        operations.UpdateContractContractsResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -613,9 +613,9 @@ export class Contracts {
                 break;
             case httpRes?.status == 403:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.updateContract403ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndThreeApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.UpdateContract403ApplicationJSON
+                        operations.UpdateContractContractsResponseResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -628,9 +628,9 @@ export class Contracts {
                 break;
             case httpRes?.status == 404:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.updateContract404ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndFourApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.UpdateContract404ApplicationJSON
+                        operations.UpdateContractContractsResponse404ResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -643,9 +643,9 @@ export class Contracts {
                 break;
             case httpRes?.status == 422:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.updateContract422ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndTwentyTwoApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.UpdateContract422ApplicationJSON
+                        operations.UpdateContractContractsResponse422ResponseBody
                     );
                 } else {
                     throw new errors.SDKError(

@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose } from "class-transformer";
 
@@ -18,7 +18,7 @@ export class ListSubfoldersRequest extends SpeakeasyBase {
 /**
  * Forbidden
  */
-export class ListSubfolders403ApplicationJSON extends SpeakeasyBase {
+export class ListSubfoldersSubfoldersResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -27,13 +27,25 @@ export class ListSubfolders403ApplicationJSON extends SpeakeasyBase {
 /**
  * Unauthenticated
  */
-export class ListSubfolders401ApplicationJSON extends SpeakeasyBase {
+export class ListSubfoldersResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
 }
 
 export class ListSubfoldersResponse extends SpeakeasyBase {
+    /**
+     * Unauthenticated
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndOneApplicationJsonObject?: ListSubfoldersResponseBody;
+
+    /**
+     * Forbidden
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndThreeApplicationJsonObject?: ListSubfoldersSubfoldersResponseBody;
+
     /**
      * HTTP response content type for this operation
      */
@@ -57,16 +69,4 @@ export class ListSubfoldersResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
-
-    /**
-     * Unauthenticated
-     */
-    @SpeakeasyMetadata()
-    listSubfolders401ApplicationJSONObject?: ListSubfolders401ApplicationJSON;
-
-    /**
-     * Forbidden
-     */
-    @SpeakeasyMetadata()
-    listSubfolders403ApplicationJSONObject?: ListSubfolders403ApplicationJSON;
 }

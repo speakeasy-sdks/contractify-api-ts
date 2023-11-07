@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
@@ -24,7 +24,7 @@ export class GetDepartmentRequest extends SpeakeasyBase {
 /**
  * Not Found
  */
-export class GetDepartment404ApplicationJSON extends SpeakeasyBase {
+export class GetDepartmentDepartmentsResponse404ResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -33,7 +33,7 @@ export class GetDepartment404ApplicationJSON extends SpeakeasyBase {
 /**
  * Forbidden
  */
-export class GetDepartment403ApplicationJSON extends SpeakeasyBase {
+export class GetDepartmentDepartmentsResponseResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -42,7 +42,7 @@ export class GetDepartment403ApplicationJSON extends SpeakeasyBase {
 /**
  * Unauthenticated
  */
-export class GetDepartment401ApplicationJSON extends SpeakeasyBase {
+export class GetDepartmentDepartmentsResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -51,7 +51,7 @@ export class GetDepartment401ApplicationJSON extends SpeakeasyBase {
 /**
  * OK
  */
-export class GetDepartment200ApplicationJSON extends SpeakeasyBase {
+export class GetDepartmentResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "data" })
     @Type(() => shared.DepartmentRead)
@@ -59,6 +59,30 @@ export class GetDepartment200ApplicationJSON extends SpeakeasyBase {
 }
 
 export class GetDepartmentResponse extends SpeakeasyBase {
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    twoHundredApplicationJsonObject?: GetDepartmentResponseBody;
+
+    /**
+     * Unauthenticated
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndOneApplicationJsonObject?: GetDepartmentDepartmentsResponseBody;
+
+    /**
+     * Forbidden
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndThreeApplicationJsonObject?: GetDepartmentDepartmentsResponseResponseBody;
+
+    /**
+     * Not Found
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndFourApplicationJsonObject?: GetDepartmentDepartmentsResponse404ResponseBody;
+
     /**
      * HTTP response content type for this operation
      */
@@ -76,28 +100,4 @@ export class GetDepartmentResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
-
-    /**
-     * OK
-     */
-    @SpeakeasyMetadata()
-    getDepartment200ApplicationJSONObject?: GetDepartment200ApplicationJSON;
-
-    /**
-     * Unauthenticated
-     */
-    @SpeakeasyMetadata()
-    getDepartment401ApplicationJSONObject?: GetDepartment401ApplicationJSON;
-
-    /**
-     * Forbidden
-     */
-    @SpeakeasyMetadata()
-    getDepartment403ApplicationJSONObject?: GetDepartment403ApplicationJSON;
-
-    /**
-     * Not Found
-     */
-    @SpeakeasyMetadata()
-    getDepartment404ApplicationJSONObject?: GetDepartment404ApplicationJSON;
 }

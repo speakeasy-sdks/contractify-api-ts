@@ -1,5 +1,5 @@
 # Contracts
-(*contracts*)
+(*.contracts*)
 
 ### Available Operations
 

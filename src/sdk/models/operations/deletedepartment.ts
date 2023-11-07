@@ -23,7 +23,7 @@ export class DeleteDepartmentRequest extends SpeakeasyBase {
 /**
  * Not Found
  */
-export class DeleteDepartment404ApplicationJSON extends SpeakeasyBase {
+export class DeleteDepartmentDepartmentsResponse404ResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -32,7 +32,7 @@ export class DeleteDepartment404ApplicationJSON extends SpeakeasyBase {
 /**
  * Forbidden
  */
-export class DeleteDepartment403ApplicationJSON extends SpeakeasyBase {
+export class DeleteDepartmentDepartmentsResponseResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -41,7 +41,7 @@ export class DeleteDepartment403ApplicationJSON extends SpeakeasyBase {
 /**
  * Unauthenticated
  */
-export class DeleteDepartment401ApplicationJSON extends SpeakeasyBase {
+export class DeleteDepartmentDepartmentsResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -50,13 +50,37 @@ export class DeleteDepartment401ApplicationJSON extends SpeakeasyBase {
 /**
  * Precondition failed
  */
-export class DeleteDepartment400ApplicationJSON extends SpeakeasyBase {
+export class DeleteDepartmentResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
 }
 
 export class DeleteDepartmentResponse extends SpeakeasyBase {
+    /**
+     * Precondition failed
+     */
+    @SpeakeasyMetadata()
+    fourHundredApplicationJsonObject?: DeleteDepartmentResponseBody;
+
+    /**
+     * Unauthenticated
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndOneApplicationJsonObject?: DeleteDepartmentDepartmentsResponseBody;
+
+    /**
+     * Forbidden
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndThreeApplicationJsonObject?: DeleteDepartmentDepartmentsResponseResponseBody;
+
+    /**
+     * Not Found
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndFourApplicationJsonObject?: DeleteDepartmentDepartmentsResponse404ResponseBody;
+
     /**
      * HTTP response content type for this operation
      */
@@ -74,28 +98,4 @@ export class DeleteDepartmentResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
-
-    /**
-     * Precondition failed
-     */
-    @SpeakeasyMetadata()
-    deleteDepartment400ApplicationJSONObject?: DeleteDepartment400ApplicationJSON;
-
-    /**
-     * Unauthenticated
-     */
-    @SpeakeasyMetadata()
-    deleteDepartment401ApplicationJSONObject?: DeleteDepartment401ApplicationJSON;
-
-    /**
-     * Forbidden
-     */
-    @SpeakeasyMetadata()
-    deleteDepartment403ApplicationJSONObject?: DeleteDepartment403ApplicationJSON;
-
-    /**
-     * Not Found
-     */
-    @SpeakeasyMetadata()
-    deleteDepartment404ApplicationJSONObject?: DeleteDepartment404ApplicationJSON;
 }

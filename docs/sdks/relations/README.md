@@ -1,5 +1,5 @@
 # Relations
-(*relations*)
+(*.relations*)
 
 ### Available Operations
 

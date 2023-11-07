@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose } from "class-transformer";
 
@@ -24,7 +24,7 @@ export class ListTasksRequest extends SpeakeasyBase {
 /**
  * Forbidden
  */
-export class ListTasks403ApplicationJSON extends SpeakeasyBase {
+export class ListTasksTasksResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -33,13 +33,25 @@ export class ListTasks403ApplicationJSON extends SpeakeasyBase {
 /**
  * Unauthenticated
  */
-export class ListTasks401ApplicationJSON extends SpeakeasyBase {
+export class ListTasksResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
 }
 
 export class ListTasksResponse extends SpeakeasyBase {
+    /**
+     * Unauthenticated
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndOneApplicationJsonObject?: ListTasksResponseBody;
+
+    /**
+     * Forbidden
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndThreeApplicationJsonObject?: ListTasksTasksResponseBody;
+
     /**
      * HTTP response content type for this operation
      */
@@ -63,16 +75,4 @@ export class ListTasksResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     taskCollection?: shared.TaskCollection;
-
-    /**
-     * Unauthenticated
-     */
-    @SpeakeasyMetadata()
-    listTasks401ApplicationJSONObject?: ListTasks401ApplicationJSON;
-
-    /**
-     * Forbidden
-     */
-    @SpeakeasyMetadata()
-    listTasks403ApplicationJSONObject?: ListTasks403ApplicationJSON;
 }

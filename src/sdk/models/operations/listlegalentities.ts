@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose } from "class-transformer";
 
@@ -18,7 +18,7 @@ export class ListLegalEntitiesRequest extends SpeakeasyBase {
 /**
  * Forbidden
  */
-export class ListLegalEntities403ApplicationJSON extends SpeakeasyBase {
+export class ListLegalEntitiesLegalEntitiesResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -27,13 +27,25 @@ export class ListLegalEntities403ApplicationJSON extends SpeakeasyBase {
 /**
  * Unauthenticated
  */
-export class ListLegalEntities401ApplicationJSON extends SpeakeasyBase {
+export class ListLegalEntitiesResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
 }
 
 export class ListLegalEntitiesResponse extends SpeakeasyBase {
+    /**
+     * Unauthenticated
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndOneApplicationJsonObject?: ListLegalEntitiesResponseBody;
+
+    /**
+     * Forbidden
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndThreeApplicationJsonObject?: ListLegalEntitiesLegalEntitiesResponseBody;
+
     /**
      * HTTP response content type for this operation
      */
@@ -57,16 +69,4 @@ export class ListLegalEntitiesResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
-
-    /**
-     * Unauthenticated
-     */
-    @SpeakeasyMetadata()
-    listLegalEntities401ApplicationJSONObject?: ListLegalEntities401ApplicationJSON;
-
-    /**
-     * Forbidden
-     */
-    @SpeakeasyMetadata()
-    listLegalEntities403ApplicationJSONObject?: ListLegalEntities403ApplicationJSON;
 }

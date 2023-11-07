@@ -3,9 +3,9 @@
  */
 
 import * as utils from "../internal/utils";
-import * as errors from "./models/errors";
-import * as operations from "./models/operations";
-import * as shared from "./models/shared";
+import * as errors from "../sdk/models/errors";
+import * as operations from "../sdk/models/operations";
+import * as shared from "../sdk/models/shared";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
@@ -92,9 +92,9 @@ export class ContractTypes {
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.listContractTypes401ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndOneApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.ListContractTypes401ApplicationJSON
+                        operations.ListContractTypesResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -107,9 +107,9 @@ export class ContractTypes {
                 break;
             case httpRes?.status == 403:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.listContractTypes403ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndThreeApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.ListContractTypes403ApplicationJSON
+                        operations.ListContractTypesContractTypesResponseBody
                     );
                 } else {
                     throw new errors.SDKError(

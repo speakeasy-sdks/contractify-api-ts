@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
@@ -24,7 +24,7 @@ export class GetRelationRequest extends SpeakeasyBase {
 /**
  * Not Found
  */
-export class GetRelation404ApplicationJSON extends SpeakeasyBase {
+export class GetRelationRelationsResponse404ResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -33,7 +33,7 @@ export class GetRelation404ApplicationJSON extends SpeakeasyBase {
 /**
  * Forbidden
  */
-export class GetRelation403ApplicationJSON extends SpeakeasyBase {
+export class GetRelationRelationsResponseResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -42,7 +42,7 @@ export class GetRelation403ApplicationJSON extends SpeakeasyBase {
 /**
  * Unauthenticated
  */
-export class GetRelation401ApplicationJSON extends SpeakeasyBase {
+export class GetRelationRelationsResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -51,7 +51,7 @@ export class GetRelation401ApplicationJSON extends SpeakeasyBase {
 /**
  * OK
  */
-export class GetRelation200ApplicationJSON extends SpeakeasyBase {
+export class GetRelationResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "data" })
     @Type(() => shared.RelationRead)
@@ -59,6 +59,30 @@ export class GetRelation200ApplicationJSON extends SpeakeasyBase {
 }
 
 export class GetRelationResponse extends SpeakeasyBase {
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    twoHundredApplicationJsonObject?: GetRelationResponseBody;
+
+    /**
+     * Unauthenticated
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndOneApplicationJsonObject?: GetRelationRelationsResponseBody;
+
+    /**
+     * Forbidden
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndThreeApplicationJsonObject?: GetRelationRelationsResponseResponseBody;
+
+    /**
+     * Not Found
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndFourApplicationJsonObject?: GetRelationRelationsResponse404ResponseBody;
+
     /**
      * HTTP response content type for this operation
      */
@@ -76,28 +100,4 @@ export class GetRelationResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
-
-    /**
-     * OK
-     */
-    @SpeakeasyMetadata()
-    getRelation200ApplicationJSONObject?: GetRelation200ApplicationJSON;
-
-    /**
-     * Unauthenticated
-     */
-    @SpeakeasyMetadata()
-    getRelation401ApplicationJSONObject?: GetRelation401ApplicationJSON;
-
-    /**
-     * Forbidden
-     */
-    @SpeakeasyMetadata()
-    getRelation403ApplicationJSONObject?: GetRelation403ApplicationJSON;
-
-    /**
-     * Not Found
-     */
-    @SpeakeasyMetadata()
-    getRelation404ApplicationJSONObject?: GetRelation404ApplicationJSON;
 }

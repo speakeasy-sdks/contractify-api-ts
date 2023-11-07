@@ -3,9 +3,9 @@
  */
 
 import * as utils from "../internal/utils";
-import * as errors from "./models/errors";
-import * as operations from "./models/operations";
-import * as shared from "./models/shared";
+import * as errors from "../sdk/models/errors";
+import * as operations from "../sdk/models/operations";
+import * as shared from "../sdk/models/shared";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
@@ -66,9 +66,9 @@ export class Users {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.currentUser200ApplicationJSONObject = utils.objectToClass(
+                    res.twoHundredApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.CurrentUser200ApplicationJSON
+                        operations.CurrentUserResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -81,9 +81,9 @@ export class Users {
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.currentUser401ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndOneApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.CurrentUser401ApplicationJSON
+                        operations.CurrentUserUsersResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -96,9 +96,9 @@ export class Users {
                 break;
             case httpRes?.status == 403:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.currentUser403ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndThreeApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.CurrentUser403ApplicationJSON
+                        operations.CurrentUserUsersResponseResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -187,9 +187,9 @@ export class Users {
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.listUsers401ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndOneApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.ListUsers401ApplicationJSON
+                        operations.ListUsersResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -202,9 +202,9 @@ export class Users {
                 break;
             case httpRes?.status == 403:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.listUsers403ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndThreeApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.ListUsers403ApplicationJSON
+                        operations.ListUsersUsersResponseBody
                     );
                 } else {
                     throw new errors.SDKError(

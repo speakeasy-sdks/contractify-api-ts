@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
@@ -24,7 +24,7 @@ export class UpdateTaskRequest extends SpeakeasyBase {
     task: number;
 }
 
-export class UpdateTask422ApplicationJSONErrors extends SpeakeasyBase {
+export class UpdateTaskErrors extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "errors" })
     errors?: string[];
@@ -37,11 +37,11 @@ export class UpdateTask422ApplicationJSONErrors extends SpeakeasyBase {
 /**
  * Invalid data posted
  */
-export class UpdateTask422ApplicationJSON extends SpeakeasyBase {
-    @SpeakeasyMetadata({ elemType: UpdateTask422ApplicationJSONErrors })
+export class UpdateTaskTasksResponse422ResponseBody extends SpeakeasyBase {
+    @SpeakeasyMetadata({ elemType: UpdateTaskErrors })
     @Expose({ name: "errors" })
-    @Type(() => UpdateTask422ApplicationJSONErrors)
-    errors?: UpdateTask422ApplicationJSONErrors[];
+    @Type(() => UpdateTaskErrors)
+    errors?: UpdateTaskErrors[];
 
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
@@ -51,7 +51,7 @@ export class UpdateTask422ApplicationJSON extends SpeakeasyBase {
 /**
  * Not Found
  */
-export class UpdateTask404ApplicationJSON extends SpeakeasyBase {
+export class UpdateTaskTasksResponse404ResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -60,7 +60,7 @@ export class UpdateTask404ApplicationJSON extends SpeakeasyBase {
 /**
  * Forbidden
  */
-export class UpdateTask403ApplicationJSON extends SpeakeasyBase {
+export class UpdateTaskTasksResponseResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -69,7 +69,7 @@ export class UpdateTask403ApplicationJSON extends SpeakeasyBase {
 /**
  * Unauthenticated
  */
-export class UpdateTask401ApplicationJSON extends SpeakeasyBase {
+export class UpdateTaskTasksResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -78,7 +78,7 @@ export class UpdateTask401ApplicationJSON extends SpeakeasyBase {
 /**
  * OK
  */
-export class UpdateTask200ApplicationJSON extends SpeakeasyBase {
+export class UpdateTaskResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "data" })
     @Type(() => shared.TaskRead)
@@ -86,6 +86,36 @@ export class UpdateTask200ApplicationJSON extends SpeakeasyBase {
 }
 
 export class UpdateTaskResponse extends SpeakeasyBase {
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    twoHundredApplicationJsonObject?: UpdateTaskResponseBody;
+
+    /**
+     * Unauthenticated
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndOneApplicationJsonObject?: UpdateTaskTasksResponseBody;
+
+    /**
+     * Forbidden
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndThreeApplicationJsonObject?: UpdateTaskTasksResponseResponseBody;
+
+    /**
+     * Not Found
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndFourApplicationJsonObject?: UpdateTaskTasksResponse404ResponseBody;
+
+    /**
+     * Invalid data posted
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndTwentyTwoApplicationJsonObject?: UpdateTaskTasksResponse422ResponseBody;
+
     /**
      * HTTP response content type for this operation
      */
@@ -103,34 +133,4 @@ export class UpdateTaskResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
-
-    /**
-     * OK
-     */
-    @SpeakeasyMetadata()
-    updateTask200ApplicationJSONObject?: UpdateTask200ApplicationJSON;
-
-    /**
-     * Unauthenticated
-     */
-    @SpeakeasyMetadata()
-    updateTask401ApplicationJSONObject?: UpdateTask401ApplicationJSON;
-
-    /**
-     * Forbidden
-     */
-    @SpeakeasyMetadata()
-    updateTask403ApplicationJSONObject?: UpdateTask403ApplicationJSON;
-
-    /**
-     * Not Found
-     */
-    @SpeakeasyMetadata()
-    updateTask404ApplicationJSONObject?: UpdateTask404ApplicationJSON;
-
-    /**
-     * Invalid data posted
-     */
-    @SpeakeasyMetadata()
-    updateTask422ApplicationJSONObject?: UpdateTask422ApplicationJSON;
 }

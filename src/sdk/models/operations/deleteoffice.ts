@@ -23,7 +23,7 @@ export class DeleteOfficeRequest extends SpeakeasyBase {
 /**
  * Not Found
  */
-export class DeleteOffice404ApplicationJSON extends SpeakeasyBase {
+export class DeleteOfficeOfficesResponse404ResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -32,7 +32,7 @@ export class DeleteOffice404ApplicationJSON extends SpeakeasyBase {
 /**
  * Forbidden
  */
-export class DeleteOffice403ApplicationJSON extends SpeakeasyBase {
+export class DeleteOfficeOfficesResponseResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -41,7 +41,7 @@ export class DeleteOffice403ApplicationJSON extends SpeakeasyBase {
 /**
  * Unauthenticated
  */
-export class DeleteOffice401ApplicationJSON extends SpeakeasyBase {
+export class DeleteOfficeOfficesResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -50,13 +50,37 @@ export class DeleteOffice401ApplicationJSON extends SpeakeasyBase {
 /**
  * Precondition failed
  */
-export class DeleteOffice400ApplicationJSON extends SpeakeasyBase {
+export class DeleteOfficeResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
 }
 
 export class DeleteOfficeResponse extends SpeakeasyBase {
+    /**
+     * Precondition failed
+     */
+    @SpeakeasyMetadata()
+    fourHundredApplicationJsonObject?: DeleteOfficeResponseBody;
+
+    /**
+     * Unauthenticated
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndOneApplicationJsonObject?: DeleteOfficeOfficesResponseBody;
+
+    /**
+     * Forbidden
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndThreeApplicationJsonObject?: DeleteOfficeOfficesResponseResponseBody;
+
+    /**
+     * Not Found
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndFourApplicationJsonObject?: DeleteOfficeOfficesResponse404ResponseBody;
+
     /**
      * HTTP response content type for this operation
      */
@@ -74,28 +98,4 @@ export class DeleteOfficeResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
-
-    /**
-     * Precondition failed
-     */
-    @SpeakeasyMetadata()
-    deleteOffice400ApplicationJSONObject?: DeleteOffice400ApplicationJSON;
-
-    /**
-     * Unauthenticated
-     */
-    @SpeakeasyMetadata()
-    deleteOffice401ApplicationJSONObject?: DeleteOffice401ApplicationJSON;
-
-    /**
-     * Forbidden
-     */
-    @SpeakeasyMetadata()
-    deleteOffice403ApplicationJSONObject?: DeleteOffice403ApplicationJSON;
-
-    /**
-     * Not Found
-     */
-    @SpeakeasyMetadata()
-    deleteOffice404ApplicationJSONObject?: DeleteOffice404ApplicationJSON;
 }

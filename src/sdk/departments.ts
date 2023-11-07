@@ -3,9 +3,9 @@
  */
 
 import * as utils from "../internal/utils";
-import * as errors from "./models/errors";
-import * as operations from "./models/operations";
-import * as shared from "./models/shared";
+import * as errors from "../sdk/models/errors";
+import * as operations from "../sdk/models/operations";
+import * as shared from "../sdk/models/shared";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
@@ -88,9 +88,9 @@ export class Departments {
         switch (true) {
             case httpRes?.status == 201:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createDepartment201ApplicationJSONObject = utils.objectToClass(
+                    res.twoHundredAndOneApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.CreateDepartment201ApplicationJSON
+                        operations.CreateDepartmentResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -103,9 +103,9 @@ export class Departments {
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createDepartment401ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndOneApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.CreateDepartment401ApplicationJSON
+                        operations.CreateDepartmentDepartmentsResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -118,9 +118,9 @@ export class Departments {
                 break;
             case httpRes?.status == 403:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createDepartment403ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndThreeApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.CreateDepartment403ApplicationJSON
+                        operations.CreateDepartmentDepartmentsResponseResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -133,9 +133,9 @@ export class Departments {
                 break;
             case httpRes?.status == 422:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createDepartment422ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndTwentyTwoApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.CreateDepartment422ApplicationJSON
+                        operations.CreateDepartmentDepartmentsResponse422ResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -214,9 +214,9 @@ export class Departments {
                 break;
             case httpRes?.status == 400:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.deleteDepartment400ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.DeleteDepartment400ApplicationJSON
+                        operations.DeleteDepartmentResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -229,9 +229,9 @@ export class Departments {
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.deleteDepartment401ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndOneApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.DeleteDepartment401ApplicationJSON
+                        operations.DeleteDepartmentDepartmentsResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -244,9 +244,9 @@ export class Departments {
                 break;
             case httpRes?.status == 403:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.deleteDepartment403ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndThreeApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.DeleteDepartment403ApplicationJSON
+                        operations.DeleteDepartmentDepartmentsResponseResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -259,9 +259,9 @@ export class Departments {
                 break;
             case httpRes?.status == 404:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.deleteDepartment404ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndFourApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.DeleteDepartment404ApplicationJSON
+                        operations.DeleteDepartmentDepartmentsResponse404ResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -338,9 +338,9 @@ export class Departments {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getDepartment200ApplicationJSONObject = utils.objectToClass(
+                    res.twoHundredApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.GetDepartment200ApplicationJSON
+                        operations.GetDepartmentResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -353,9 +353,9 @@ export class Departments {
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getDepartment401ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndOneApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.GetDepartment401ApplicationJSON
+                        operations.GetDepartmentDepartmentsResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -368,9 +368,9 @@ export class Departments {
                 break;
             case httpRes?.status == 403:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getDepartment403ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndThreeApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.GetDepartment403ApplicationJSON
+                        operations.GetDepartmentDepartmentsResponseResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -383,9 +383,9 @@ export class Departments {
                 break;
             case httpRes?.status == 404:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getDepartment404ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndFourApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.GetDepartment404ApplicationJSON
+                        operations.GetDepartmentDepartmentsResponse404ResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -473,9 +473,9 @@ export class Departments {
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.listDepartments401ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndOneApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.ListDepartments401ApplicationJSON
+                        operations.ListDepartmentsResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -488,9 +488,9 @@ export class Departments {
                 break;
             case httpRes?.status == 403:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.listDepartments403ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndThreeApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.ListDepartments403ApplicationJSON
+                        operations.ListDepartmentsDepartmentsResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -582,9 +582,9 @@ export class Departments {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.updateDepartment200ApplicationJSONObject = utils.objectToClass(
+                    res.twoHundredApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.UpdateDepartment200ApplicationJSON
+                        operations.UpdateDepartmentResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -597,9 +597,9 @@ export class Departments {
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.updateDepartment401ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndOneApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.UpdateDepartment401ApplicationJSON
+                        operations.UpdateDepartmentDepartmentsResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -612,9 +612,9 @@ export class Departments {
                 break;
             case httpRes?.status == 403:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.updateDepartment403ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndThreeApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.UpdateDepartment403ApplicationJSON
+                        operations.UpdateDepartmentDepartmentsResponseResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -627,9 +627,9 @@ export class Departments {
                 break;
             case httpRes?.status == 404:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.updateDepartment404ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndFourApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.UpdateDepartment404ApplicationJSON
+                        operations.UpdateDepartmentDepartmentsResponse404ResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -642,9 +642,9 @@ export class Departments {
                 break;
             case httpRes?.status == 422:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.updateDepartment422ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndTwentyTwoApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.UpdateDepartment422ApplicationJSON
+                        operations.UpdateDepartmentDepartmentsResponse422ResponseBody
                     );
                 } else {
                     throw new errors.SDKError(

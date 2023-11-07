@@ -1,5 +1,5 @@
 # Offices
-(*offices*)
+(*.offices*)
 
 ### Available Operations
 

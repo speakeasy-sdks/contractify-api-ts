@@ -1,5 +1,5 @@
 # Documents
-(*documents*)
+(*.documents*)
 
 ### Available Operations
 
@@ -100,7 +100,7 @@ List all the documents within a company
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { ListDocumentsEsigningStatus } from "contractify/dist/sdk/models/operations";
+import { EsigningStatus } from "contractify/dist/sdk/models/operations";
 
 (async() => {
   const sdk = new ContractifyProduction({

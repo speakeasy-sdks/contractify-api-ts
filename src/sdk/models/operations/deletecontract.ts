@@ -23,7 +23,7 @@ export class DeleteContractRequest extends SpeakeasyBase {
 /**
  * Not Found
  */
-export class DeleteContract404ApplicationJSON extends SpeakeasyBase {
+export class DeleteContractContractsResponse404ResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -32,7 +32,7 @@ export class DeleteContract404ApplicationJSON extends SpeakeasyBase {
 /**
  * Forbidden
  */
-export class DeleteContract403ApplicationJSON extends SpeakeasyBase {
+export class DeleteContractContractsResponseResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -41,7 +41,7 @@ export class DeleteContract403ApplicationJSON extends SpeakeasyBase {
 /**
  * Unauthenticated
  */
-export class DeleteContract401ApplicationJSON extends SpeakeasyBase {
+export class DeleteContractContractsResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -50,13 +50,37 @@ export class DeleteContract401ApplicationJSON extends SpeakeasyBase {
 /**
  * Precondition failed
  */
-export class DeleteContract400ApplicationJSON extends SpeakeasyBase {
+export class DeleteContractResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
 }
 
 export class DeleteContractResponse extends SpeakeasyBase {
+    /**
+     * Precondition failed
+     */
+    @SpeakeasyMetadata()
+    fourHundredApplicationJsonObject?: DeleteContractResponseBody;
+
+    /**
+     * Unauthenticated
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndOneApplicationJsonObject?: DeleteContractContractsResponseBody;
+
+    /**
+     * Forbidden
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndThreeApplicationJsonObject?: DeleteContractContractsResponseResponseBody;
+
+    /**
+     * Not Found
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndFourApplicationJsonObject?: DeleteContractContractsResponse404ResponseBody;
+
     /**
      * HTTP response content type for this operation
      */
@@ -74,28 +98,4 @@ export class DeleteContractResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
-
-    /**
-     * Precondition failed
-     */
-    @SpeakeasyMetadata()
-    deleteContract400ApplicationJSONObject?: DeleteContract400ApplicationJSON;
-
-    /**
-     * Unauthenticated
-     */
-    @SpeakeasyMetadata()
-    deleteContract401ApplicationJSONObject?: DeleteContract401ApplicationJSON;
-
-    /**
-     * Forbidden
-     */
-    @SpeakeasyMetadata()
-    deleteContract403ApplicationJSONObject?: DeleteContract403ApplicationJSON;
-
-    /**
-     * Not Found
-     */
-    @SpeakeasyMetadata()
-    deleteContract404ApplicationJSONObject?: DeleteContract404ApplicationJSON;
 }

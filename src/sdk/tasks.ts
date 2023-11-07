@@ -3,9 +3,9 @@
  */
 
 import * as utils from "../internal/utils";
-import * as errors from "./models/errors";
-import * as operations from "./models/operations";
-import * as shared from "./models/shared";
+import * as errors from "../sdk/models/errors";
+import * as operations from "../sdk/models/operations";
+import * as shared from "../sdk/models/shared";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
@@ -88,9 +88,9 @@ export class Tasks {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createTask200ApplicationJSONObject = utils.objectToClass(
+                    res.twoHundredApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.CreateTask200ApplicationJSON
+                        operations.CreateTaskResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -103,9 +103,9 @@ export class Tasks {
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createTask401ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndOneApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.CreateTask401ApplicationJSON
+                        operations.CreateTaskTasksResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -118,9 +118,9 @@ export class Tasks {
                 break;
             case httpRes?.status == 403:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createTask403ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndThreeApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.CreateTask403ApplicationJSON
+                        operations.CreateTaskTasksResponseResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -133,9 +133,9 @@ export class Tasks {
                 break;
             case httpRes?.status == 422:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createTask422ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndTwentyTwoApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.CreateTask422ApplicationJSON
+                        operations.CreateTaskTasksResponse422ResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -214,9 +214,9 @@ export class Tasks {
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.deleteTask401ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndOneApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.DeleteTask401ApplicationJSON
+                        operations.DeleteTaskResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -229,9 +229,9 @@ export class Tasks {
                 break;
             case httpRes?.status == 403:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.deleteTask403ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndThreeApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.DeleteTask403ApplicationJSON
+                        operations.DeleteTaskTasksResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -244,9 +244,9 @@ export class Tasks {
                 break;
             case httpRes?.status == 404:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.deleteTask404ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndFourApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.DeleteTask404ApplicationJSON
+                        operations.DeleteTaskTasksResponseResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -323,9 +323,9 @@ export class Tasks {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getTask200ApplicationJSONObject = utils.objectToClass(
+                    res.twoHundredApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.GetTask200ApplicationJSON
+                        operations.GetTaskResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -338,9 +338,9 @@ export class Tasks {
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getTask401ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndOneApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.GetTask401ApplicationJSON
+                        operations.GetTaskTasksResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -353,9 +353,9 @@ export class Tasks {
                 break;
             case httpRes?.status == 403:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getTask403ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndThreeApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.GetTask403ApplicationJSON
+                        operations.GetTaskTasksResponseResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -368,9 +368,9 @@ export class Tasks {
                 break;
             case httpRes?.status == 404:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getTask404ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndFourApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.GetTask404ApplicationJSON
+                        operations.GetTaskTasksResponse404ResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -459,9 +459,9 @@ export class Tasks {
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.listTasks401ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndOneApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.ListTasks401ApplicationJSON
+                        operations.ListTasksResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -474,9 +474,9 @@ export class Tasks {
                 break;
             case httpRes?.status == 403:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.listTasks403ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndThreeApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.ListTasks403ApplicationJSON
+                        operations.ListTasksTasksResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -568,9 +568,9 @@ export class Tasks {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.updateTask200ApplicationJSONObject = utils.objectToClass(
+                    res.twoHundredApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.UpdateTask200ApplicationJSON
+                        operations.UpdateTaskResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -583,9 +583,9 @@ export class Tasks {
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.updateTask401ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndOneApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.UpdateTask401ApplicationJSON
+                        operations.UpdateTaskTasksResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -598,9 +598,9 @@ export class Tasks {
                 break;
             case httpRes?.status == 403:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.updateTask403ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndThreeApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.UpdateTask403ApplicationJSON
+                        operations.UpdateTaskTasksResponseResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -613,9 +613,9 @@ export class Tasks {
                 break;
             case httpRes?.status == 404:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.updateTask404ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndFourApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.UpdateTask404ApplicationJSON
+                        operations.UpdateTaskTasksResponse404ResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -628,9 +628,9 @@ export class Tasks {
                 break;
             case httpRes?.status == 422:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.updateTask422ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndTwentyTwoApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.UpdateTask422ApplicationJSON
+                        operations.UpdateTaskTasksResponse422ResponseBody
                     );
                 } else {
                     throw new errors.SDKError(

@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
@@ -24,7 +24,7 @@ export class UpdateOfficeRequest extends SpeakeasyBase {
     office: number;
 }
 
-export class UpdateOffice422ApplicationJSONErrors extends SpeakeasyBase {
+export class UpdateOfficeErrors extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "errors" })
     errors?: string[];
@@ -37,11 +37,11 @@ export class UpdateOffice422ApplicationJSONErrors extends SpeakeasyBase {
 /**
  * Invalid data posted
  */
-export class UpdateOffice422ApplicationJSON extends SpeakeasyBase {
-    @SpeakeasyMetadata({ elemType: UpdateOffice422ApplicationJSONErrors })
+export class UpdateOfficeOfficesResponse422ResponseBody extends SpeakeasyBase {
+    @SpeakeasyMetadata({ elemType: UpdateOfficeErrors })
     @Expose({ name: "errors" })
-    @Type(() => UpdateOffice422ApplicationJSONErrors)
-    errors?: UpdateOffice422ApplicationJSONErrors[];
+    @Type(() => UpdateOfficeErrors)
+    errors?: UpdateOfficeErrors[];
 
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
@@ -51,7 +51,7 @@ export class UpdateOffice422ApplicationJSON extends SpeakeasyBase {
 /**
  * Not Found
  */
-export class UpdateOffice404ApplicationJSON extends SpeakeasyBase {
+export class UpdateOfficeOfficesResponse404ResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -60,7 +60,7 @@ export class UpdateOffice404ApplicationJSON extends SpeakeasyBase {
 /**
  * Forbidden
  */
-export class UpdateOffice403ApplicationJSON extends SpeakeasyBase {
+export class UpdateOfficeOfficesResponseResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -69,7 +69,7 @@ export class UpdateOffice403ApplicationJSON extends SpeakeasyBase {
 /**
  * Unauthenticated
  */
-export class UpdateOffice401ApplicationJSON extends SpeakeasyBase {
+export class UpdateOfficeOfficesResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -78,7 +78,7 @@ export class UpdateOffice401ApplicationJSON extends SpeakeasyBase {
 /**
  * OK
  */
-export class UpdateOffice200ApplicationJSON extends SpeakeasyBase {
+export class UpdateOfficeResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "data" })
     @Type(() => shared.OfficeRead)
@@ -86,6 +86,36 @@ export class UpdateOffice200ApplicationJSON extends SpeakeasyBase {
 }
 
 export class UpdateOfficeResponse extends SpeakeasyBase {
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    twoHundredApplicationJsonObject?: UpdateOfficeResponseBody;
+
+    /**
+     * Unauthenticated
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndOneApplicationJsonObject?: UpdateOfficeOfficesResponseBody;
+
+    /**
+     * Forbidden
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndThreeApplicationJsonObject?: UpdateOfficeOfficesResponseResponseBody;
+
+    /**
+     * Not Found
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndFourApplicationJsonObject?: UpdateOfficeOfficesResponse404ResponseBody;
+
+    /**
+     * Invalid data posted
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndTwentyTwoApplicationJsonObject?: UpdateOfficeOfficesResponse422ResponseBody;
+
     /**
      * HTTP response content type for this operation
      */
@@ -103,34 +133,4 @@ export class UpdateOfficeResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
-
-    /**
-     * OK
-     */
-    @SpeakeasyMetadata()
-    updateOffice200ApplicationJSONObject?: UpdateOffice200ApplicationJSON;
-
-    /**
-     * Unauthenticated
-     */
-    @SpeakeasyMetadata()
-    updateOffice401ApplicationJSONObject?: UpdateOffice401ApplicationJSON;
-
-    /**
-     * Forbidden
-     */
-    @SpeakeasyMetadata()
-    updateOffice403ApplicationJSONObject?: UpdateOffice403ApplicationJSON;
-
-    /**
-     * Not Found
-     */
-    @SpeakeasyMetadata()
-    updateOffice404ApplicationJSONObject?: UpdateOffice404ApplicationJSON;
-
-    /**
-     * Invalid data posted
-     */
-    @SpeakeasyMetadata()
-    updateOffice422ApplicationJSONObject?: UpdateOffice422ApplicationJSON;
 }

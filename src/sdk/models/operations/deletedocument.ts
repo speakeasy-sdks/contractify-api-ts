@@ -20,7 +20,7 @@ export class DeleteDocumentRequest extends SpeakeasyBase {
     document: number;
 }
 
-export class DeleteDocument422ApplicationJSONErrors extends SpeakeasyBase {
+export class DeleteDocumentErrors extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "errors" })
     errors?: string[];
@@ -33,11 +33,11 @@ export class DeleteDocument422ApplicationJSONErrors extends SpeakeasyBase {
 /**
  * Invalid data posted
  */
-export class DeleteDocument422ApplicationJSON extends SpeakeasyBase {
-    @SpeakeasyMetadata({ elemType: DeleteDocument422ApplicationJSONErrors })
+export class DeleteDocumentDocumentsResponse422ResponseBody extends SpeakeasyBase {
+    @SpeakeasyMetadata({ elemType: DeleteDocumentErrors })
     @Expose({ name: "errors" })
-    @Type(() => DeleteDocument422ApplicationJSONErrors)
-    errors?: DeleteDocument422ApplicationJSONErrors[];
+    @Type(() => DeleteDocumentErrors)
+    errors?: DeleteDocumentErrors[];
 
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
@@ -47,7 +47,7 @@ export class DeleteDocument422ApplicationJSON extends SpeakeasyBase {
 /**
  * Not Found
  */
-export class DeleteDocument404ApplicationJSON extends SpeakeasyBase {
+export class DeleteDocumentDocumentsResponseResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -56,7 +56,7 @@ export class DeleteDocument404ApplicationJSON extends SpeakeasyBase {
 /**
  * Forbidden
  */
-export class DeleteDocument403ApplicationJSON extends SpeakeasyBase {
+export class DeleteDocumentDocumentsResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -65,13 +65,37 @@ export class DeleteDocument403ApplicationJSON extends SpeakeasyBase {
 /**
  * Unauthenticated
  */
-export class DeleteDocument401ApplicationJSON extends SpeakeasyBase {
+export class DeleteDocumentResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
 }
 
 export class DeleteDocumentResponse extends SpeakeasyBase {
+    /**
+     * Unauthenticated
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndOneApplicationJsonObject?: DeleteDocumentResponseBody;
+
+    /**
+     * Forbidden
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndThreeApplicationJsonObject?: DeleteDocumentDocumentsResponseBody;
+
+    /**
+     * Not Found
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndFourApplicationJsonObject?: DeleteDocumentDocumentsResponseResponseBody;
+
+    /**
+     * Invalid data posted
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndTwentyTwoApplicationJsonObject?: DeleteDocumentDocumentsResponse422ResponseBody;
+
     /**
      * HTTP response content type for this operation
      */
@@ -89,28 +113,4 @@ export class DeleteDocumentResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
-
-    /**
-     * Unauthenticated
-     */
-    @SpeakeasyMetadata()
-    deleteDocument401ApplicationJSONObject?: DeleteDocument401ApplicationJSON;
-
-    /**
-     * Forbidden
-     */
-    @SpeakeasyMetadata()
-    deleteDocument403ApplicationJSONObject?: DeleteDocument403ApplicationJSON;
-
-    /**
-     * Not Found
-     */
-    @SpeakeasyMetadata()
-    deleteDocument404ApplicationJSONObject?: DeleteDocument404ApplicationJSON;
-
-    /**
-     * Invalid data posted
-     */
-    @SpeakeasyMetadata()
-    deleteDocument422ApplicationJSONObject?: DeleteDocument422ApplicationJSON;
 }

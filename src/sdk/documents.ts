@@ -3,9 +3,9 @@
  */
 
 import * as utils from "../internal/utils";
-import * as errors from "./models/errors";
-import * as operations from "./models/operations";
-import * as shared from "./models/shared";
+import * as errors from "../sdk/models/errors";
+import * as operations from "../sdk/models/operations";
+import * as shared from "../sdk/models/shared";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
@@ -79,9 +79,9 @@ export class Documents {
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.deleteDocument401ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndOneApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.DeleteDocument401ApplicationJSON
+                        operations.DeleteDocumentResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -94,9 +94,9 @@ export class Documents {
                 break;
             case httpRes?.status == 403:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.deleteDocument403ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndThreeApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.DeleteDocument403ApplicationJSON
+                        operations.DeleteDocumentDocumentsResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -109,9 +109,9 @@ export class Documents {
                 break;
             case httpRes?.status == 404:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.deleteDocument404ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndFourApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.DeleteDocument404ApplicationJSON
+                        operations.DeleteDocumentDocumentsResponseResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -124,9 +124,9 @@ export class Documents {
                 break;
             case httpRes?.status == 422:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.deleteDocument422ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndTwentyTwoApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.DeleteDocument422ApplicationJSON
+                        operations.DeleteDocumentDocumentsResponse422ResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -203,9 +203,9 @@ export class Documents {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getDocument200ApplicationJSONObject = utils.objectToClass(
+                    res.twoHundredApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.GetDocument200ApplicationJSON
+                        operations.GetDocumentResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -218,9 +218,9 @@ export class Documents {
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getDocument401ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndOneApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.GetDocument401ApplicationJSON
+                        operations.GetDocumentDocumentsResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -233,9 +233,9 @@ export class Documents {
                 break;
             case httpRes?.status == 403:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getDocument403ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndThreeApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.GetDocument403ApplicationJSON
+                        operations.GetDocumentDocumentsResponseResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -248,9 +248,9 @@ export class Documents {
                 break;
             case httpRes?.status == 404:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getDocument404ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndFourApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.GetDocument404ApplicationJSON
+                        operations.GetDocumentDocumentsResponse404ResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -339,9 +339,9 @@ export class Documents {
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.listDocuments401ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndOneApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.ListDocuments401ApplicationJSON
+                        operations.ListDocumentsResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -354,9 +354,9 @@ export class Documents {
                 break;
             case httpRes?.status == 403:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.listDocuments403ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndThreeApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.ListDocuments403ApplicationJSON
+                        operations.ListDocumentsDocumentsResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -448,9 +448,9 @@ export class Documents {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.updateDocument200ApplicationJSONObject = utils.objectToClass(
+                    res.twoHundredApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.UpdateDocument200ApplicationJSON
+                        operations.UpdateDocumentResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -463,9 +463,9 @@ export class Documents {
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.updateDocument401ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndOneApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.UpdateDocument401ApplicationJSON
+                        operations.UpdateDocumentDocumentsResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -478,9 +478,9 @@ export class Documents {
                 break;
             case httpRes?.status == 403:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.updateDocument403ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndThreeApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.UpdateDocument403ApplicationJSON
+                        operations.UpdateDocumentDocumentsResponseResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -493,9 +493,9 @@ export class Documents {
                 break;
             case httpRes?.status == 404:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.updateDocument404ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndFourApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.UpdateDocument404ApplicationJSON
+                        operations.UpdateDocumentDocumentsResponse404ResponseBody
                     );
                 } else {
                     throw new errors.SDKError(

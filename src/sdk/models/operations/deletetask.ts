@@ -23,7 +23,7 @@ export class DeleteTaskRequest extends SpeakeasyBase {
 /**
  * Not Found
  */
-export class DeleteTask404ApplicationJSON extends SpeakeasyBase {
+export class DeleteTaskTasksResponseResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -32,7 +32,7 @@ export class DeleteTask404ApplicationJSON extends SpeakeasyBase {
 /**
  * Forbidden
  */
-export class DeleteTask403ApplicationJSON extends SpeakeasyBase {
+export class DeleteTaskTasksResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -41,13 +41,31 @@ export class DeleteTask403ApplicationJSON extends SpeakeasyBase {
 /**
  * Unauthenticated
  */
-export class DeleteTask401ApplicationJSON extends SpeakeasyBase {
+export class DeleteTaskResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
 }
 
 export class DeleteTaskResponse extends SpeakeasyBase {
+    /**
+     * Unauthenticated
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndOneApplicationJsonObject?: DeleteTaskResponseBody;
+
+    /**
+     * Forbidden
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndThreeApplicationJsonObject?: DeleteTaskTasksResponseBody;
+
+    /**
+     * Not Found
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndFourApplicationJsonObject?: DeleteTaskTasksResponseResponseBody;
+
     /**
      * HTTP response content type for this operation
      */
@@ -65,22 +83,4 @@ export class DeleteTaskResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
-
-    /**
-     * Unauthenticated
-     */
-    @SpeakeasyMetadata()
-    deleteTask401ApplicationJSONObject?: DeleteTask401ApplicationJSON;
-
-    /**
-     * Forbidden
-     */
-    @SpeakeasyMetadata()
-    deleteTask403ApplicationJSONObject?: DeleteTask403ApplicationJSON;
-
-    /**
-     * Not Found
-     */
-    @SpeakeasyMetadata()
-    deleteTask404ApplicationJSONObject?: DeleteTask404ApplicationJSON;
 }

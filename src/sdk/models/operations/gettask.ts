@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
@@ -24,7 +24,7 @@ export class GetTaskRequest extends SpeakeasyBase {
 /**
  * Not Found
  */
-export class GetTask404ApplicationJSON extends SpeakeasyBase {
+export class GetTaskTasksResponse404ResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -33,7 +33,7 @@ export class GetTask404ApplicationJSON extends SpeakeasyBase {
 /**
  * Forbidden
  */
-export class GetTask403ApplicationJSON extends SpeakeasyBase {
+export class GetTaskTasksResponseResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -42,7 +42,7 @@ export class GetTask403ApplicationJSON extends SpeakeasyBase {
 /**
  * Unauthenticated
  */
-export class GetTask401ApplicationJSON extends SpeakeasyBase {
+export class GetTaskTasksResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -51,7 +51,7 @@ export class GetTask401ApplicationJSON extends SpeakeasyBase {
 /**
  * OK
  */
-export class GetTask200ApplicationJSON extends SpeakeasyBase {
+export class GetTaskResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "data" })
     @Type(() => shared.TaskRead)
@@ -59,6 +59,30 @@ export class GetTask200ApplicationJSON extends SpeakeasyBase {
 }
 
 export class GetTaskResponse extends SpeakeasyBase {
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    twoHundredApplicationJsonObject?: GetTaskResponseBody;
+
+    /**
+     * Unauthenticated
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndOneApplicationJsonObject?: GetTaskTasksResponseBody;
+
+    /**
+     * Forbidden
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndThreeApplicationJsonObject?: GetTaskTasksResponseResponseBody;
+
+    /**
+     * Not Found
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndFourApplicationJsonObject?: GetTaskTasksResponse404ResponseBody;
+
     /**
      * HTTP response content type for this operation
      */
@@ -76,28 +100,4 @@ export class GetTaskResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
-
-    /**
-     * OK
-     */
-    @SpeakeasyMetadata()
-    getTask200ApplicationJSONObject?: GetTask200ApplicationJSON;
-
-    /**
-     * Unauthenticated
-     */
-    @SpeakeasyMetadata()
-    getTask401ApplicationJSONObject?: GetTask401ApplicationJSON;
-
-    /**
-     * Forbidden
-     */
-    @SpeakeasyMetadata()
-    getTask403ApplicationJSONObject?: GetTask403ApplicationJSON;
-
-    /**
-     * Not Found
-     */
-    @SpeakeasyMetadata()
-    getTask404ApplicationJSONObject?: GetTask404ApplicationJSON;
 }

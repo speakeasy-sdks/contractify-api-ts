@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
@@ -24,7 +24,7 @@ export class GetOfficeRequest extends SpeakeasyBase {
 /**
  * Not Found
  */
-export class GetOffice404ApplicationJSON extends SpeakeasyBase {
+export class GetOfficeOfficesResponse404ResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -33,7 +33,7 @@ export class GetOffice404ApplicationJSON extends SpeakeasyBase {
 /**
  * Forbidden
  */
-export class GetOffice403ApplicationJSON extends SpeakeasyBase {
+export class GetOfficeOfficesResponseResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -42,7 +42,7 @@ export class GetOffice403ApplicationJSON extends SpeakeasyBase {
 /**
  * Unauthenticated
  */
-export class GetOffice401ApplicationJSON extends SpeakeasyBase {
+export class GetOfficeOfficesResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -51,7 +51,7 @@ export class GetOffice401ApplicationJSON extends SpeakeasyBase {
 /**
  * OK
  */
-export class GetOffice200ApplicationJSON extends SpeakeasyBase {
+export class GetOfficeResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "data" })
     @Type(() => shared.OfficeRead)
@@ -59,6 +59,30 @@ export class GetOffice200ApplicationJSON extends SpeakeasyBase {
 }
 
 export class GetOfficeResponse extends SpeakeasyBase {
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    twoHundredApplicationJsonObject?: GetOfficeResponseBody;
+
+    /**
+     * Unauthenticated
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndOneApplicationJsonObject?: GetOfficeOfficesResponseBody;
+
+    /**
+     * Forbidden
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndThreeApplicationJsonObject?: GetOfficeOfficesResponseResponseBody;
+
+    /**
+     * Not Found
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndFourApplicationJsonObject?: GetOfficeOfficesResponse404ResponseBody;
+
     /**
      * HTTP response content type for this operation
      */
@@ -76,28 +100,4 @@ export class GetOfficeResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
-
-    /**
-     * OK
-     */
-    @SpeakeasyMetadata()
-    getOffice200ApplicationJSONObject?: GetOffice200ApplicationJSON;
-
-    /**
-     * Unauthenticated
-     */
-    @SpeakeasyMetadata()
-    getOffice401ApplicationJSONObject?: GetOffice401ApplicationJSON;
-
-    /**
-     * Forbidden
-     */
-    @SpeakeasyMetadata()
-    getOffice403ApplicationJSONObject?: GetOffice403ApplicationJSON;
-
-    /**
-     * Not Found
-     */
-    @SpeakeasyMetadata()
-    getOffice404ApplicationJSONObject?: GetOffice404ApplicationJSON;
 }

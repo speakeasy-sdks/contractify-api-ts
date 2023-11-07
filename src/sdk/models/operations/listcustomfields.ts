@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose } from "class-transformer";
 
@@ -18,7 +18,7 @@ export class ListCustomFieldsRequest extends SpeakeasyBase {
 /**
  * Forbidden
  */
-export class ListCustomFields403ApplicationJSON extends SpeakeasyBase {
+export class ListCustomFieldsCustomFieldsResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -27,13 +27,25 @@ export class ListCustomFields403ApplicationJSON extends SpeakeasyBase {
 /**
  * Unauthenticated
  */
-export class ListCustomFields401ApplicationJSON extends SpeakeasyBase {
+export class ListCustomFieldsResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
 }
 
 export class ListCustomFieldsResponse extends SpeakeasyBase {
+    /**
+     * Unauthenticated
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndOneApplicationJsonObject?: ListCustomFieldsResponseBody;
+
+    /**
+     * Forbidden
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndThreeApplicationJsonObject?: ListCustomFieldsCustomFieldsResponseBody;
+
     /**
      * HTTP response content type for this operation
      */
@@ -57,16 +69,4 @@ export class ListCustomFieldsResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
-
-    /**
-     * Unauthenticated
-     */
-    @SpeakeasyMetadata()
-    listCustomFields401ApplicationJSONObject?: ListCustomFields401ApplicationJSON;
-
-    /**
-     * Forbidden
-     */
-    @SpeakeasyMetadata()
-    listCustomFields403ApplicationJSONObject?: ListCustomFields403ApplicationJSON;
 }

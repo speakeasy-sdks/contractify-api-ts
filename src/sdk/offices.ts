@@ -3,9 +3,9 @@
  */
 
 import * as utils from "../internal/utils";
-import * as errors from "./models/errors";
-import * as operations from "./models/operations";
-import * as shared from "./models/shared";
+import * as errors from "../sdk/models/errors";
+import * as operations from "../sdk/models/operations";
+import * as shared from "../sdk/models/shared";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
@@ -88,9 +88,9 @@ export class Offices {
         switch (true) {
             case httpRes?.status == 201:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createOffice201ApplicationJSONObject = utils.objectToClass(
+                    res.twoHundredAndOneApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.CreateOffice201ApplicationJSON
+                        operations.CreateOfficeResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -103,9 +103,9 @@ export class Offices {
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createOffice401ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndOneApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.CreateOffice401ApplicationJSON
+                        operations.CreateOfficeOfficesResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -118,9 +118,9 @@ export class Offices {
                 break;
             case httpRes?.status == 403:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createOffice403ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndThreeApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.CreateOffice403ApplicationJSON
+                        operations.CreateOfficeOfficesResponseResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -133,9 +133,9 @@ export class Offices {
                 break;
             case httpRes?.status == 422:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createOffice422ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndTwentyTwoApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.CreateOffice422ApplicationJSON
+                        operations.CreateOfficeOfficesResponse422ResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -214,9 +214,9 @@ export class Offices {
                 break;
             case httpRes?.status == 400:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.deleteOffice400ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.DeleteOffice400ApplicationJSON
+                        operations.DeleteOfficeResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -229,9 +229,9 @@ export class Offices {
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.deleteOffice401ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndOneApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.DeleteOffice401ApplicationJSON
+                        operations.DeleteOfficeOfficesResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -244,9 +244,9 @@ export class Offices {
                 break;
             case httpRes?.status == 403:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.deleteOffice403ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndThreeApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.DeleteOffice403ApplicationJSON
+                        operations.DeleteOfficeOfficesResponseResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -259,9 +259,9 @@ export class Offices {
                 break;
             case httpRes?.status == 404:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.deleteOffice404ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndFourApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.DeleteOffice404ApplicationJSON
+                        operations.DeleteOfficeOfficesResponse404ResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -338,9 +338,9 @@ export class Offices {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getOffice200ApplicationJSONObject = utils.objectToClass(
+                    res.twoHundredApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.GetOffice200ApplicationJSON
+                        operations.GetOfficeResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -353,9 +353,9 @@ export class Offices {
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getOffice401ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndOneApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.GetOffice401ApplicationJSON
+                        operations.GetOfficeOfficesResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -368,9 +368,9 @@ export class Offices {
                 break;
             case httpRes?.status == 403:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getOffice403ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndThreeApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.GetOffice403ApplicationJSON
+                        operations.GetOfficeOfficesResponseResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -383,9 +383,9 @@ export class Offices {
                 break;
             case httpRes?.status == 404:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getOffice404ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndFourApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.GetOffice404ApplicationJSON
+                        operations.GetOfficeOfficesResponse404ResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -473,9 +473,9 @@ export class Offices {
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.listOffices401ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndOneApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.ListOffices401ApplicationJSON
+                        operations.ListOfficesResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -488,9 +488,9 @@ export class Offices {
                 break;
             case httpRes?.status == 403:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.listOffices403ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndThreeApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.ListOffices403ApplicationJSON
+                        operations.ListOfficesOfficesResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -582,9 +582,9 @@ export class Offices {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.updateOffice200ApplicationJSONObject = utils.objectToClass(
+                    res.twoHundredApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.UpdateOffice200ApplicationJSON
+                        operations.UpdateOfficeResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -597,9 +597,9 @@ export class Offices {
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.updateOffice401ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndOneApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.UpdateOffice401ApplicationJSON
+                        operations.UpdateOfficeOfficesResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -612,9 +612,9 @@ export class Offices {
                 break;
             case httpRes?.status == 403:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.updateOffice403ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndThreeApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.UpdateOffice403ApplicationJSON
+                        operations.UpdateOfficeOfficesResponseResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -627,9 +627,9 @@ export class Offices {
                 break;
             case httpRes?.status == 404:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.updateOffice404ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndFourApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.UpdateOffice404ApplicationJSON
+                        operations.UpdateOfficeOfficesResponse404ResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -642,9 +642,9 @@ export class Offices {
                 break;
             case httpRes?.status == 422:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.updateOffice422ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndTwentyTwoApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.UpdateOffice422ApplicationJSON
+                        operations.UpdateOfficeOfficesResponse422ResponseBody
                     );
                 } else {
                     throw new errors.SDKError(

@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { RFCDate } from "../../types";
+import { RFCDate } from "../../../sdk/types";
 import { ContractDocumentRead } from "./contractdocumentread";
 import { ContractPhase } from "./contractphase";
 import { ContractRenewal } from "./contractrenewal";

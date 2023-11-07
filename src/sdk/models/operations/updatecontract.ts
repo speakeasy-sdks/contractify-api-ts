@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
@@ -24,7 +24,7 @@ export class UpdateContractRequest extends SpeakeasyBase {
     contract: number;
 }
 
-export class UpdateContract422ApplicationJSONErrors extends SpeakeasyBase {
+export class UpdateContractErrors extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "errors" })
     errors?: string[];
@@ -37,11 +37,11 @@ export class UpdateContract422ApplicationJSONErrors extends SpeakeasyBase {
 /**
  * Invalid data posted
  */
-export class UpdateContract422ApplicationJSON extends SpeakeasyBase {
-    @SpeakeasyMetadata({ elemType: UpdateContract422ApplicationJSONErrors })
+export class UpdateContractContractsResponse422ResponseBody extends SpeakeasyBase {
+    @SpeakeasyMetadata({ elemType: UpdateContractErrors })
     @Expose({ name: "errors" })
-    @Type(() => UpdateContract422ApplicationJSONErrors)
-    errors?: UpdateContract422ApplicationJSONErrors[];
+    @Type(() => UpdateContractErrors)
+    errors?: UpdateContractErrors[];
 
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
@@ -51,7 +51,7 @@ export class UpdateContract422ApplicationJSON extends SpeakeasyBase {
 /**
  * Not Found
  */
-export class UpdateContract404ApplicationJSON extends SpeakeasyBase {
+export class UpdateContractContractsResponse404ResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -60,7 +60,7 @@ export class UpdateContract404ApplicationJSON extends SpeakeasyBase {
 /**
  * Forbidden
  */
-export class UpdateContract403ApplicationJSON extends SpeakeasyBase {
+export class UpdateContractContractsResponseResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -69,7 +69,7 @@ export class UpdateContract403ApplicationJSON extends SpeakeasyBase {
 /**
  * Unauthenticated
  */
-export class UpdateContract401ApplicationJSON extends SpeakeasyBase {
+export class UpdateContractContractsResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -78,7 +78,7 @@ export class UpdateContract401ApplicationJSON extends SpeakeasyBase {
 /**
  * OK
  */
-export class UpdateContract200ApplicationJSON extends SpeakeasyBase {
+export class UpdateContractResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "data" })
     @Type(() => shared.ContractRead)
@@ -86,6 +86,36 @@ export class UpdateContract200ApplicationJSON extends SpeakeasyBase {
 }
 
 export class UpdateContractResponse extends SpeakeasyBase {
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    twoHundredApplicationJsonObject?: UpdateContractResponseBody;
+
+    /**
+     * Unauthenticated
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndOneApplicationJsonObject?: UpdateContractContractsResponseBody;
+
+    /**
+     * Forbidden
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndThreeApplicationJsonObject?: UpdateContractContractsResponseResponseBody;
+
+    /**
+     * Not Found
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndFourApplicationJsonObject?: UpdateContractContractsResponse404ResponseBody;
+
+    /**
+     * Invalid data posted
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndTwentyTwoApplicationJsonObject?: UpdateContractContractsResponse422ResponseBody;
+
     /**
      * HTTP response content type for this operation
      */
@@ -103,34 +133,4 @@ export class UpdateContractResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
-
-    /**
-     * OK
-     */
-    @SpeakeasyMetadata()
-    updateContract200ApplicationJSONObject?: UpdateContract200ApplicationJSON;
-
-    /**
-     * Unauthenticated
-     */
-    @SpeakeasyMetadata()
-    updateContract401ApplicationJSONObject?: UpdateContract401ApplicationJSON;
-
-    /**
-     * Forbidden
-     */
-    @SpeakeasyMetadata()
-    updateContract403ApplicationJSONObject?: UpdateContract403ApplicationJSON;
-
-    /**
-     * Not Found
-     */
-    @SpeakeasyMetadata()
-    updateContract404ApplicationJSONObject?: UpdateContract404ApplicationJSON;
-
-    /**
-     * Invalid data posted
-     */
-    @SpeakeasyMetadata()
-    updateContract422ApplicationJSONObject?: UpdateContract422ApplicationJSON;
 }

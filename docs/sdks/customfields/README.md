@@ -1,5 +1,5 @@
 # CustomFields
-(*customFields*)
+(*.customFields*)
 
 ### Available Operations
 

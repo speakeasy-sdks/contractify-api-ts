@@ -1,5 +1,5 @@
 # LegalEntities
-(*legalEntities*)
+(*.legalEntities*)
 
 ### Available Operations
 

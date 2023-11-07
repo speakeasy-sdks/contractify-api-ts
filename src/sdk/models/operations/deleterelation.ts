@@ -23,7 +23,7 @@ export class DeleteRelationRequest extends SpeakeasyBase {
 /**
  * Not Found
  */
-export class DeleteRelation404ApplicationJSON extends SpeakeasyBase {
+export class DeleteRelationRelationsResponse404ResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -32,7 +32,7 @@ export class DeleteRelation404ApplicationJSON extends SpeakeasyBase {
 /**
  * Forbidden
  */
-export class DeleteRelation403ApplicationJSON extends SpeakeasyBase {
+export class DeleteRelationRelationsResponseResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -41,7 +41,7 @@ export class DeleteRelation403ApplicationJSON extends SpeakeasyBase {
 /**
  * Unauthenticated
  */
-export class DeleteRelation401ApplicationJSON extends SpeakeasyBase {
+export class DeleteRelationRelationsResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -50,13 +50,37 @@ export class DeleteRelation401ApplicationJSON extends SpeakeasyBase {
 /**
  * Precondition failed
  */
-export class DeleteRelation400ApplicationJSON extends SpeakeasyBase {
+export class DeleteRelationResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
 }
 
 export class DeleteRelationResponse extends SpeakeasyBase {
+    /**
+     * Precondition failed
+     */
+    @SpeakeasyMetadata()
+    fourHundredApplicationJsonObject?: DeleteRelationResponseBody;
+
+    /**
+     * Unauthenticated
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndOneApplicationJsonObject?: DeleteRelationRelationsResponseBody;
+
+    /**
+     * Forbidden
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndThreeApplicationJsonObject?: DeleteRelationRelationsResponseResponseBody;
+
+    /**
+     * Not Found
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndFourApplicationJsonObject?: DeleteRelationRelationsResponse404ResponseBody;
+
     /**
      * HTTP response content type for this operation
      */
@@ -74,28 +98,4 @@ export class DeleteRelationResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
-
-    /**
-     * Precondition failed
-     */
-    @SpeakeasyMetadata()
-    deleteRelation400ApplicationJSONObject?: DeleteRelation400ApplicationJSON;
-
-    /**
-     * Unauthenticated
-     */
-    @SpeakeasyMetadata()
-    deleteRelation401ApplicationJSONObject?: DeleteRelation401ApplicationJSON;
-
-    /**
-     * Forbidden
-     */
-    @SpeakeasyMetadata()
-    deleteRelation403ApplicationJSONObject?: DeleteRelation403ApplicationJSON;
-
-    /**
-     * Not Found
-     */
-    @SpeakeasyMetadata()
-    deleteRelation404ApplicationJSONObject?: DeleteRelation404ApplicationJSON;
 }

@@ -45,11 +45,11 @@ import { ContractifyProduction } from "contractify";
 ## Available Resources and Operations
 
 
-### [contractTypes](docs/sdks/contracttypes/README.md)
+### [.contractTypes](docs/sdks/contracttypes/README.md)
 
 * [listContractTypes](docs/sdks/contracttypes/README.md#listcontracttypes) - List contract types
 
-### [contracts](docs/sdks/contracts/README.md)
+### [.contracts](docs/sdks/contracts/README.md)
 
 * [createContract](docs/sdks/contracts/README.md#createcontract) - Create a contract
 * [deleteContract](docs/sdks/contracts/README.md#deletecontract) - Delete a contract
@@ -57,11 +57,11 @@ import { ContractifyProduction } from "contractify";
 * [listContracts](docs/sdks/contracts/README.md#listcontracts) - List contracts
 * [updateContract](docs/sdks/contracts/README.md#updatecontract) - Update a contract
 
-### [customFields](docs/sdks/customfields/README.md)
+### [.customFields](docs/sdks/customfields/README.md)
 
 * [listCustomFields](docs/sdks/customfields/README.md#listcustomfields) - List custom fields
 
-### [departments](docs/sdks/departments/README.md)
+### [.departments](docs/sdks/departments/README.md)
 
 * [createDepartment](docs/sdks/departments/README.md#createdepartment) - Create a department
 * [deleteDepartment](docs/sdks/departments/README.md#deletedepartment) - Delete a department
@@ -69,18 +69,22 @@ import { ContractifyProduction } from "contractify";
 * [listDepartments](docs/sdks/departments/README.md#listdepartments) - List departments
 * [updateDepartment](docs/sdks/departments/README.md#updatedepartment) - Update a department
 
-### [documents](docs/sdks/documents/README.md)
+### [.documents](docs/sdks/documents/README.md)
 
 * [deleteDocument](docs/sdks/documents/README.md#deletedocument) - Delete a document
 * [getDocument](docs/sdks/documents/README.md#getdocument) - Get a document
 * [listDocuments](docs/sdks/documents/README.md#listdocuments) - List documents
 * [updateDocument](docs/sdks/documents/README.md#updatedocument) - Update a document
 
-### [legalEntities](docs/sdks/legalentities/README.md)
+### [.subfolders](docs/sdks/subfolders/README.md)
+
+* [listSubfolders](docs/sdks/subfolders/README.md#listsubfolders) - List subfolders
+
+### [.legalEntities](docs/sdks/legalentities/README.md)
 
 * [listLegalEntities](docs/sdks/legalentities/README.md#listlegalentities) - List legal entities
 
-### [offices](docs/sdks/offices/README.md)
+### [.offices](docs/sdks/offices/README.md)
 
 * [createOffice](docs/sdks/offices/README.md#createoffice) - Create an office
 * [deleteOffice](docs/sdks/offices/README.md#deleteoffice) - Delete an office
@@ -88,7 +92,7 @@ import { ContractifyProduction } from "contractify";
 * [listOffices](docs/sdks/offices/README.md#listoffices) - List offices
 * [updateOffice](docs/sdks/offices/README.md#updateoffice) - Update an office
 
-### [relations](docs/sdks/relations/README.md)
+### [.relations](docs/sdks/relations/README.md)
 
 * [createRelation](docs/sdks/relations/README.md#createrelation) - Create a relation
 * [deleteRelation](docs/sdks/relations/README.md#deleterelation) - Delete a relation
@@ -96,11 +100,7 @@ import { ContractifyProduction } from "contractify";
 * [listRelations](docs/sdks/relations/README.md#listrelations) - List relations
 * [updateRelation](docs/sdks/relations/README.md#updaterelation) - Update a relation
 
-### [subfolders](docs/sdks/subfolders/README.md)
-
-* [listSubfolders](docs/sdks/subfolders/README.md#listsubfolders) - List subfolders
-
-### [tasks](docs/sdks/tasks/README.md)
+### [.tasks](docs/sdks/tasks/README.md)
 
 * [createTask](docs/sdks/tasks/README.md#createtask) - Create a task
 * [deleteTask](docs/sdks/tasks/README.md#deletetask) - Delete a task
@@ -108,7 +108,7 @@ import { ContractifyProduction } from "contractify";
 * [listTasks](docs/sdks/tasks/README.md#listtasks) - List tasks
 * [updateTask](docs/sdks/tasks/README.md#updatetask) - Update a task
 
-### [users](docs/sdks/users/README.md)
+### [.users](docs/sdks/users/README.md)
 
 * [currentUser](docs/sdks/users/README.md#currentuser) - Current User
 * [listUsers](docs/sdks/users/README.md#listusers) - List users
@@ -118,8 +118,6 @@ import { ContractifyProduction } from "contractify";
 
 <!-- Start Dev Containers -->
 
-
-
 <!-- End Dev Containers -->
 
 
@@ -128,8 +126,6 @@ import { ContractifyProduction } from "contractify";
 # Error Handling
 
 Handling errors in your SDK should largely match your expectations.  All operations return a response object or throw an error.  If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
-
-
 <!-- End Error Handling -->
 
 
@@ -147,17 +143,16 @@ You can override the default server globally by passing a server index to the `s
 
 For example:
 
-
 ```typescript
 import { ContractifyProduction } from "contractify";
 
 (async () => {
     const sdk = new ContractifyProduction({
+        serverIdx: 0,
         security: {
             oAuth2: "",
             personalAccessToken: "",
         },
-        serverIdx: 0,
     });
 
     const res = await sdk.contractTypes.listContractTypes({
@@ -176,17 +171,16 @@ import { ContractifyProduction } from "contractify";
 
 The default server can also be overridden globally by passing a URL to the `serverURL: str` optional parameter when initializing the SDK client instance. For example:
 
-
 ```typescript
 import { ContractifyProduction } from "contractify";
 
 (async () => {
     const sdk = new ContractifyProduction({
+        serverURL: "https://app.contractify.be",
         security: {
             oAuth2: "",
             personalAccessToken: "",
         },
-        serverURL: "https://app.contractify.be",
     });
 
     const res = await sdk.contractTypes.listContractTypes({
@@ -222,9 +216,47 @@ const httpClient = axios.create({
 
 const sdk = new ContractifyProduction({defaultClient: httpClient});
 ```
-
-
 <!-- End Custom HTTP Client -->
+
+
+
+<!-- Start Authentication -->
+
+# Authentication
+
+## Per-Client Security Schemes
+
+Your SDK supports the following security schemes globally:
+
+| Name                  | Type                  | Scheme                |
+| --------------------- | --------------------- | --------------------- |
+| `oAuth2`              | oauth2                | OAuth2 token          |
+| `personalAccessToken` | http                  | HTTP Bearer           |
+
+You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
+
+```typescript
+import { ContractifyProduction } from "contractify";
+
+(async () => {
+    const sdk = new ContractifyProduction({
+        security: {
+            oAuth2: "",
+            personalAccessToken: "",
+        },
+    });
+
+    const res = await sdk.contractTypes.listContractTypes({
+        company: 839467,
+    });
+
+    if (res.statusCode == 200) {
+        // handle response
+    }
+})();
+
+```
+<!-- End Authentication -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

@@ -3,13 +3,13 @@
  */
 
 import * as utils from "../internal/utils";
+import * as shared from "../sdk/models/shared";
 import { Contracts } from "./contracts";
 import { ContractTypes } from "./contracttypes";
 import { CustomFields } from "./customfields";
 import { Departments } from "./departments";
 import { Documents } from "./documents";
 import { LegalEntities } from "./legalentities";
-import * as shared from "./models/shared";
 import { Offices } from "./offices";
 import { Relations } from "./relations";
 import { Subfolders } from "./subfolders";
@@ -64,9 +64,9 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "2022-08-16";
-    sdkVersion = "1.1.0";
-    genVersion = "2.173.0";
-    userAgent = "speakeasy-sdk/typescript 1.1.0 2.173.0 2022-08-16 contractify";
+    sdkVersion = "2.0.0";
+    genVersion = "2.181.1";
+    userAgent = "speakeasy-sdk/typescript 2.0.0 2.181.1 2022-08-16 contractify";
     retryConfig?: utils.RetryConfig;
     public constructor(init?: Partial<SDKConfiguration>) {
         Object.assign(this, init);
@@ -130,10 +130,10 @@ export class ContractifyProduction {
     public customFields: CustomFields;
     public departments: Departments;
     public documents: Documents;
+    public subfolders: Subfolders;
     public legalEntities: LegalEntities;
     public offices: Offices;
     public relations: Relations;
-    public subfolders: Subfolders;
     public tasks: Tasks;
     public users: Users;
 
@@ -160,10 +160,10 @@ export class ContractifyProduction {
         this.customFields = new CustomFields(this.sdkConfiguration);
         this.departments = new Departments(this.sdkConfiguration);
         this.documents = new Documents(this.sdkConfiguration);
+        this.subfolders = new Subfolders(this.sdkConfiguration);
         this.legalEntities = new LegalEntities(this.sdkConfiguration);
         this.offices = new Offices(this.sdkConfiguration);
         this.relations = new Relations(this.sdkConfiguration);
-        this.subfolders = new Subfolders(this.sdkConfiguration);
         this.tasks = new Tasks(this.sdkConfiguration);
         this.users = new Users(this.sdkConfiguration);
     }

@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
@@ -27,7 +27,7 @@ export class UpdateDocumentRequest extends SpeakeasyBase {
 /**
  * Not Found
  */
-export class UpdateDocument404ApplicationJSON extends SpeakeasyBase {
+export class UpdateDocumentDocumentsResponse404ResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -36,7 +36,7 @@ export class UpdateDocument404ApplicationJSON extends SpeakeasyBase {
 /**
  * Forbidden
  */
-export class UpdateDocument403ApplicationJSON extends SpeakeasyBase {
+export class UpdateDocumentDocumentsResponseResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -45,7 +45,7 @@ export class UpdateDocument403ApplicationJSON extends SpeakeasyBase {
 /**
  * Unauthenticated
  */
-export class UpdateDocument401ApplicationJSON extends SpeakeasyBase {
+export class UpdateDocumentDocumentsResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -54,7 +54,7 @@ export class UpdateDocument401ApplicationJSON extends SpeakeasyBase {
 /**
  * OK
  */
-export class UpdateDocument200ApplicationJSON extends SpeakeasyBase {
+export class UpdateDocumentResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "data" })
     @Type(() => shared.DocumentRead)
@@ -62,6 +62,30 @@ export class UpdateDocument200ApplicationJSON extends SpeakeasyBase {
 }
 
 export class UpdateDocumentResponse extends SpeakeasyBase {
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    twoHundredApplicationJsonObject?: UpdateDocumentResponseBody;
+
+    /**
+     * Unauthenticated
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndOneApplicationJsonObject?: UpdateDocumentDocumentsResponseBody;
+
+    /**
+     * Forbidden
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndThreeApplicationJsonObject?: UpdateDocumentDocumentsResponseResponseBody;
+
+    /**
+     * Not Found
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndFourApplicationJsonObject?: UpdateDocumentDocumentsResponse404ResponseBody;
+
     /**
      * HTTP response content type for this operation
      */
@@ -79,28 +103,4 @@ export class UpdateDocumentResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
-
-    /**
-     * OK
-     */
-    @SpeakeasyMetadata()
-    updateDocument200ApplicationJSONObject?: UpdateDocument200ApplicationJSON;
-
-    /**
-     * Unauthenticated
-     */
-    @SpeakeasyMetadata()
-    updateDocument401ApplicationJSONObject?: UpdateDocument401ApplicationJSON;
-
-    /**
-     * Forbidden
-     */
-    @SpeakeasyMetadata()
-    updateDocument403ApplicationJSONObject?: UpdateDocument403ApplicationJSON;
-
-    /**
-     * Not Found
-     */
-    @SpeakeasyMetadata()
-    updateDocument404ApplicationJSONObject?: UpdateDocument404ApplicationJSON;
 }

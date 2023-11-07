@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
@@ -24,7 +24,7 @@ export class GetContractRequest extends SpeakeasyBase {
 /**
  * Not Found
  */
-export class GetContract404ApplicationJSON extends SpeakeasyBase {
+export class GetContractContractsResponse404ResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -33,7 +33,7 @@ export class GetContract404ApplicationJSON extends SpeakeasyBase {
 /**
  * Forbidden
  */
-export class GetContract403ApplicationJSON extends SpeakeasyBase {
+export class GetContractContractsResponseResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -42,7 +42,7 @@ export class GetContract403ApplicationJSON extends SpeakeasyBase {
 /**
  * Unauthenticated
  */
-export class GetContract401ApplicationJSON extends SpeakeasyBase {
+export class GetContractContractsResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -51,7 +51,7 @@ export class GetContract401ApplicationJSON extends SpeakeasyBase {
 /**
  * OK
  */
-export class GetContract200ApplicationJSON extends SpeakeasyBase {
+export class GetContractResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "data" })
     @Type(() => shared.ContractRead)
@@ -59,6 +59,30 @@ export class GetContract200ApplicationJSON extends SpeakeasyBase {
 }
 
 export class GetContractResponse extends SpeakeasyBase {
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    twoHundredApplicationJsonObject?: GetContractResponseBody;
+
+    /**
+     * Unauthenticated
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndOneApplicationJsonObject?: GetContractContractsResponseBody;
+
+    /**
+     * Forbidden
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndThreeApplicationJsonObject?: GetContractContractsResponseResponseBody;
+
+    /**
+     * Not Found
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndFourApplicationJsonObject?: GetContractContractsResponse404ResponseBody;
+
     /**
      * HTTP response content type for this operation
      */
@@ -76,28 +100,4 @@ export class GetContractResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
-
-    /**
-     * OK
-     */
-    @SpeakeasyMetadata()
-    getContract200ApplicationJSONObject?: GetContract200ApplicationJSON;
-
-    /**
-     * Unauthenticated
-     */
-    @SpeakeasyMetadata()
-    getContract401ApplicationJSONObject?: GetContract401ApplicationJSON;
-
-    /**
-     * Forbidden
-     */
-    @SpeakeasyMetadata()
-    getContract403ApplicationJSONObject?: GetContract403ApplicationJSON;
-
-    /**
-     * Not Found
-     */
-    @SpeakeasyMetadata()
-    getContract404ApplicationJSONObject?: GetContract404ApplicationJSON;
 }

@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
@@ -18,7 +18,7 @@ export class CreateContractRequest extends SpeakeasyBase {
     company: number;
 }
 
-export class CreateContract422ApplicationJSONErrors extends SpeakeasyBase {
+export class Errors extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "errors" })
     errors?: string[];
@@ -31,11 +31,11 @@ export class CreateContract422ApplicationJSONErrors extends SpeakeasyBase {
 /**
  * Invalid data posted
  */
-export class CreateContract422ApplicationJSON extends SpeakeasyBase {
-    @SpeakeasyMetadata({ elemType: CreateContract422ApplicationJSONErrors })
+export class CreateContractContractsResponse422ResponseBody extends SpeakeasyBase {
+    @SpeakeasyMetadata({ elemType: Errors })
     @Expose({ name: "errors" })
-    @Type(() => CreateContract422ApplicationJSONErrors)
-    errors?: CreateContract422ApplicationJSONErrors[];
+    @Type(() => Errors)
+    errors?: Errors[];
 
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
@@ -45,7 +45,7 @@ export class CreateContract422ApplicationJSON extends SpeakeasyBase {
 /**
  * Forbidden
  */
-export class CreateContract403ApplicationJSON extends SpeakeasyBase {
+export class CreateContractContractsResponseResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -54,7 +54,7 @@ export class CreateContract403ApplicationJSON extends SpeakeasyBase {
 /**
  * Unauthenticated
  */
-export class CreateContract401ApplicationJSON extends SpeakeasyBase {
+export class CreateContractContractsResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -63,7 +63,7 @@ export class CreateContract401ApplicationJSON extends SpeakeasyBase {
 /**
  * Created
  */
-export class CreateContract201ApplicationJSON extends SpeakeasyBase {
+export class CreateContractResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "data" })
     @Type(() => shared.ContractRead)
@@ -71,6 +71,30 @@ export class CreateContract201ApplicationJSON extends SpeakeasyBase {
 }
 
 export class CreateContractResponse extends SpeakeasyBase {
+    /**
+     * Created
+     */
+    @SpeakeasyMetadata()
+    twoHundredAndOneApplicationJsonObject?: CreateContractResponseBody;
+
+    /**
+     * Unauthenticated
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndOneApplicationJsonObject?: CreateContractContractsResponseBody;
+
+    /**
+     * Forbidden
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndThreeApplicationJsonObject?: CreateContractContractsResponseResponseBody;
+
+    /**
+     * Invalid data posted
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndTwentyTwoApplicationJsonObject?: CreateContractContractsResponse422ResponseBody;
+
     /**
      * HTTP response content type for this operation
      */
@@ -88,28 +112,4 @@ export class CreateContractResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
-
-    /**
-     * Created
-     */
-    @SpeakeasyMetadata()
-    createContract201ApplicationJSONObject?: CreateContract201ApplicationJSON;
-
-    /**
-     * Unauthenticated
-     */
-    @SpeakeasyMetadata()
-    createContract401ApplicationJSONObject?: CreateContract401ApplicationJSON;
-
-    /**
-     * Forbidden
-     */
-    @SpeakeasyMetadata()
-    createContract403ApplicationJSONObject?: CreateContract403ApplicationJSON;
-
-    /**
-     * Invalid data posted
-     */
-    @SpeakeasyMetadata()
-    createContract422ApplicationJSONObject?: CreateContract422ApplicationJSON;
 }

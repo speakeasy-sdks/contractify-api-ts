@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
@@ -18,7 +18,7 @@ export class CreateRelationRequest extends SpeakeasyBase {
     company: number;
 }
 
-export class CreateRelation422ApplicationJSONErrors extends SpeakeasyBase {
+export class CreateRelationErrors extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "errors" })
     errors?: string[];
@@ -31,11 +31,11 @@ export class CreateRelation422ApplicationJSONErrors extends SpeakeasyBase {
 /**
  * Invalid data posted
  */
-export class CreateRelation422ApplicationJSON extends SpeakeasyBase {
-    @SpeakeasyMetadata({ elemType: CreateRelation422ApplicationJSONErrors })
+export class CreateRelationRelationsResponse422ResponseBody extends SpeakeasyBase {
+    @SpeakeasyMetadata({ elemType: CreateRelationErrors })
     @Expose({ name: "errors" })
-    @Type(() => CreateRelation422ApplicationJSONErrors)
-    errors?: CreateRelation422ApplicationJSONErrors[];
+    @Type(() => CreateRelationErrors)
+    errors?: CreateRelationErrors[];
 
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
@@ -45,7 +45,7 @@ export class CreateRelation422ApplicationJSON extends SpeakeasyBase {
 /**
  * Forbidden
  */
-export class CreateRelation403ApplicationJSON extends SpeakeasyBase {
+export class CreateRelationRelationsResponseResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -54,7 +54,7 @@ export class CreateRelation403ApplicationJSON extends SpeakeasyBase {
 /**
  * Unauthenticated
  */
-export class CreateRelation401ApplicationJSON extends SpeakeasyBase {
+export class CreateRelationRelationsResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -63,7 +63,7 @@ export class CreateRelation401ApplicationJSON extends SpeakeasyBase {
 /**
  * Created
  */
-export class CreateRelation201ApplicationJSON extends SpeakeasyBase {
+export class CreateRelationResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "data" })
     @Type(() => shared.RelationRead)
@@ -71,6 +71,30 @@ export class CreateRelation201ApplicationJSON extends SpeakeasyBase {
 }
 
 export class CreateRelationResponse extends SpeakeasyBase {
+    /**
+     * Created
+     */
+    @SpeakeasyMetadata()
+    twoHundredAndOneApplicationJsonObject?: CreateRelationResponseBody;
+
+    /**
+     * Unauthenticated
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndOneApplicationJsonObject?: CreateRelationRelationsResponseBody;
+
+    /**
+     * Forbidden
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndThreeApplicationJsonObject?: CreateRelationRelationsResponseResponseBody;
+
+    /**
+     * Invalid data posted
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndTwentyTwoApplicationJsonObject?: CreateRelationRelationsResponse422ResponseBody;
+
     /**
      * HTTP response content type for this operation
      */
@@ -88,28 +112,4 @@ export class CreateRelationResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
-
-    /**
-     * Created
-     */
-    @SpeakeasyMetadata()
-    createRelation201ApplicationJSONObject?: CreateRelation201ApplicationJSON;
-
-    /**
-     * Unauthenticated
-     */
-    @SpeakeasyMetadata()
-    createRelation401ApplicationJSONObject?: CreateRelation401ApplicationJSON;
-
-    /**
-     * Forbidden
-     */
-    @SpeakeasyMetadata()
-    createRelation403ApplicationJSONObject?: CreateRelation403ApplicationJSON;
-
-    /**
-     * Invalid data posted
-     */
-    @SpeakeasyMetadata()
-    createRelation422ApplicationJSONObject?: CreateRelation422ApplicationJSON;
 }

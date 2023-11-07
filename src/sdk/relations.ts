@@ -3,9 +3,9 @@
  */
 
 import * as utils from "../internal/utils";
-import * as errors from "./models/errors";
-import * as operations from "./models/operations";
-import * as shared from "./models/shared";
+import * as errors from "../sdk/models/errors";
+import * as operations from "../sdk/models/operations";
+import * as shared from "../sdk/models/shared";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
@@ -88,9 +88,9 @@ export class Relations {
         switch (true) {
             case httpRes?.status == 201:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createRelation201ApplicationJSONObject = utils.objectToClass(
+                    res.twoHundredAndOneApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.CreateRelation201ApplicationJSON
+                        operations.CreateRelationResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -103,9 +103,9 @@ export class Relations {
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createRelation401ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndOneApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.CreateRelation401ApplicationJSON
+                        operations.CreateRelationRelationsResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -118,9 +118,9 @@ export class Relations {
                 break;
             case httpRes?.status == 403:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createRelation403ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndThreeApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.CreateRelation403ApplicationJSON
+                        operations.CreateRelationRelationsResponseResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -133,9 +133,9 @@ export class Relations {
                 break;
             case httpRes?.status == 422:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createRelation422ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndTwentyTwoApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.CreateRelation422ApplicationJSON
+                        operations.CreateRelationRelationsResponse422ResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -214,9 +214,9 @@ export class Relations {
                 break;
             case httpRes?.status == 400:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.deleteRelation400ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.DeleteRelation400ApplicationJSON
+                        operations.DeleteRelationResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -229,9 +229,9 @@ export class Relations {
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.deleteRelation401ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndOneApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.DeleteRelation401ApplicationJSON
+                        operations.DeleteRelationRelationsResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -244,9 +244,9 @@ export class Relations {
                 break;
             case httpRes?.status == 403:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.deleteRelation403ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndThreeApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.DeleteRelation403ApplicationJSON
+                        operations.DeleteRelationRelationsResponseResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -259,9 +259,9 @@ export class Relations {
                 break;
             case httpRes?.status == 404:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.deleteRelation404ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndFourApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.DeleteRelation404ApplicationJSON
+                        operations.DeleteRelationRelationsResponse404ResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -338,9 +338,9 @@ export class Relations {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getRelation200ApplicationJSONObject = utils.objectToClass(
+                    res.twoHundredApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.GetRelation200ApplicationJSON
+                        operations.GetRelationResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -353,9 +353,9 @@ export class Relations {
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getRelation401ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndOneApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.GetRelation401ApplicationJSON
+                        operations.GetRelationRelationsResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -368,9 +368,9 @@ export class Relations {
                 break;
             case httpRes?.status == 403:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getRelation403ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndThreeApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.GetRelation403ApplicationJSON
+                        operations.GetRelationRelationsResponseResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -383,9 +383,9 @@ export class Relations {
                 break;
             case httpRes?.status == 404:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getRelation404ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndFourApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.GetRelation404ApplicationJSON
+                        operations.GetRelationRelationsResponse404ResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -474,9 +474,9 @@ export class Relations {
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.listRelations401ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndOneApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.ListRelations401ApplicationJSON
+                        operations.ListRelationsResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -489,9 +489,9 @@ export class Relations {
                 break;
             case httpRes?.status == 403:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.listRelations403ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndThreeApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.ListRelations403ApplicationJSON
+                        operations.ListRelationsRelationsResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -583,9 +583,9 @@ export class Relations {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.updateRelation200ApplicationJSONObject = utils.objectToClass(
+                    res.twoHundredApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.UpdateRelation200ApplicationJSON
+                        operations.UpdateRelationResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -598,9 +598,9 @@ export class Relations {
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.updateRelation401ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndOneApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.UpdateRelation401ApplicationJSON
+                        operations.UpdateRelationRelationsResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -613,9 +613,9 @@ export class Relations {
                 break;
             case httpRes?.status == 403:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.updateRelation403ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndThreeApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.UpdateRelation403ApplicationJSON
+                        operations.UpdateRelationRelationsResponseResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -628,9 +628,9 @@ export class Relations {
                 break;
             case httpRes?.status == 404:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.updateRelation404ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndFourApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.UpdateRelation404ApplicationJSON
+                        operations.UpdateRelationRelationsResponse404ResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -643,9 +643,9 @@ export class Relations {
                 break;
             case httpRes?.status == 422:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.updateRelation422ApplicationJSONObject = utils.objectToClass(
+                    res.fourHundredAndTwentyTwoApplicationJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.UpdateRelation422ApplicationJSON
+                        operations.UpdateRelationRelationsResponse422ResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
