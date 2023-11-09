@@ -1,5 +1,5 @@
 # Users
-(*.users*)
+(*users*)
 
 ### Available Operations
 
@@ -25,7 +25,6 @@ import { ContractifyProduction } from "contractify";
 
   const res = await sdk.users.currentUser();
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -41,8 +40,12 @@ import { ContractifyProduction } from "contractify";
 
 ### Response
 
-**Promise<[operations.CurrentUserResponse](../../models/operations/currentuserresponse.md)>**
+**Promise<[operations.CurrentUserResponse](../../sdk/models/operations/currentuserresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## listUsers
 
@@ -65,7 +68,6 @@ import { ContractifyProduction } from "contractify";
     company: 606239,
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -74,13 +76,17 @@ import { ContractifyProduction } from "contractify";
 
 ### Parameters
 
-| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `request`                                                                  | [operations.ListUsersRequest](../../models/operations/listusersrequest.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
-| `config`                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)               | :heavy_minus_sign:                                                         | Available config options for making requests.                              |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `request`                                                                      | [operations.ListUsersRequest](../../sdk/models/operations/listusersrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |
 
 
 ### Response
 
-**Promise<[operations.ListUsersResponse](../../models/operations/listusersresponse.md)>**
+**Promise<[operations.ListUsersResponse](../../sdk/models/operations/listusersresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
