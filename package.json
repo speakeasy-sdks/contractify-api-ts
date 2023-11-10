@@ -1,6 +1,6 @@
 {
   "name": "contractify",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "author": "Contractify",
   "scripts": {
     "prepare": "tsc --build",
