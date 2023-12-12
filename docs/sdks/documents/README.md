@@ -17,11 +17,10 @@ Delete a document
 ```typescript
 import { ContractifyProduction } from "contractify";
 
-(async() => {
+async function run() {
   const sdk = new ContractifyProduction({
     security: {
-      oAuth2: "",
-      personalAccessToken: "",
+      oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
     },
   });
 
@@ -33,7 +32,9 @@ import { ContractifyProduction } from "contractify";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -62,11 +63,10 @@ Get information about a document
 ```typescript
 import { ContractifyProduction } from "contractify";
 
-(async() => {
+async function run() {
   const sdk = new ContractifyProduction({
     security: {
-      oAuth2: "",
-      personalAccessToken: "",
+      oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
     },
   });
 
@@ -78,7 +78,9 @@ import { ContractifyProduction } from "contractify";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -108,11 +110,10 @@ List all the documents within a company
 import { ContractifyProduction } from "contractify";
 import { EsigningStatus } from "contractify/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new ContractifyProduction({
     security: {
-      oAuth2: "",
-      personalAccessToken: "",
+      oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
     },
   });
 
@@ -123,7 +124,9 @@ import { EsigningStatus } from "contractify/dist/sdk/models/operations";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -152,11 +155,10 @@ Update a document
 ```typescript
 import { ContractifyProduction } from "contractify";
 
-(async() => {
+async function run() {
   const sdk = new ContractifyProduction({
     security: {
-      oAuth2: "",
-      personalAccessToken: "",
+      oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
     },
   });
 
@@ -185,7 +187,9 @@ import { ContractifyProduction } from "contractify";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

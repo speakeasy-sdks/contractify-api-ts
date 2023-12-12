@@ -1,6 +1,6 @@
 # contractify
 
-<!-- Start SDK Installation -->
+<!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
 ### NPM
@@ -14,20 +14,20 @@ npm add https://github.com/speakeasy-sdks/contractify-api-ts
 ```bash
 yarn add https://github.com/speakeasy-sdks/contractify-api-ts
 ```
-<!-- End SDK Installation -->
+<!-- End SDK Installation [installation] -->
 
+<!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
-<!-- Start SDK Example Usage -->
+
 ### Example
 
 ```typescript
 import { ContractifyProduction } from "contractify";
 
-(async () => {
+async function run() {
     const sdk = new ContractifyProduction({
         security: {
-            oAuth2: "",
-            personalAccessToken: "",
+            oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
         },
     });
 
@@ -38,14 +38,15 @@ import { ContractifyProduction } from "contractify";
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
 
-<!-- Start SDK Available Operations -->
+<!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
-
 
 ### [contractTypes](docs/sdks/contracttypes/README.md)
 
@@ -114,17 +115,13 @@ import { ContractifyProduction } from "contractify";
 
 * [currentUser](docs/sdks/users/README.md#currentuser) - Current User
 * [listUsers](docs/sdks/users/README.md#listusers) - List users
-<!-- End SDK Available Operations -->
+<!-- End Available Resources and Operations [operations] -->
 
 
 
-<!-- Start Dev Containers -->
-
-<!-- End Dev Containers -->
 
 
-
-<!-- Start Error Handling -->
+<!-- Start Error Handling [errors] -->
 ## Error Handling
 
 Handling errors in this SDK should largely match your expectations.  All operations return a response object or throw an error.  If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
@@ -138,11 +135,10 @@ Example
 ```typescript
 import { ContractifyProduction } from "contractify";
 
-(async () => {
+async function run() {
     const sdk = new ContractifyProduction({
         security: {
-            oAuth2: "",
-            personalAccessToken: "",
+            oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
         },
     });
 
@@ -151,19 +147,26 @@ import { ContractifyProduction } from "contractify";
         res = await sdk.contractTypes.listContractTypes({
             company: 839467,
         });
-    } catch (e) {}
+    } catch (err) {
+        if (err instanceof errors.SDKError) {
+            console.error(err); // handle exception
+            throw err;
+        }
+    }
 
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
-<!-- End Error Handling -->
+<!-- End Error Handling [errors] -->
 
 
 
-<!-- Start Server Selection -->
+<!-- Start Server Selection [server] -->
 ## Server Selection
 
 ### Select Server by Index
@@ -179,12 +182,11 @@ You can override the default server globally by passing a server index to the `s
 ```typescript
 import { ContractifyProduction } from "contractify";
 
-(async () => {
+async function run() {
     const sdk = new ContractifyProduction({
         serverIdx: 0,
         security: {
-            oAuth2: "",
-            personalAccessToken: "",
+            oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
         },
     });
 
@@ -195,7 +197,9 @@ import { ContractifyProduction } from "contractify";
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
 
@@ -206,12 +210,11 @@ The default server can also be overridden globally by passing a URL to the `serv
 ```typescript
 import { ContractifyProduction } from "contractify";
 
-(async () => {
+async function run() {
     const sdk = new ContractifyProduction({
         serverURL: "https://app.contractify.be",
         security: {
-            oAuth2: "",
-            personalAccessToken: "",
+            oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
         },
     });
 
@@ -222,23 +225,25 @@ import { ContractifyProduction } from "contractify";
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
-<!-- End Server Selection -->
+<!-- End Server Selection [server] -->
 
 
 
-<!-- Start Custom HTTP Client -->
+<!-- Start Custom HTTP Client [http-client] -->
 ## Custom HTTP Client
 
-The Typescript SDK makes API calls using the (axios)[https://axios-http.com/docs/intro] HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `AxiosInstance` object.
+The Typescript SDK makes API calls using the [axios](https://axios-http.com/docs/intro) HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `AxiosInstance` object.
 
 For example, you could specify a header for every request that your sdk makes as follows:
 
 ```typescript
-from contractify import ContractifyProduction;
-import axios;
+import { contractify } from "ContractifyProduction";
+import axios from "axios";
 
 const httpClient = axios.create({
     headers: {'x-custom-header': 'someValue'}
@@ -246,11 +251,11 @@ const httpClient = axios.create({
 
 const sdk = new ContractifyProduction({defaultClient: httpClient});
 ```
-<!-- End Custom HTTP Client -->
+<!-- End Custom HTTP Client [http-client] -->
 
 
 
-<!-- Start Authentication -->
+<!-- Start Authentication [security] -->
 ## Authentication
 
 ### Per-Client Security Schemes
@@ -266,11 +271,10 @@ You can set the security parameters through the `security` optional parameter wh
 ```typescript
 import { ContractifyProduction } from "contractify";
 
-(async () => {
+async function run() {
     const sdk = new ContractifyProduction({
         security: {
-            oAuth2: "",
-            personalAccessToken: "",
+            oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
         },
     });
 
@@ -281,10 +285,12 @@ import { ContractifyProduction } from "contractify";
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
-<!-- End Authentication -->
+<!-- End Authentication [security] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

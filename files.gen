@@ -110,7 +110,6 @@ src/sdk/models/shared/security.ts
 src/sdk/models/errors/index.ts
 src/sdk/models/operations/index.ts
 src/sdk/models/shared/index.ts
-USAGE.md
 docs/sdk/models/operations/listcontracttypesrequest.md
 docs/sdk/models/operations/listcontracttypescontracttypesresponsebody.md
 docs/sdk/models/operations/listcontracttypesresponsebody.md
@@ -376,4 +375,5 @@ docs/sdks/offices/README.md
 docs/sdks/relations/README.md
 docs/sdks/tasks/README.md
 docs/sdks/users/README.md
+USAGE.md
 .gitattributes

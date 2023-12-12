@@ -18,11 +18,10 @@ Create a department
 ```typescript
 import { ContractifyProduction } from "contractify";
 
-(async() => {
+async function run() {
   const sdk = new ContractifyProduction({
     security: {
-      oAuth2: "",
-      personalAccessToken: "",
+      oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
     },
   });
 
@@ -36,7 +35,9 @@ import { ContractifyProduction } from "contractify";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -65,11 +66,10 @@ Delete a department
 ```typescript
 import { ContractifyProduction } from "contractify";
 
-(async() => {
+async function run() {
   const sdk = new ContractifyProduction({
     security: {
-      oAuth2: "",
-      personalAccessToken: "",
+      oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
     },
   });
 
@@ -81,7 +81,9 @@ import { ContractifyProduction } from "contractify";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -110,11 +112,10 @@ Get information about a department
 ```typescript
 import { ContractifyProduction } from "contractify";
 
-(async() => {
+async function run() {
   const sdk = new ContractifyProduction({
     security: {
-      oAuth2: "",
-      personalAccessToken: "",
+      oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
     },
   });
 
@@ -126,7 +127,9 @@ import { ContractifyProduction } from "contractify";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -155,11 +158,10 @@ List all the departments within a company
 ```typescript
 import { ContractifyProduction } from "contractify";
 
-(async() => {
+async function run() {
   const sdk = new ContractifyProduction({
     security: {
-      oAuth2: "",
-      personalAccessToken: "",
+      oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
     },
   });
 
@@ -170,7 +172,9 @@ import { ContractifyProduction } from "contractify";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -199,11 +203,10 @@ Update a department
 ```typescript
 import { ContractifyProduction } from "contractify";
 
-(async() => {
+async function run() {
   const sdk = new ContractifyProduction({
     security: {
-      oAuth2: "",
-      personalAccessToken: "",
+      oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
     },
   });
 
@@ -218,7 +221,9 @@ import { ContractifyProduction } from "contractify";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

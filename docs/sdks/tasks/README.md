@@ -20,11 +20,10 @@ import { ContractifyProduction } from "contractify";
 import { TaskWriteDueDateDependsOn, TaskWriteStatus } from "contractify/dist/sdk/models/shared";
 import { RFCDate } from "contractify/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new ContractifyProduction({
     security: {
-      oAuth2: "",
-      personalAccessToken: "",
+      oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
     },
   });
 
@@ -47,7 +46,9 @@ import { RFCDate } from "contractify/dist/sdk/types";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -76,11 +77,10 @@ Delete a task
 ```typescript
 import { ContractifyProduction } from "contractify";
 
-(async() => {
+async function run() {
   const sdk = new ContractifyProduction({
     security: {
-      oAuth2: "",
-      personalAccessToken: "",
+      oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
     },
   });
 
@@ -92,7 +92,9 @@ import { ContractifyProduction } from "contractify";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -121,11 +123,10 @@ Get a task
 ```typescript
 import { ContractifyProduction } from "contractify";
 
-(async() => {
+async function run() {
   const sdk = new ContractifyProduction({
     security: {
-      oAuth2: "",
-      personalAccessToken: "",
+      oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
     },
   });
 
@@ -137,7 +138,9 @@ import { ContractifyProduction } from "contractify";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -166,11 +169,10 @@ List all tasks within a company
 ```typescript
 import { ContractifyProduction } from "contractify";
 
-(async() => {
+async function run() {
   const sdk = new ContractifyProduction({
     security: {
-      oAuth2: "",
-      personalAccessToken: "",
+      oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
     },
   });
 
@@ -181,7 +183,9 @@ import { ContractifyProduction } from "contractify";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -212,11 +216,10 @@ import { ContractifyProduction } from "contractify";
 import { TaskUpdateDueDateDependsOn, TaskUpdateStatus } from "contractify/dist/sdk/models/shared";
 import { RFCDate } from "contractify/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new ContractifyProduction({
     security: {
-      oAuth2: "",
-      personalAccessToken: "",
+      oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
     },
   });
 
@@ -239,7 +242,9 @@ import { RFCDate } from "contractify/dist/sdk/types";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

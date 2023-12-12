@@ -14,11 +14,10 @@ List all the legal entities within a company
 ```typescript
 import { ContractifyProduction } from "contractify";
 
-(async() => {
+async function run() {
   const sdk = new ContractifyProduction({
     security: {
-      oAuth2: "",
-      personalAccessToken: "",
+      oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
     },
   });
 
@@ -29,7 +28,9 @@ import { ContractifyProduction } from "contractify";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
