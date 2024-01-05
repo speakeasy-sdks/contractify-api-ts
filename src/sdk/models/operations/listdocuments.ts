@@ -3,24 +3,14 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose } from "class-transformer";
-
-export class ListDocumentsSecurity extends SpeakeasyBase {
-    @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2;name=Authorization" })
-    oAuth2: string;
-
-    @SpeakeasyMetadata({
-        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-    })
-    personalAccessToken: string;
-}
 
 /**
  * Return documents currently having this status in the eSigning process, can be comma separated
  */
-export enum ListDocumentsEsigningStatus {
+export enum EsigningStatus {
     NotSent = "not_sent",
     SentToLegal = "sent_to_legal",
     LegalDeclined = "legal_declined",
@@ -42,7 +32,7 @@ export class ListDocumentsRequest extends SpeakeasyBase {
      * Return documents currently having this status in the eSigning process, can be comma separated
      */
     @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=esigning_status" })
-    esigningStatus?: ListDocumentsEsigningStatus;
+    esigningStatus?: EsigningStatus;
 
     /**
      * Return documents where e-signing was updated after the given date
@@ -72,7 +62,7 @@ export class ListDocumentsRequest extends SpeakeasyBase {
 /**
  * Forbidden
  */
-export class ListDocuments403ApplicationJSON extends SpeakeasyBase {
+export class ListDocumentsDocumentsResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -81,13 +71,28 @@ export class ListDocuments403ApplicationJSON extends SpeakeasyBase {
 /**
  * Unauthenticated
  */
-export class ListDocuments401ApplicationJSON extends SpeakeasyBase {
+export class ListDocumentsResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
 }
 
 export class ListDocumentsResponse extends SpeakeasyBase {
+    /**
+     * Unauthenticated
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndOneApplicationJsonObject?: ListDocumentsResponseBody;
+
+    /**
+     * Forbidden
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndThreeApplicationJsonObject?: ListDocumentsDocumentsResponseBody;
+
+    /**
+     * HTTP response content type for this operation
+     */
     @SpeakeasyMetadata()
     contentType: string;
 
@@ -97,21 +102,15 @@ export class ListDocumentsResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     documentCollection?: shared.DocumentCollection;
 
+    /**
+     * HTTP response status code for this operation
+     */
     @SpeakeasyMetadata()
     statusCode: number;
 
-    @SpeakeasyMetadata()
-    rawResponse?: AxiosResponse;
-
     /**
-     * Unauthenticated
+     * Raw HTTP response; suitable for custom response parsing
      */
     @SpeakeasyMetadata()
-    listDocuments401ApplicationJSONObject?: ListDocuments401ApplicationJSON;
-
-    /**
-     * Forbidden
-     */
-    @SpeakeasyMetadata()
-    listDocuments403ApplicationJSONObject?: ListDocuments403ApplicationJSON;
+    rawResponse: AxiosResponse;
 }

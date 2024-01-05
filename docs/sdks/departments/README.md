@@ -1,4 +1,5 @@
-# departments
+# Departments
+(*departments*)
 
 ### Available Operations
 
@@ -16,38 +17,45 @@ Create a department
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { CreateDepartmentResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction();
+async function run() {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+    },
+  });
 
-sdk.departments.createDepartment({
-  departmentWrite: {
-    name: "Sales",
-  },
-  company: 264555,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: CreateDepartmentResponse) => {
+  const res = await sdk.departments.createDepartment({
+    departmentWrite: {
+      name: "Sales",
+    },
+    company: 33324,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `request`                                                                                  | [operations.CreateDepartmentRequest](../../models/operations/createdepartmentrequest.md)   | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
-| `security`                                                                                 | [operations.CreateDepartmentSecurity](../../models/operations/createdepartmentsecurity.md) | :heavy_check_mark:                                                                         | The security requirements to use for the request.                                          |
-| `config`                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                               | :heavy_minus_sign:                                                                         | Available config options for making requests.                                              |
+| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `request`                                                                                    | [operations.CreateDepartmentRequest](../../sdk/models/operations/createdepartmentrequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
+| `config`                                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                 | :heavy_minus_sign:                                                                           | Available config options for making requests.                                                |
 
 
 ### Response
 
-**Promise<[operations.CreateDepartmentResponse](../../models/operations/createdepartmentresponse.md)>**
+**Promise<[operations.CreateDepartmentResponse](../../sdk/models/operations/createdepartmentresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## deleteDepartment
 
@@ -57,36 +65,43 @@ Delete a department
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { DeleteDepartmentResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction();
+async function run() {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+    },
+  });
 
-sdk.departments.deleteDepartment({
-  company: 186332,
-  department: 774234,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: DeleteDepartmentResponse) => {
+  const res = await sdk.departments.deleteDepartment({
+    company: 701942,
+    department: 751163,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `request`                                                                                  | [operations.DeleteDepartmentRequest](../../models/operations/deletedepartmentrequest.md)   | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
-| `security`                                                                                 | [operations.DeleteDepartmentSecurity](../../models/operations/deletedepartmentsecurity.md) | :heavy_check_mark:                                                                         | The security requirements to use for the request.                                          |
-| `config`                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                               | :heavy_minus_sign:                                                                         | Available config options for making requests.                                              |
+| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `request`                                                                                    | [operations.DeleteDepartmentRequest](../../sdk/models/operations/deletedepartmentrequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
+| `config`                                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                 | :heavy_minus_sign:                                                                           | Available config options for making requests.                                                |
 
 
 ### Response
 
-**Promise<[operations.DeleteDepartmentResponse](../../models/operations/deletedepartmentresponse.md)>**
+**Promise<[operations.DeleteDepartmentResponse](../../sdk/models/operations/deletedepartmentresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getDepartment
 
@@ -96,36 +111,43 @@ Get information about a department
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { GetDepartmentResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction();
+async function run() {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+    },
+  });
 
-sdk.departments.getDepartment({
-  company: 736918,
-  department: 456150,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: GetDepartmentResponse) => {
+  const res = await sdk.departments.getDepartment({
+    company: 255130,
+    department: 855529,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `request`                                                                            | [operations.GetDepartmentRequest](../../models/operations/getdepartmentrequest.md)   | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
-| `security`                                                                           | [operations.GetDepartmentSecurity](../../models/operations/getdepartmentsecurity.md) | :heavy_check_mark:                                                                   | The security requirements to use for the request.                                    |
-| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `request`                                                                              | [operations.GetDepartmentRequest](../../sdk/models/operations/getdepartmentrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
+| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
 
 
 ### Response
 
-**Promise<[operations.GetDepartmentResponse](../../models/operations/getdepartmentresponse.md)>**
+**Promise<[operations.GetDepartmentResponse](../../sdk/models/operations/getdepartmentresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## listDepartments
 
@@ -135,35 +157,42 @@ List all the departments within a company
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { ListDepartmentsResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction();
+async function run() {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+    },
+  });
 
-sdk.departments.listDepartments({
-  company: 216550,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: ListDepartmentsResponse) => {
+  const res = await sdk.departments.listDepartments({
+    company: 117069,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `request`                                                                                | [operations.ListDepartmentsRequest](../../models/operations/listdepartmentsrequest.md)   | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
-| `security`                                                                               | [operations.ListDepartmentsSecurity](../../models/operations/listdepartmentssecurity.md) | :heavy_check_mark:                                                                       | The security requirements to use for the request.                                        |
-| `config`                                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                             | :heavy_minus_sign:                                                                       | Available config options for making requests.                                            |
+| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `request`                                                                                  | [operations.ListDepartmentsRequest](../../sdk/models/operations/listdepartmentsrequest.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
+| `config`                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                               | :heavy_minus_sign:                                                                         | Available config options for making requests.                                              |
 
 
 ### Response
 
-**Promise<[operations.ListDepartmentsResponse](../../models/operations/listdepartmentsresponse.md)>**
+**Promise<[operations.ListDepartmentsResponse](../../sdk/models/operations/listdepartmentsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## updateDepartment
 
@@ -173,36 +202,43 @@ Update a department
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { UpdateDepartmentResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction();
+async function run() {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+    },
+  });
 
-sdk.departments.updateDepartment({
-  departmentWrite: {
-    name: "Sales",
-  },
-  company: 568434,
-  department: 135218,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: UpdateDepartmentResponse) => {
+  const res = await sdk.departments.updateDepartment({
+    departmentWrite: {
+      name: "Sales",
+    },
+    company: 431122,
+    department: 2342,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `request`                                                                                  | [operations.UpdateDepartmentRequest](../../models/operations/updatedepartmentrequest.md)   | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
-| `security`                                                                                 | [operations.UpdateDepartmentSecurity](../../models/operations/updatedepartmentsecurity.md) | :heavy_check_mark:                                                                         | The security requirements to use for the request.                                          |
-| `config`                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                               | :heavy_minus_sign:                                                                         | Available config options for making requests.                                              |
+| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `request`                                                                                    | [operations.UpdateDepartmentRequest](../../sdk/models/operations/updatedepartmentrequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
+| `config`                                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                 | :heavy_minus_sign:                                                                           | Available config options for making requests.                                                |
 
 
 ### Response
 
-**Promise<[operations.UpdateDepartmentResponse](../../models/operations/updatedepartmentresponse.md)>**
+**Promise<[operations.UpdateDepartmentResponse](../../sdk/models/operations/updatedepartmentresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |

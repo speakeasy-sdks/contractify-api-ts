@@ -6,9 +6,6 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { DepartmentRead } from "./departmentread";
 import { Expose, Type } from "class-transformer";
 
-/**
- * OK
- */
 export class DepartmentCollection extends SpeakeasyBase {
     @SpeakeasyMetadata({ elemType: DepartmentRead })
     @Expose({ name: "data" })

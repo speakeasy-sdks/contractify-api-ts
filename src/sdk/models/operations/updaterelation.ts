@@ -3,19 +3,9 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
-
-export class UpdateRelationSecurity extends SpeakeasyBase {
-    @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2;name=Authorization" })
-    oAuth2: string;
-
-    @SpeakeasyMetadata({
-        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-    })
-    personalAccessToken: string;
-}
 
 export class UpdateRelationRequest extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "request, media_type=application/json" })
@@ -34,7 +24,7 @@ export class UpdateRelationRequest extends SpeakeasyBase {
     relation: number;
 }
 
-export class UpdateRelation422ApplicationJSONErrors extends SpeakeasyBase {
+export class UpdateRelationErrors extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "errors" })
     errors?: string[];
@@ -47,11 +37,11 @@ export class UpdateRelation422ApplicationJSONErrors extends SpeakeasyBase {
 /**
  * Invalid data posted
  */
-export class UpdateRelation422ApplicationJSON extends SpeakeasyBase {
-    @SpeakeasyMetadata({ elemType: UpdateRelation422ApplicationJSONErrors })
+export class UpdateRelationRelationsResponse422ResponseBody extends SpeakeasyBase {
+    @SpeakeasyMetadata({ elemType: UpdateRelationErrors })
     @Expose({ name: "errors" })
-    @Type(() => UpdateRelation422ApplicationJSONErrors)
-    errors?: UpdateRelation422ApplicationJSONErrors[];
+    @Type(() => UpdateRelationErrors)
+    errors?: UpdateRelationErrors[];
 
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
@@ -61,7 +51,7 @@ export class UpdateRelation422ApplicationJSON extends SpeakeasyBase {
 /**
  * Not Found
  */
-export class UpdateRelation404ApplicationJSON extends SpeakeasyBase {
+export class UpdateRelationRelationsResponse404ResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -70,7 +60,7 @@ export class UpdateRelation404ApplicationJSON extends SpeakeasyBase {
 /**
  * Forbidden
  */
-export class UpdateRelation403ApplicationJSON extends SpeakeasyBase {
+export class UpdateRelationRelationsResponseResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -79,7 +69,7 @@ export class UpdateRelation403ApplicationJSON extends SpeakeasyBase {
 /**
  * Unauthenticated
  */
-export class UpdateRelation401ApplicationJSON extends SpeakeasyBase {
+export class UpdateRelationRelationsResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -88,7 +78,7 @@ export class UpdateRelation401ApplicationJSON extends SpeakeasyBase {
 /**
  * OK
  */
-export class UpdateRelation200ApplicationJSON extends SpeakeasyBase {
+export class UpdateRelationResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "data" })
     @Type(() => shared.RelationRead)
@@ -96,42 +86,51 @@ export class UpdateRelation200ApplicationJSON extends SpeakeasyBase {
 }
 
 export class UpdateRelationResponse extends SpeakeasyBase {
-    @SpeakeasyMetadata()
-    contentType: string;
-
-    @SpeakeasyMetadata()
-    statusCode: number;
-
-    @SpeakeasyMetadata()
-    rawResponse?: AxiosResponse;
-
     /**
      * OK
      */
     @SpeakeasyMetadata()
-    updateRelation200ApplicationJSONObject?: UpdateRelation200ApplicationJSON;
+    twoHundredApplicationJsonObject?: UpdateRelationResponseBody;
 
     /**
      * Unauthenticated
      */
     @SpeakeasyMetadata()
-    updateRelation401ApplicationJSONObject?: UpdateRelation401ApplicationJSON;
+    fourHundredAndOneApplicationJsonObject?: UpdateRelationRelationsResponseBody;
 
     /**
      * Forbidden
      */
     @SpeakeasyMetadata()
-    updateRelation403ApplicationJSONObject?: UpdateRelation403ApplicationJSON;
+    fourHundredAndThreeApplicationJsonObject?: UpdateRelationRelationsResponseResponseBody;
 
     /**
      * Not Found
      */
     @SpeakeasyMetadata()
-    updateRelation404ApplicationJSONObject?: UpdateRelation404ApplicationJSON;
+    fourHundredAndFourApplicationJsonObject?: UpdateRelationRelationsResponse404ResponseBody;
 
     /**
      * Invalid data posted
      */
     @SpeakeasyMetadata()
-    updateRelation422ApplicationJSONObject?: UpdateRelation422ApplicationJSON;
+    fourHundredAndTwentyTwoApplicationJsonObject?: UpdateRelationRelationsResponse422ResponseBody;
+
+    /**
+     * HTTP response content type for this operation
+     */
+    @SpeakeasyMetadata()
+    contentType: string;
+
+    /**
+     * HTTP response status code for this operation
+     */
+    @SpeakeasyMetadata()
+    statusCode: number;
+
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
+    @SpeakeasyMetadata()
+    rawResponse: AxiosResponse;
 }

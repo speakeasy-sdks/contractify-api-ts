@@ -7,9 +7,6 @@ import { CustomFieldRead } from "./customfieldread";
 import { Pagination } from "./pagination";
 import { Expose, Type } from "class-transformer";
 
-/**
- * OK
- */
 export class CustomFieldCollection extends SpeakeasyBase {
     @SpeakeasyMetadata({ elemType: CustomFieldRead })
     @Expose({ name: "data" })

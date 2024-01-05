@@ -1,4 +1,5 @@
-# customFields
+# CustomFields
+(*customFields*)
 
 ### Available Operations
 
@@ -12,32 +13,39 @@ List all the custom fields within a company
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { ListCustomFieldsResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction();
+async function run() {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+    },
+  });
 
-sdk.customFields.listCustomFields({
-  company: 473600,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: ListCustomFieldsResponse) => {
+  const res = await sdk.customFields.listCustomFields({
+    company: 318971,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `request`                                                                                  | [operations.ListCustomFieldsRequest](../../models/operations/listcustomfieldsrequest.md)   | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
-| `security`                                                                                 | [operations.ListCustomFieldsSecurity](../../models/operations/listcustomfieldssecurity.md) | :heavy_check_mark:                                                                         | The security requirements to use for the request.                                          |
-| `config`                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                               | :heavy_minus_sign:                                                                         | Available config options for making requests.                                              |
+| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `request`                                                                                    | [operations.ListCustomFieldsRequest](../../sdk/models/operations/listcustomfieldsrequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
+| `config`                                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                 | :heavy_minus_sign:                                                                           | Available config options for making requests.                                                |
 
 
 ### Response
 
-**Promise<[operations.ListCustomFieldsResponse](../../models/operations/listcustomfieldsresponse.md)>**
+**Promise<[operations.ListCustomFieldsResponse](../../sdk/models/operations/listcustomfieldsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |

@@ -3,19 +3,9 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose } from "class-transformer";
-
-export class ListUsersSecurity extends SpeakeasyBase {
-    @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2;name=Authorization" })
-    oAuth2: string;
-
-    @SpeakeasyMetadata({
-        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-    })
-    personalAccessToken: string;
-}
 
 export class ListUsersRequest extends SpeakeasyBase {
     /**
@@ -34,7 +24,7 @@ export class ListUsersRequest extends SpeakeasyBase {
 /**
  * Forbidden
  */
-export class ListUsers403ApplicationJSON extends SpeakeasyBase {
+export class ListUsersUsersResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -43,37 +33,46 @@ export class ListUsers403ApplicationJSON extends SpeakeasyBase {
 /**
  * Unauthenticated
  */
-export class ListUsers401ApplicationJSON extends SpeakeasyBase {
+export class ListUsersResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
 }
 
 export class ListUsersResponse extends SpeakeasyBase {
+    /**
+     * Unauthenticated
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndOneApplicationJsonObject?: ListUsersResponseBody;
+
+    /**
+     * Forbidden
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndThreeApplicationJsonObject?: ListUsersUsersResponseBody;
+
+    /**
+     * HTTP response content type for this operation
+     */
     @SpeakeasyMetadata()
     contentType: string;
 
+    /**
+     * HTTP response status code for this operation
+     */
     @SpeakeasyMetadata()
     statusCode: number;
 
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
     @SpeakeasyMetadata()
-    rawResponse?: AxiosResponse;
+    rawResponse: AxiosResponse;
 
     /**
      * OK
      */
     @SpeakeasyMetadata()
     userCollection?: shared.UserCollection;
-
-    /**
-     * Unauthenticated
-     */
-    @SpeakeasyMetadata()
-    listUsers401ApplicationJSONObject?: ListUsers401ApplicationJSON;
-
-    /**
-     * Forbidden
-     */
-    @SpeakeasyMetadata()
-    listUsers403ApplicationJSONObject?: ListUsers403ApplicationJSON;
 }

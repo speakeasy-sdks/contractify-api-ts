@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { RFCDate } from "../../types";
+import { RFCDate } from "../../../sdk/types";
 import { ContractDocumentRead } from "./contractdocumentread";
 import { ContractPhase } from "./contractphase";
 import { ContractRenewal } from "./contractrenewal";
@@ -54,6 +54,7 @@ export class ContractRead extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "end_date" })
+    @Type(() => String)
     @Transform(({ value }) => new RFCDate(value), { toClassOnly: true })
     endDate?: RFCDate;
 
@@ -103,6 +104,7 @@ export class ContractRead extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "start_date" })
+    @Type(() => String)
     @Transform(({ value }) => new RFCDate(value), { toClassOnly: true })
     startDate?: RFCDate;
 

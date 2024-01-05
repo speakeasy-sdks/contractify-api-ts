@@ -1,4 +1,5 @@
-# contractTypes
+# ContractTypes
+(*contractTypes*)
 
 ### Available Operations
 
@@ -12,32 +13,39 @@ List all the contract types within a company
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { ListContractTypesResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction();
+async function run() {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+    },
+  });
 
-sdk.contractTypes.listContractTypes({
-  company: 592845,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: ListContractTypesResponse) => {
+  const res = await sdk.contractTypes.listContractTypes({
+    company: 839467,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
-| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `request`                                                                                    | [operations.ListContractTypesRequest](../../models/operations/listcontracttypesrequest.md)   | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
-| `security`                                                                                   | [operations.ListContractTypesSecurity](../../models/operations/listcontracttypessecurity.md) | :heavy_check_mark:                                                                           | The security requirements to use for the request.                                            |
-| `config`                                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                 | :heavy_minus_sign:                                                                           | Available config options for making requests.                                                |
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `request`                                                                                      | [operations.ListContractTypesRequest](../../sdk/models/operations/listcontracttypesrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
+| `config`                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                   | :heavy_minus_sign:                                                                             | Available config options for making requests.                                                  |
 
 
 ### Response
 
-**Promise<[operations.ListContractTypesResponse](../../models/operations/listcontracttypesresponse.md)>**
+**Promise<[operations.ListContractTypesResponse](../../sdk/models/operations/listcontracttypesresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |

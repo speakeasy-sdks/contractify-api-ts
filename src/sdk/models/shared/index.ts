@@ -3,6 +3,7 @@
  */
 
 export * from "./address";
+export * from "./companyread";
 export * from "./contractautomaticrenewal";
 export * from "./contractcollection";
 export * from "./contractdocumentread";
@@ -36,6 +37,7 @@ export * from "./pagination";
 export * from "./relationcollection";
 export * from "./relationread";
 export * from "./relationwrite";
+export * from "./security";
 export * from "./taskcollection";
 export * from "./taskread";
 export * from "./taskupdate";

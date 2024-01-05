@@ -3,19 +3,9 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
-
-export class CreateTaskSecurity extends SpeakeasyBase {
-    @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2;name=Authorization" })
-    oAuth2: string;
-
-    @SpeakeasyMetadata({
-        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-    })
-    personalAccessToken: string;
-}
 
 export class CreateTaskRequest extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "request, media_type=application/json" })
@@ -28,7 +18,7 @@ export class CreateTaskRequest extends SpeakeasyBase {
     company: number;
 }
 
-export class CreateTask422ApplicationJSONErrors extends SpeakeasyBase {
+export class CreateTaskErrors extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "errors" })
     errors?: string[];
@@ -41,11 +31,11 @@ export class CreateTask422ApplicationJSONErrors extends SpeakeasyBase {
 /**
  * Invalid data posted
  */
-export class CreateTask422ApplicationJSON extends SpeakeasyBase {
-    @SpeakeasyMetadata({ elemType: CreateTask422ApplicationJSONErrors })
+export class CreateTaskTasksResponse422ResponseBody extends SpeakeasyBase {
+    @SpeakeasyMetadata({ elemType: CreateTaskErrors })
     @Expose({ name: "errors" })
-    @Type(() => CreateTask422ApplicationJSONErrors)
-    errors?: CreateTask422ApplicationJSONErrors[];
+    @Type(() => CreateTaskErrors)
+    errors?: CreateTaskErrors[];
 
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
@@ -55,7 +45,7 @@ export class CreateTask422ApplicationJSON extends SpeakeasyBase {
 /**
  * Forbidden
  */
-export class CreateTask403ApplicationJSON extends SpeakeasyBase {
+export class CreateTaskTasksResponseResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -64,7 +54,7 @@ export class CreateTask403ApplicationJSON extends SpeakeasyBase {
 /**
  * Unauthenticated
  */
-export class CreateTask401ApplicationJSON extends SpeakeasyBase {
+export class CreateTaskTasksResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -73,7 +63,7 @@ export class CreateTask401ApplicationJSON extends SpeakeasyBase {
 /**
  * OK
  */
-export class CreateTask200ApplicationJSON extends SpeakeasyBase {
+export class CreateTaskResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "data" })
     @Type(() => shared.TaskRead)
@@ -81,36 +71,45 @@ export class CreateTask200ApplicationJSON extends SpeakeasyBase {
 }
 
 export class CreateTaskResponse extends SpeakeasyBase {
-    @SpeakeasyMetadata()
-    contentType: string;
-
-    @SpeakeasyMetadata()
-    statusCode: number;
-
-    @SpeakeasyMetadata()
-    rawResponse?: AxiosResponse;
-
     /**
      * OK
      */
     @SpeakeasyMetadata()
-    createTask200ApplicationJSONObject?: CreateTask200ApplicationJSON;
+    twoHundredApplicationJsonObject?: CreateTaskResponseBody;
 
     /**
      * Unauthenticated
      */
     @SpeakeasyMetadata()
-    createTask401ApplicationJSONObject?: CreateTask401ApplicationJSON;
+    fourHundredAndOneApplicationJsonObject?: CreateTaskTasksResponseBody;
 
     /**
      * Forbidden
      */
     @SpeakeasyMetadata()
-    createTask403ApplicationJSONObject?: CreateTask403ApplicationJSON;
+    fourHundredAndThreeApplicationJsonObject?: CreateTaskTasksResponseResponseBody;
 
     /**
      * Invalid data posted
      */
     @SpeakeasyMetadata()
-    createTask422ApplicationJSONObject?: CreateTask422ApplicationJSON;
+    fourHundredAndTwentyTwoApplicationJsonObject?: CreateTaskTasksResponse422ResponseBody;
+
+    /**
+     * HTTP response content type for this operation
+     */
+    @SpeakeasyMetadata()
+    contentType: string;
+
+    /**
+     * HTTP response status code for this operation
+     */
+    @SpeakeasyMetadata()
+    statusCode: number;
+
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
+    @SpeakeasyMetadata()
+    rawResponse: AxiosResponse;
 }

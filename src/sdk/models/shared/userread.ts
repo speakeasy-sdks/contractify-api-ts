@@ -5,7 +5,7 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose, Transform } from "class-transformer";
 
-export enum UserReadRole {
+export enum Role {
     Admin = "admin",
     Manager = "manager",
     User = "user",
@@ -31,5 +31,5 @@ export class UserRead extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "role" })
-    role?: UserReadRole;
+    role?: Role;
 }

@@ -3,19 +3,9 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose } from "class-transformer";
-
-export class ListOfficesSecurity extends SpeakeasyBase {
-    @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2;name=Authorization" })
-    oAuth2: string;
-
-    @SpeakeasyMetadata({
-        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-    })
-    personalAccessToken: string;
-}
 
 export class ListOfficesRequest extends SpeakeasyBase {
     /**
@@ -28,7 +18,7 @@ export class ListOfficesRequest extends SpeakeasyBase {
 /**
  * Forbidden
  */
-export class ListOffices403ApplicationJSON extends SpeakeasyBase {
+export class ListOfficesOfficesResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -37,13 +27,28 @@ export class ListOffices403ApplicationJSON extends SpeakeasyBase {
 /**
  * Unauthenticated
  */
-export class ListOffices401ApplicationJSON extends SpeakeasyBase {
+export class ListOfficesResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
 }
 
 export class ListOfficesResponse extends SpeakeasyBase {
+    /**
+     * Unauthenticated
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndOneApplicationJsonObject?: ListOfficesResponseBody;
+
+    /**
+     * Forbidden
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndThreeApplicationJsonObject?: ListOfficesOfficesResponseBody;
+
+    /**
+     * HTTP response content type for this operation
+     */
     @SpeakeasyMetadata()
     contentType: string;
 
@@ -53,21 +58,15 @@ export class ListOfficesResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     officeCollection?: shared.OfficeCollection;
 
+    /**
+     * HTTP response status code for this operation
+     */
     @SpeakeasyMetadata()
     statusCode: number;
 
-    @SpeakeasyMetadata()
-    rawResponse?: AxiosResponse;
-
     /**
-     * Unauthenticated
+     * Raw HTTP response; suitable for custom response parsing
      */
     @SpeakeasyMetadata()
-    listOffices401ApplicationJSONObject?: ListOffices401ApplicationJSON;
-
-    /**
-     * Forbidden
-     */
-    @SpeakeasyMetadata()
-    listOffices403ApplicationJSONObject?: ListOffices403ApplicationJSON;
+    rawResponse: AxiosResponse;
 }

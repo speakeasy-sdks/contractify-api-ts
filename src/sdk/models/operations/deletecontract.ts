@@ -6,16 +6,6 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 import { Expose } from "class-transformer";
 
-export class DeleteContractSecurity extends SpeakeasyBase {
-    @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2;name=Authorization" })
-    oAuth2: string;
-
-    @SpeakeasyMetadata({
-        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-    })
-    personalAccessToken: string;
-}
-
 export class DeleteContractRequest extends SpeakeasyBase {
     /**
      * Id of the company
@@ -33,7 +23,7 @@ export class DeleteContractRequest extends SpeakeasyBase {
 /**
  * Not Found
  */
-export class DeleteContract404ApplicationJSON extends SpeakeasyBase {
+export class DeleteContractContractsResponse404ResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -42,7 +32,7 @@ export class DeleteContract404ApplicationJSON extends SpeakeasyBase {
 /**
  * Forbidden
  */
-export class DeleteContract403ApplicationJSON extends SpeakeasyBase {
+export class DeleteContractContractsResponseResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -51,7 +41,7 @@ export class DeleteContract403ApplicationJSON extends SpeakeasyBase {
 /**
  * Unauthenticated
  */
-export class DeleteContract401ApplicationJSON extends SpeakeasyBase {
+export class DeleteContractContractsResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -60,43 +50,52 @@ export class DeleteContract401ApplicationJSON extends SpeakeasyBase {
 /**
  * Precondition failed
  */
-export class DeleteContract400ApplicationJSON extends SpeakeasyBase {
+export class DeleteContractResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
 }
 
 export class DeleteContractResponse extends SpeakeasyBase {
-    @SpeakeasyMetadata()
-    contentType: string;
-
-    @SpeakeasyMetadata()
-    statusCode: number;
-
-    @SpeakeasyMetadata()
-    rawResponse?: AxiosResponse;
-
     /**
      * Precondition failed
      */
     @SpeakeasyMetadata()
-    deleteContract400ApplicationJSONObject?: DeleteContract400ApplicationJSON;
+    fourHundredApplicationJsonObject?: DeleteContractResponseBody;
 
     /**
      * Unauthenticated
      */
     @SpeakeasyMetadata()
-    deleteContract401ApplicationJSONObject?: DeleteContract401ApplicationJSON;
+    fourHundredAndOneApplicationJsonObject?: DeleteContractContractsResponseBody;
 
     /**
      * Forbidden
      */
     @SpeakeasyMetadata()
-    deleteContract403ApplicationJSONObject?: DeleteContract403ApplicationJSON;
+    fourHundredAndThreeApplicationJsonObject?: DeleteContractContractsResponseResponseBody;
 
     /**
      * Not Found
      */
     @SpeakeasyMetadata()
-    deleteContract404ApplicationJSONObject?: DeleteContract404ApplicationJSON;
+    fourHundredAndFourApplicationJsonObject?: DeleteContractContractsResponse404ResponseBody;
+
+    /**
+     * HTTP response content type for this operation
+     */
+    @SpeakeasyMetadata()
+    contentType: string;
+
+    /**
+     * HTTP response status code for this operation
+     */
+    @SpeakeasyMetadata()
+    statusCode: number;
+
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
+    @SpeakeasyMetadata()
+    rawResponse: AxiosResponse;
 }

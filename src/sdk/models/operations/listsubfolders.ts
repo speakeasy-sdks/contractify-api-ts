@@ -3,19 +3,9 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose } from "class-transformer";
-
-export class ListSubfoldersSecurity extends SpeakeasyBase {
-    @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2;name=Authorization" })
-    oAuth2: string;
-
-    @SpeakeasyMetadata({
-        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-    })
-    personalAccessToken: string;
-}
 
 export class ListSubfoldersRequest extends SpeakeasyBase {
     /**
@@ -28,7 +18,7 @@ export class ListSubfoldersRequest extends SpeakeasyBase {
 /**
  * Forbidden
  */
-export class ListSubfolders403ApplicationJSON extends SpeakeasyBase {
+export class ListSubfoldersSubfoldersResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -37,13 +27,28 @@ export class ListSubfolders403ApplicationJSON extends SpeakeasyBase {
 /**
  * Unauthenticated
  */
-export class ListSubfolders401ApplicationJSON extends SpeakeasyBase {
+export class ListSubfoldersResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
 }
 
 export class ListSubfoldersResponse extends SpeakeasyBase {
+    /**
+     * Unauthenticated
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndOneApplicationJsonObject?: ListSubfoldersResponseBody;
+
+    /**
+     * Forbidden
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndThreeApplicationJsonObject?: ListSubfoldersSubfoldersResponseBody;
+
+    /**
+     * HTTP response content type for this operation
+     */
     @SpeakeasyMetadata()
     contentType: string;
 
@@ -53,21 +58,15 @@ export class ListSubfoldersResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     dossierCollection?: shared.DossierCollection;
 
+    /**
+     * HTTP response status code for this operation
+     */
     @SpeakeasyMetadata()
     statusCode: number;
 
-    @SpeakeasyMetadata()
-    rawResponse?: AxiosResponse;
-
     /**
-     * Unauthenticated
+     * Raw HTTP response; suitable for custom response parsing
      */
     @SpeakeasyMetadata()
-    listSubfolders401ApplicationJSONObject?: ListSubfolders401ApplicationJSON;
-
-    /**
-     * Forbidden
-     */
-    @SpeakeasyMetadata()
-    listSubfolders403ApplicationJSONObject?: ListSubfolders403ApplicationJSON;
+    rawResponse: AxiosResponse;
 }

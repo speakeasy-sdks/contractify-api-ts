@@ -3,8 +3,8 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { RFCDate } from "../../types";
-import { Expose, Transform } from "class-transformer";
+import { RFCDate } from "../../../sdk/types";
+import { Expose, Transform, Type } from "class-transformer";
 
 export class ContractTermination extends SpeakeasyBase {
     @SpeakeasyMetadata()
@@ -13,6 +13,7 @@ export class ContractTermination extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "termination_date" })
+    @Type(() => String)
     @Transform(({ value }) => new RFCDate(value), { toClassOnly: true })
     terminationDate?: RFCDate;
 

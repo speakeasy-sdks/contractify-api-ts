@@ -3,19 +3,9 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose } from "class-transformer";
-
-export class ListContractTypesSecurity extends SpeakeasyBase {
-    @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2;name=Authorization" })
-    oAuth2: string;
-
-    @SpeakeasyMetadata({
-        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-    })
-    personalAccessToken: string;
-}
 
 export class ListContractTypesRequest extends SpeakeasyBase {
     /**
@@ -28,7 +18,7 @@ export class ListContractTypesRequest extends SpeakeasyBase {
 /**
  * Forbidden
  */
-export class ListContractTypes403ApplicationJSON extends SpeakeasyBase {
+export class ListContractTypesContractTypesResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -37,13 +27,28 @@ export class ListContractTypes403ApplicationJSON extends SpeakeasyBase {
 /**
  * Unauthenticated
  */
-export class ListContractTypes401ApplicationJSON extends SpeakeasyBase {
+export class ListContractTypesResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
 }
 
 export class ListContractTypesResponse extends SpeakeasyBase {
+    /**
+     * Unauthenticated
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndOneApplicationJsonObject?: ListContractTypesResponseBody;
+
+    /**
+     * Forbidden
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndThreeApplicationJsonObject?: ListContractTypesContractTypesResponseBody;
+
+    /**
+     * HTTP response content type for this operation
+     */
     @SpeakeasyMetadata()
     contentType: string;
 
@@ -53,21 +58,15 @@ export class ListContractTypesResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     contractTypeCollection?: shared.ContractTypeCollection;
 
+    /**
+     * HTTP response status code for this operation
+     */
     @SpeakeasyMetadata()
     statusCode: number;
 
-    @SpeakeasyMetadata()
-    rawResponse?: AxiosResponse;
-
     /**
-     * Unauthenticated
+     * Raw HTTP response; suitable for custom response parsing
      */
     @SpeakeasyMetadata()
-    listContractTypes401ApplicationJSONObject?: ListContractTypes401ApplicationJSON;
-
-    /**
-     * Forbidden
-     */
-    @SpeakeasyMetadata()
-    listContractTypes403ApplicationJSONObject?: ListContractTypes403ApplicationJSON;
+    rawResponse: AxiosResponse;
 }

@@ -6,16 +6,6 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 import { Expose } from "class-transformer";
 
-export class DeleteDepartmentSecurity extends SpeakeasyBase {
-    @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2;name=Authorization" })
-    oAuth2: string;
-
-    @SpeakeasyMetadata({
-        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-    })
-    personalAccessToken: string;
-}
-
 export class DeleteDepartmentRequest extends SpeakeasyBase {
     /**
      * Id of the company
@@ -33,7 +23,7 @@ export class DeleteDepartmentRequest extends SpeakeasyBase {
 /**
  * Not Found
  */
-export class DeleteDepartment404ApplicationJSON extends SpeakeasyBase {
+export class DeleteDepartmentDepartmentsResponse404ResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -42,7 +32,7 @@ export class DeleteDepartment404ApplicationJSON extends SpeakeasyBase {
 /**
  * Forbidden
  */
-export class DeleteDepartment403ApplicationJSON extends SpeakeasyBase {
+export class DeleteDepartmentDepartmentsResponseResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -51,7 +41,7 @@ export class DeleteDepartment403ApplicationJSON extends SpeakeasyBase {
 /**
  * Unauthenticated
  */
-export class DeleteDepartment401ApplicationJSON extends SpeakeasyBase {
+export class DeleteDepartmentDepartmentsResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -60,43 +50,52 @@ export class DeleteDepartment401ApplicationJSON extends SpeakeasyBase {
 /**
  * Precondition failed
  */
-export class DeleteDepartment400ApplicationJSON extends SpeakeasyBase {
+export class DeleteDepartmentResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
 }
 
 export class DeleteDepartmentResponse extends SpeakeasyBase {
-    @SpeakeasyMetadata()
-    contentType: string;
-
-    @SpeakeasyMetadata()
-    statusCode: number;
-
-    @SpeakeasyMetadata()
-    rawResponse?: AxiosResponse;
-
     /**
      * Precondition failed
      */
     @SpeakeasyMetadata()
-    deleteDepartment400ApplicationJSONObject?: DeleteDepartment400ApplicationJSON;
+    fourHundredApplicationJsonObject?: DeleteDepartmentResponseBody;
 
     /**
      * Unauthenticated
      */
     @SpeakeasyMetadata()
-    deleteDepartment401ApplicationJSONObject?: DeleteDepartment401ApplicationJSON;
+    fourHundredAndOneApplicationJsonObject?: DeleteDepartmentDepartmentsResponseBody;
 
     /**
      * Forbidden
      */
     @SpeakeasyMetadata()
-    deleteDepartment403ApplicationJSONObject?: DeleteDepartment403ApplicationJSON;
+    fourHundredAndThreeApplicationJsonObject?: DeleteDepartmentDepartmentsResponseResponseBody;
 
     /**
      * Not Found
      */
     @SpeakeasyMetadata()
-    deleteDepartment404ApplicationJSONObject?: DeleteDepartment404ApplicationJSON;
+    fourHundredAndFourApplicationJsonObject?: DeleteDepartmentDepartmentsResponse404ResponseBody;
+
+    /**
+     * HTTP response content type for this operation
+     */
+    @SpeakeasyMetadata()
+    contentType: string;
+
+    /**
+     * HTTP response status code for this operation
+     */
+    @SpeakeasyMetadata()
+    statusCode: number;
+
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
+    @SpeakeasyMetadata()
+    rawResponse: AxiosResponse;
 }

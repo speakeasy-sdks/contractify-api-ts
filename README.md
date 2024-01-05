@@ -1,6 +1,6 @@
 # contractify
 
-<!-- Start SDK Installation -->
+<!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
 ### NPM
@@ -14,32 +14,39 @@ npm add https://github.com/speakeasy-sdks/contractify-api-ts
 ```bash
 yarn add https://github.com/speakeasy-sdks/contractify-api-ts
 ```
-<!-- End SDK Installation -->
+<!-- End SDK Installation [installation] -->
 
+<!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
-<!-- Start SDK Example Usage -->
+
+### Example
+
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { ListContractTypesResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction();
+async function run() {
+    const sdk = new ContractifyProduction({
+        security: {
+            oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+        },
+    });
 
-sdk.contractTypes.listContractTypes({
-  company: 548814,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: ListContractTypesResponse) => {
-  if (res.statusCode == 200) {
-    // handle response
-  }
-});
+    const res = await sdk.contractTypes.listContractTypes({
+        company: 839467,
+    });
+
+    if (res.statusCode == 200) {
+        // handle response
+    }
+}
+
+run();
+
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
 
-<!-- Start SDK Available Operations -->
+<!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
-
 
 ### [contractTypes](docs/sdks/contracttypes/README.md)
 
@@ -72,6 +79,10 @@ sdk.contractTypes.listContractTypes({
 * [listDocuments](docs/sdks/documents/README.md#listdocuments) - List documents
 * [updateDocument](docs/sdks/documents/README.md#updatedocument) - Update a document
 
+### [subfolders](docs/sdks/subfolders/README.md)
+
+* [listSubfolders](docs/sdks/subfolders/README.md#listsubfolders) - List subfolders
+
 ### [legalEntities](docs/sdks/legalentities/README.md)
 
 * [listLegalEntities](docs/sdks/legalentities/README.md#listlegalentities) - List legal entities
@@ -92,10 +103,6 @@ sdk.contractTypes.listContractTypes({
 * [listRelations](docs/sdks/relations/README.md#listrelations) - List relations
 * [updateRelation](docs/sdks/relations/README.md#updaterelation) - Update a relation
 
-### [subfolders](docs/sdks/subfolders/README.md)
-
-* [listSubfolders](docs/sdks/subfolders/README.md#listsubfolders) - List subfolders
-
 ### [tasks](docs/sdks/tasks/README.md)
 
 * [createTask](docs/sdks/tasks/README.md#createtask) - Create a task
@@ -108,7 +115,186 @@ sdk.contractTypes.listContractTypes({
 
 * [currentUser](docs/sdks/users/README.md#currentuser) - Current User
 * [listUsers](docs/sdks/users/README.md#listusers) - List users
-<!-- End SDK Available Operations -->
+<!-- End Available Resources and Operations [operations] -->
+
+
+
+
+
+<!-- Start Error Handling [errors] -->
+## Error Handling
+
+Handling errors in this SDK should largely match your expectations.  All operations return a response object or throw an error.  If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+Example
+
+```typescript
+import { ContractifyProduction } from "contractify";
+
+async function run() {
+    const sdk = new ContractifyProduction({
+        security: {
+            oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+        },
+    });
+
+    let res;
+    try {
+        res = await sdk.contractTypes.listContractTypes({
+            company: 839467,
+        });
+    } catch (err) {
+        if (err instanceof errors.SDKError) {
+            console.error(err); // handle exception
+            throw err;
+        }
+    }
+
+    if (res.statusCode == 200) {
+        // handle response
+    }
+}
+
+run();
+
+```
+<!-- End Error Handling [errors] -->
+
+
+
+<!-- Start Server Selection [server] -->
+## Server Selection
+
+### Select Server by Index
+
+You can override the default server globally by passing a server index to the `serverIdx: number` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
+
+| # | Server | Variables |
+| - | ------ | --------- |
+| 0 | `https://app.contractify.be` | None |
+
+#### Example
+
+```typescript
+import { ContractifyProduction } from "contractify";
+
+async function run() {
+    const sdk = new ContractifyProduction({
+        serverIdx: 0,
+        security: {
+            oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+        },
+    });
+
+    const res = await sdk.contractTypes.listContractTypes({
+        company: 839467,
+    });
+
+    if (res.statusCode == 200) {
+        // handle response
+    }
+}
+
+run();
+
+```
+
+
+### Override Server URL Per-Client
+
+The default server can also be overridden globally by passing a URL to the `serverURL: str` optional parameter when initializing the SDK client instance. For example:
+```typescript
+import { ContractifyProduction } from "contractify";
+
+async function run() {
+    const sdk = new ContractifyProduction({
+        serverURL: "https://app.contractify.be",
+        security: {
+            oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+        },
+    });
+
+    const res = await sdk.contractTypes.listContractTypes({
+        company: 839467,
+    });
+
+    if (res.statusCode == 200) {
+        // handle response
+    }
+}
+
+run();
+
+```
+<!-- End Server Selection [server] -->
+
+
+
+<!-- Start Custom HTTP Client [http-client] -->
+## Custom HTTP Client
+
+The Typescript SDK makes API calls using the [axios](https://axios-http.com/docs/intro) HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `AxiosInstance` object.
+
+For example, you could specify a header for every request that your sdk makes as follows:
+
+```typescript
+import { contractify } from "ContractifyProduction";
+import axios from "axios";
+
+const httpClient = axios.create({
+    headers: {'x-custom-header': 'someValue'}
+})
+
+const sdk = new ContractifyProduction({defaultClient: httpClient});
+```
+<!-- End Custom HTTP Client [http-client] -->
+
+
+
+<!-- Start Authentication [security] -->
+## Authentication
+
+### Per-Client Security Schemes
+
+This SDK supports the following security schemes globally:
+
+| Name                  | Type                  | Scheme                |
+| --------------------- | --------------------- | --------------------- |
+| `oAuth2`              | oauth2                | OAuth2 token          |
+| `personalAccessToken` | http                  | HTTP Bearer           |
+
+You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
+```typescript
+import { ContractifyProduction } from "contractify";
+
+async function run() {
+    const sdk = new ContractifyProduction({
+        security: {
+            oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+        },
+    });
+
+    const res = await sdk.contractTypes.listContractTypes({
+        company: 839467,
+    });
+
+    if (res.statusCode == 200) {
+        // handle response
+    }
+}
+
+run();
+
+```
+<!-- End Authentication [security] -->
+
+<!-- Placeholder for Future Speakeasy SDK Sections -->
+
+
 
 ### Maturity
 

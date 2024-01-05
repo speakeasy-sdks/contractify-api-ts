@@ -3,24 +3,14 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
-
-export class CurrentUserSecurity extends SpeakeasyBase {
-    @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2;name=Authorization" })
-    oAuth2: string;
-
-    @SpeakeasyMetadata({
-        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-    })
-    personalAccessToken: string;
-}
 
 /**
  * Forbidden
  */
-export class CurrentUser403ApplicationJSON extends SpeakeasyBase {
+export class CurrentUserUsersResponseResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -29,7 +19,7 @@ export class CurrentUser403ApplicationJSON extends SpeakeasyBase {
 /**
  * Unauthenticated
  */
-export class CurrentUser401ApplicationJSON extends SpeakeasyBase {
+export class CurrentUserUsersResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -38,7 +28,7 @@ export class CurrentUser401ApplicationJSON extends SpeakeasyBase {
 /**
  * OK
  */
-export class CurrentUser200ApplicationJSON extends SpeakeasyBase {
+export class CurrentUserResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "data" })
     @Type(() => shared.UserCurrent)
@@ -46,30 +36,39 @@ export class CurrentUser200ApplicationJSON extends SpeakeasyBase {
 }
 
 export class CurrentUserResponse extends SpeakeasyBase {
-    @SpeakeasyMetadata()
-    contentType: string;
-
-    @SpeakeasyMetadata()
-    statusCode: number;
-
-    @SpeakeasyMetadata()
-    rawResponse?: AxiosResponse;
-
     /**
      * OK
      */
     @SpeakeasyMetadata()
-    currentUser200ApplicationJSONObject?: CurrentUser200ApplicationJSON;
+    twoHundredApplicationJsonObject?: CurrentUserResponseBody;
 
     /**
      * Unauthenticated
      */
     @SpeakeasyMetadata()
-    currentUser401ApplicationJSONObject?: CurrentUser401ApplicationJSON;
+    fourHundredAndOneApplicationJsonObject?: CurrentUserUsersResponseBody;
 
     /**
      * Forbidden
      */
     @SpeakeasyMetadata()
-    currentUser403ApplicationJSONObject?: CurrentUser403ApplicationJSON;
+    fourHundredAndThreeApplicationJsonObject?: CurrentUserUsersResponseResponseBody;
+
+    /**
+     * HTTP response content type for this operation
+     */
+    @SpeakeasyMetadata()
+    contentType: string;
+
+    /**
+     * HTTP response status code for this operation
+     */
+    @SpeakeasyMetadata()
+    statusCode: number;
+
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
+    @SpeakeasyMetadata()
+    rawResponse: AxiosResponse;
 }

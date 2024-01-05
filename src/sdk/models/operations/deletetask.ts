@@ -6,16 +6,6 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 import { Expose } from "class-transformer";
 
-export class DeleteTaskSecurity extends SpeakeasyBase {
-    @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2;name=Authorization" })
-    oAuth2: string;
-
-    @SpeakeasyMetadata({
-        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-    })
-    personalAccessToken: string;
-}
-
 export class DeleteTaskRequest extends SpeakeasyBase {
     /**
      * Id of the company
@@ -33,7 +23,7 @@ export class DeleteTaskRequest extends SpeakeasyBase {
 /**
  * Not Found
  */
-export class DeleteTask404ApplicationJSON extends SpeakeasyBase {
+export class DeleteTaskTasksResponseResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -42,7 +32,7 @@ export class DeleteTask404ApplicationJSON extends SpeakeasyBase {
 /**
  * Forbidden
  */
-export class DeleteTask403ApplicationJSON extends SpeakeasyBase {
+export class DeleteTaskTasksResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -51,37 +41,46 @@ export class DeleteTask403ApplicationJSON extends SpeakeasyBase {
 /**
  * Unauthenticated
  */
-export class DeleteTask401ApplicationJSON extends SpeakeasyBase {
+export class DeleteTaskResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
 }
 
 export class DeleteTaskResponse extends SpeakeasyBase {
-    @SpeakeasyMetadata()
-    contentType: string;
-
-    @SpeakeasyMetadata()
-    statusCode: number;
-
-    @SpeakeasyMetadata()
-    rawResponse?: AxiosResponse;
-
     /**
      * Unauthenticated
      */
     @SpeakeasyMetadata()
-    deleteTask401ApplicationJSONObject?: DeleteTask401ApplicationJSON;
+    fourHundredAndOneApplicationJsonObject?: DeleteTaskResponseBody;
 
     /**
      * Forbidden
      */
     @SpeakeasyMetadata()
-    deleteTask403ApplicationJSONObject?: DeleteTask403ApplicationJSON;
+    fourHundredAndThreeApplicationJsonObject?: DeleteTaskTasksResponseBody;
 
     /**
      * Not Found
      */
     @SpeakeasyMetadata()
-    deleteTask404ApplicationJSONObject?: DeleteTask404ApplicationJSON;
+    fourHundredAndFourApplicationJsonObject?: DeleteTaskTasksResponseResponseBody;
+
+    /**
+     * HTTP response content type for this operation
+     */
+    @SpeakeasyMetadata()
+    contentType: string;
+
+    /**
+     * HTTP response status code for this operation
+     */
+    @SpeakeasyMetadata()
+    statusCode: number;
+
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
+    @SpeakeasyMetadata()
+    rawResponse: AxiosResponse;
 }

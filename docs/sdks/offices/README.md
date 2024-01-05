@@ -1,4 +1,5 @@
-# offices
+# Offices
+(*offices*)
 
 ### Available Operations
 
@@ -16,48 +17,55 @@ Create an office
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { CreateOfficeResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction();
+async function run() {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+    },
+  });
 
-sdk.offices.createOffice({
-  officeWrite: {
-    bus: "1",
-    city: "Sleidinge",
-    contactPerson: "Ada Lovelace",
-    country: "Belgium",
-    email: "info@contractify.be",
-    id: 1,
-    name: "Ghent",
-    numberIdentity: "OFF-GHENT",
-    phone: "+32 9 234 28 97",
-    street: "Polenstraat 163",
-    zip: "9940",
-  },
-  company: 653140,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: CreateOfficeResponse) => {
+  const res = await sdk.offices.createOffice({
+    officeWrite: {
+      bus: "1",
+      city: "Sleidinge",
+      contactPerson: "Ada Lovelace",
+      country: "Belgium",
+      email: "info@contractify.be",
+      id: 1,
+      name: "Ghent",
+      numberIdentity: "OFF-GHENT",
+      phone: "+32 9 234 28 97",
+      street: "Polenstraat 163",
+      zip: "9940",
+    },
+    company: 244393,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `request`                                                                          | [operations.CreateOfficeRequest](../../models/operations/createofficerequest.md)   | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
-| `security`                                                                         | [operations.CreateOfficeSecurity](../../models/operations/createofficesecurity.md) | :heavy_check_mark:                                                                 | The security requirements to use for the request.                                  |
-| `config`                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                       | :heavy_minus_sign:                                                                 | Available config options for making requests.                                      |
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `request`                                                                            | [operations.CreateOfficeRequest](../../sdk/models/operations/createofficerequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
 
 
 ### Response
 
-**Promise<[operations.CreateOfficeResponse](../../models/operations/createofficeresponse.md)>**
+**Promise<[operations.CreateOfficeResponse](../../sdk/models/operations/createofficeresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## deleteOffice
 
@@ -67,36 +75,43 @@ Delete an office
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { DeleteOfficeResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction();
+async function run() {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+    },
+  });
 
-sdk.offices.deleteOffice({
-  company: 670638,
-  office: 170909,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: DeleteOfficeResponse) => {
+  const res = await sdk.offices.deleteOffice({
+    company: 327183,
+    office: 668605,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `request`                                                                          | [operations.DeleteOfficeRequest](../../models/operations/deleteofficerequest.md)   | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
-| `security`                                                                         | [operations.DeleteOfficeSecurity](../../models/operations/deleteofficesecurity.md) | :heavy_check_mark:                                                                 | The security requirements to use for the request.                                  |
-| `config`                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                       | :heavy_minus_sign:                                                                 | Available config options for making requests.                                      |
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `request`                                                                            | [operations.DeleteOfficeRequest](../../sdk/models/operations/deleteofficerequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
 
 
 ### Response
 
-**Promise<[operations.DeleteOfficeResponse](../../models/operations/deleteofficeresponse.md)>**
+**Promise<[operations.DeleteOfficeResponse](../../sdk/models/operations/deleteofficeresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getOffice
 
@@ -106,36 +121,43 @@ Get information about an office
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { GetOfficeResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction();
+async function run() {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+    },
+  });
 
-sdk.offices.getOffice({
-  company: 210382,
-  office: 358152,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: GetOfficeResponse) => {
+  const res = await sdk.offices.getOffice({
+    company: 616050,
+    office: 134885,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `request`                                                                    | [operations.GetOfficeRequest](../../models/operations/getofficerequest.md)   | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
-| `security`                                                                   | [operations.GetOfficeSecurity](../../models/operations/getofficesecurity.md) | :heavy_check_mark:                                                           | The security requirements to use for the request.                            |
-| `config`                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                 | :heavy_minus_sign:                                                           | Available config options for making requests.                                |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `request`                                                                      | [operations.GetOfficeRequest](../../sdk/models/operations/getofficerequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |
 
 
 ### Response
 
-**Promise<[operations.GetOfficeResponse](../../models/operations/getofficeresponse.md)>**
+**Promise<[operations.GetOfficeResponse](../../sdk/models/operations/getofficeresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## listOffices
 
@@ -145,35 +167,42 @@ List all the offices within a company
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { ListOfficesResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction();
+async function run() {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+    },
+  });
 
-sdk.offices.listOffices({
-  company: 128926,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: ListOfficesResponse) => {
+  const res = await sdk.offices.listOffices({
+    company: 303557,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `request`                                                                        | [operations.ListOfficesRequest](../../models/operations/listofficesrequest.md)   | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
-| `security`                                                                       | [operations.ListOfficesSecurity](../../models/operations/listofficessecurity.md) | :heavy_check_mark:                                                               | The security requirements to use for the request.                                |
-| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `request`                                                                          | [operations.ListOfficesRequest](../../sdk/models/operations/listofficesrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
+| `config`                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                       | :heavy_minus_sign:                                                                 | Available config options for making requests.                                      |
 
 
 ### Response
 
-**Promise<[operations.ListOfficesResponse](../../models/operations/listofficesresponse.md)>**
+**Promise<[operations.ListOfficesResponse](../../sdk/models/operations/listofficesresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## updateOffice
 
@@ -183,46 +212,53 @@ Update an office
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { UpdateOfficeResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction();
+async function run() {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+    },
+  });
 
-sdk.offices.updateOffice({
-  officeWrite: {
-    bus: "1",
-    city: "Sleidinge",
-    contactPerson: "Ada Lovelace",
-    country: "Belgium",
-    email: "info@contractify.be",
-    id: 1,
-    name: "Ghent",
-    numberIdentity: "OFF-GHENT",
-    phone: "+32 9 234 28 97",
-    street: "Polenstraat 163",
-    zip: "9940",
-  },
-  company: 750686,
-  office: 315428,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: UpdateOfficeResponse) => {
+  const res = await sdk.offices.updateOffice({
+    officeWrite: {
+      bus: "1",
+      city: "Sleidinge",
+      contactPerson: "Ada Lovelace",
+      country: "Belgium",
+      email: "info@contractify.be",
+      id: 1,
+      name: "Ghent",
+      numberIdentity: "OFF-GHENT",
+      phone: "+32 9 234 28 97",
+      street: "Polenstraat 163",
+      zip: "9940",
+    },
+    company: 989026,
+    office: 647378,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `request`                                                                          | [operations.UpdateOfficeRequest](../../models/operations/updateofficerequest.md)   | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
-| `security`                                                                         | [operations.UpdateOfficeSecurity](../../models/operations/updateofficesecurity.md) | :heavy_check_mark:                                                                 | The security requirements to use for the request.                                  |
-| `config`                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                       | :heavy_minus_sign:                                                                 | Available config options for making requests.                                      |
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `request`                                                                            | [operations.UpdateOfficeRequest](../../sdk/models/operations/updateofficerequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
 
 
 ### Response
 
-**Promise<[operations.UpdateOfficeResponse](../../models/operations/updateofficeresponse.md)>**
+**Promise<[operations.UpdateOfficeResponse](../../sdk/models/operations/updateofficeresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |

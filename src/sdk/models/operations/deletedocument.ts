@@ -6,16 +6,6 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
-export class DeleteDocumentSecurity extends SpeakeasyBase {
-    @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2;name=Authorization" })
-    oAuth2: string;
-
-    @SpeakeasyMetadata({
-        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-    })
-    personalAccessToken: string;
-}
-
 export class DeleteDocumentRequest extends SpeakeasyBase {
     /**
      * Id of the company
@@ -30,7 +20,7 @@ export class DeleteDocumentRequest extends SpeakeasyBase {
     document: number;
 }
 
-export class DeleteDocument422ApplicationJSONErrors extends SpeakeasyBase {
+export class DeleteDocumentErrors extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "errors" })
     errors?: string[];
@@ -43,11 +33,11 @@ export class DeleteDocument422ApplicationJSONErrors extends SpeakeasyBase {
 /**
  * Invalid data posted
  */
-export class DeleteDocument422ApplicationJSON extends SpeakeasyBase {
-    @SpeakeasyMetadata({ elemType: DeleteDocument422ApplicationJSONErrors })
+export class DeleteDocumentDocumentsResponse422ResponseBody extends SpeakeasyBase {
+    @SpeakeasyMetadata({ elemType: DeleteDocumentErrors })
     @Expose({ name: "errors" })
-    @Type(() => DeleteDocument422ApplicationJSONErrors)
-    errors?: DeleteDocument422ApplicationJSONErrors[];
+    @Type(() => DeleteDocumentErrors)
+    errors?: DeleteDocumentErrors[];
 
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
@@ -57,7 +47,7 @@ export class DeleteDocument422ApplicationJSON extends SpeakeasyBase {
 /**
  * Not Found
  */
-export class DeleteDocument404ApplicationJSON extends SpeakeasyBase {
+export class DeleteDocumentDocumentsResponseResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -66,7 +56,7 @@ export class DeleteDocument404ApplicationJSON extends SpeakeasyBase {
 /**
  * Forbidden
  */
-export class DeleteDocument403ApplicationJSON extends SpeakeasyBase {
+export class DeleteDocumentDocumentsResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -75,43 +65,52 @@ export class DeleteDocument403ApplicationJSON extends SpeakeasyBase {
 /**
  * Unauthenticated
  */
-export class DeleteDocument401ApplicationJSON extends SpeakeasyBase {
+export class DeleteDocumentResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
 }
 
 export class DeleteDocumentResponse extends SpeakeasyBase {
-    @SpeakeasyMetadata()
-    contentType: string;
-
-    @SpeakeasyMetadata()
-    statusCode: number;
-
-    @SpeakeasyMetadata()
-    rawResponse?: AxiosResponse;
-
     /**
      * Unauthenticated
      */
     @SpeakeasyMetadata()
-    deleteDocument401ApplicationJSONObject?: DeleteDocument401ApplicationJSON;
+    fourHundredAndOneApplicationJsonObject?: DeleteDocumentResponseBody;
 
     /**
      * Forbidden
      */
     @SpeakeasyMetadata()
-    deleteDocument403ApplicationJSONObject?: DeleteDocument403ApplicationJSON;
+    fourHundredAndThreeApplicationJsonObject?: DeleteDocumentDocumentsResponseBody;
 
     /**
      * Not Found
      */
     @SpeakeasyMetadata()
-    deleteDocument404ApplicationJSONObject?: DeleteDocument404ApplicationJSON;
+    fourHundredAndFourApplicationJsonObject?: DeleteDocumentDocumentsResponseResponseBody;
 
     /**
      * Invalid data posted
      */
     @SpeakeasyMetadata()
-    deleteDocument422ApplicationJSONObject?: DeleteDocument422ApplicationJSON;
+    fourHundredAndTwentyTwoApplicationJsonObject?: DeleteDocumentDocumentsResponse422ResponseBody;
+
+    /**
+     * HTTP response content type for this operation
+     */
+    @SpeakeasyMetadata()
+    contentType: string;
+
+    /**
+     * HTTP response status code for this operation
+     */
+    @SpeakeasyMetadata()
+    statusCode: number;
+
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
+    @SpeakeasyMetadata()
+    rawResponse: AxiosResponse;
 }

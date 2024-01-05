@@ -3,8 +3,8 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { RFCDate } from "../../types";
-import { Expose, Transform } from "class-transformer";
+import { RFCDate } from "../../../sdk/types";
+import { Expose, Transform, Type } from "class-transformer";
 
 /**
  * Will only be accepted if you pass a `contract_id`
@@ -31,6 +31,7 @@ export class TaskUpdate extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "due_date" })
+    @Type(() => String)
     @Transform(({ value }) => new RFCDate(value), { toClassOnly: true })
     dueDate?: RFCDate;
 

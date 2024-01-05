@@ -1,19 +1,24 @@
-<!-- Start SDK Example Usage -->
+<!-- Start SDK Example Usage [usage] -->
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { ListContractTypesResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction();
+async function run() {
+    const sdk = new ContractifyProduction({
+        security: {
+            oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+        },
+    });
 
-sdk.contractTypes.listContractTypes({
-  company: 548814,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: ListContractTypesResponse) => {
-  if (res.statusCode == 200) {
-    // handle response
-  }
-});
+    const res = await sdk.contractTypes.listContractTypes({
+        company: 839467,
+    });
+
+    if (res.statusCode == 200) {
+        // handle response
+    }
+}
+
+run();
+
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->

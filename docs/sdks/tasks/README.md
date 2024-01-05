@@ -1,4 +1,5 @@
-# tasks
+# Tasks
+(*tasks*)
 
 ### Available Operations
 
@@ -16,54 +17,56 @@ Create a task
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { CreateTaskResponse } from "contractify/dist/sdk/models/operations";
-import {
-  TaskReadDueDateDependsOn,
-  TaskReadStatus,
-  TaskWriteDueDateDependsOn,
-  TaskWriteStatus,
-} from "contractify/dist/sdk/models/shared";
+import { TaskWriteDueDateDependsOn, TaskWriteStatus } from "contractify/dist/sdk/models/shared";
 import { RFCDate } from "contractify/dist/sdk/types";
 
-const sdk = new ContractifyProduction();
+async function run() {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+    },
+  });
 
-sdk.tasks.createTask({
-  taskWrite: {
-    contractId: 1,
-    description: "Lorem ipsum dolor sit amet.",
-    dueDate: new RFCDate("2021-12-31"),
-    dueDateDependsOn: TaskWriteDueDateDependsOn.EndDate,
-    dueDateInterval: "-P10D",
-    ownerId: 1,
-    reminderDuration: "P1M",
-    repetitionInterval: "P1Y",
-    status: TaskWriteStatus.Accomplished,
-    title: "My task",
-  },
-  company: 208876,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: CreateTaskResponse) => {
+  const res = await sdk.tasks.createTask({
+    taskWrite: {
+      contractId: 1,
+      description: "Lorem ipsum dolor sit amet.",
+      dueDate: new RFCDate("2021-12-31"),
+      dueDateDependsOn: TaskWriteDueDateDependsOn.EndDate,
+      dueDateInterval: "-P10D",
+      ownerId: 1,
+      reminderDuration: "P1M",
+      repetitionInterval: "P1Y",
+      status: TaskWriteStatus.Accomplished,
+      title: "My task",
+    },
+    company: 296904,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `request`                                                                      | [operations.CreateTaskRequest](../../models/operations/createtaskrequest.md)   | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
-| `security`                                                                     | [operations.CreateTaskSecurity](../../models/operations/createtasksecurity.md) | :heavy_check_mark:                                                             | The security requirements to use for the request.                              |
-| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |
+| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `request`                                                                        | [operations.CreateTaskRequest](../../sdk/models/operations/createtaskrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
+| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |
 
 
 ### Response
 
-**Promise<[operations.CreateTaskResponse](../../models/operations/createtaskresponse.md)>**
+**Promise<[operations.CreateTaskResponse](../../sdk/models/operations/createtaskresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## deleteTask
 
@@ -73,36 +76,43 @@ Delete a task
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { DeleteTaskResponse } from "contractify/dist/sdk/models/operations";
 
-const sdk = new ContractifyProduction();
+async function run() {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+    },
+  });
 
-sdk.tasks.deleteTask({
-  company: 635059,
-  task: 161309,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: DeleteTaskResponse) => {
+  const res = await sdk.tasks.deleteTask({
+    company: 357574,
+    task: 394977,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `request`                                                                      | [operations.DeleteTaskRequest](../../models/operations/deletetaskrequest.md)   | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
-| `security`                                                                     | [operations.DeleteTaskSecurity](../../models/operations/deletetasksecurity.md) | :heavy_check_mark:                                                             | The security requirements to use for the request.                              |
-| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |
+| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `request`                                                                        | [operations.DeleteTaskRequest](../../sdk/models/operations/deletetaskrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
+| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |
 
 
 ### Response
 
-**Promise<[operations.DeleteTaskResponse](../../models/operations/deletetaskresponse.md)>**
+**Promise<[operations.DeleteTaskResponse](../../sdk/models/operations/deletetaskresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## getTask
 
@@ -112,38 +122,43 @@ Get a task
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { GetTaskResponse } from "contractify/dist/sdk/models/operations";
-import { TaskReadDueDateDependsOn, TaskReadStatus } from "contractify/dist/sdk/models/shared";
-import { RFCDate } from "contractify/dist/sdk/types";
 
-const sdk = new ContractifyProduction();
+async function run() {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+    },
+  });
 
-sdk.tasks.getTask({
-  company: 995300,
-  task: 653108,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: GetTaskResponse) => {
+  const res = await sdk.tasks.getTask({
+    company: 717011,
+    task: 649018,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `request`                                                                | [operations.GetTaskRequest](../../models/operations/gettaskrequest.md)   | :heavy_check_mark:                                                       | The request object to use for the request.                               |
-| `security`                                                               | [operations.GetTaskSecurity](../../models/operations/gettasksecurity.md) | :heavy_check_mark:                                                       | The security requirements to use for the request.                        |
-| `config`                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)             | :heavy_minus_sign:                                                       | Available config options for making requests.                            |
+| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `request`                                                                  | [operations.GetTaskRequest](../../sdk/models/operations/gettaskrequest.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
+| `config`                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)               | :heavy_minus_sign:                                                         | Available config options for making requests.                              |
 
 
 ### Response
 
-**Promise<[operations.GetTaskResponse](../../models/operations/gettaskresponse.md)>**
+**Promise<[operations.GetTaskResponse](../../sdk/models/operations/gettaskresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## listTasks
 
@@ -153,38 +168,42 @@ List all tasks within a company
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { ListTasksResponse } from "contractify/dist/sdk/models/operations";
-import { TaskReadDueDateDependsOn, TaskReadStatus } from "contractify/dist/sdk/models/shared";
-import { RFCDate } from "contractify/dist/sdk/types";
 
-const sdk = new ContractifyProduction();
+async function run() {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+    },
+  });
 
-sdk.tasks.listTasks({
-  company: 581850,
-  page: 253291,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: ListTasksResponse) => {
+  const res = await sdk.tasks.listTasks({
+    company: 715197,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `request`                                                                    | [operations.ListTasksRequest](../../models/operations/listtasksrequest.md)   | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
-| `security`                                                                   | [operations.ListTasksSecurity](../../models/operations/listtaskssecurity.md) | :heavy_check_mark:                                                           | The security requirements to use for the request.                            |
-| `config`                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                 | :heavy_minus_sign:                                                           | Available config options for making requests.                                |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `request`                                                                      | [operations.ListTasksRequest](../../sdk/models/operations/listtasksrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |
 
 
 ### Response
 
-**Promise<[operations.ListTasksResponse](../../models/operations/listtasksresponse.md)>**
+**Promise<[operations.ListTasksResponse](../../sdk/models/operations/listtasksresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## updateTask
 
@@ -194,51 +213,53 @@ Update a task
 
 ```typescript
 import { ContractifyProduction } from "contractify";
-import { UpdateTaskResponse } from "contractify/dist/sdk/models/operations";
-import {
-  TaskReadDueDateDependsOn,
-  TaskReadStatus,
-  TaskUpdateDueDateDependsOn,
-  TaskUpdateStatus,
-} from "contractify/dist/sdk/models/shared";
+import { TaskUpdateDueDateDependsOn, TaskUpdateStatus } from "contractify/dist/sdk/models/shared";
 import { RFCDate } from "contractify/dist/sdk/types";
 
-const sdk = new ContractifyProduction();
+async function run() {
+  const sdk = new ContractifyProduction({
+    security: {
+      oAuth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
+    },
+  });
 
-sdk.tasks.updateTask({
-  taskUpdate: {
-    description: "Lorem ipsum dolor sit amet.",
-    dueDate: new RFCDate("2021-12-31"),
-    dueDateDependsOn: TaskUpdateDueDateDependsOn.EndDate,
-    dueDateInterval: "-P10D",
-    ownerId: 1,
-    reminderDuration: "P1M",
-    repetitionInterval: "P1Y",
-    status: TaskUpdateStatus.Accomplished,
-    title: "My task",
-  },
-  company: 414369,
-  task: 466311,
-}, {
-  oAuth2: "",
-  personalAccessToken: "",
-}).then((res: UpdateTaskResponse) => {
+  const res = await sdk.tasks.updateTask({
+    taskUpdate: {
+      description: "Lorem ipsum dolor sit amet.",
+      dueDate: new RFCDate("2021-12-31"),
+      dueDateDependsOn: TaskUpdateDueDateDependsOn.EndDate,
+      dueDateInterval: "-P10D",
+      ownerId: 1,
+      reminderDuration: "P1M",
+      repetitionInterval: "P1Y",
+      status: TaskUpdateStatus.Accomplished,
+      title: "My task",
+    },
+    company: 449699,
+    task: 675064,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `request`                                                                      | [operations.UpdateTaskRequest](../../models/operations/updatetaskrequest.md)   | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
-| `security`                                                                     | [operations.UpdateTaskSecurity](../../models/operations/updatetasksecurity.md) | :heavy_check_mark:                                                             | The security requirements to use for the request.                              |
-| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |
+| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `request`                                                                        | [operations.UpdateTaskRequest](../../sdk/models/operations/updatetaskrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
+| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |
 
 
 ### Response
 
-**Promise<[operations.UpdateTaskResponse](../../models/operations/updatetaskresponse.md)>**
+**Promise<[operations.UpdateTaskResponse](../../sdk/models/operations/updatetaskresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |

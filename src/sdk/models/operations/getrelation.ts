@@ -3,19 +3,9 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
-
-export class GetRelationSecurity extends SpeakeasyBase {
-    @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2;name=Authorization" })
-    oAuth2: string;
-
-    @SpeakeasyMetadata({
-        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-    })
-    personalAccessToken: string;
-}
 
 export class GetRelationRequest extends SpeakeasyBase {
     /**
@@ -34,7 +24,7 @@ export class GetRelationRequest extends SpeakeasyBase {
 /**
  * Not Found
  */
-export class GetRelation404ApplicationJSON extends SpeakeasyBase {
+export class GetRelationRelationsResponse404ResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -43,7 +33,7 @@ export class GetRelation404ApplicationJSON extends SpeakeasyBase {
 /**
  * Forbidden
  */
-export class GetRelation403ApplicationJSON extends SpeakeasyBase {
+export class GetRelationRelationsResponseResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -52,7 +42,7 @@ export class GetRelation403ApplicationJSON extends SpeakeasyBase {
 /**
  * Unauthenticated
  */
-export class GetRelation401ApplicationJSON extends SpeakeasyBase {
+export class GetRelationRelationsResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -61,7 +51,7 @@ export class GetRelation401ApplicationJSON extends SpeakeasyBase {
 /**
  * OK
  */
-export class GetRelation200ApplicationJSON extends SpeakeasyBase {
+export class GetRelationResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "data" })
     @Type(() => shared.RelationRead)
@@ -69,36 +59,45 @@ export class GetRelation200ApplicationJSON extends SpeakeasyBase {
 }
 
 export class GetRelationResponse extends SpeakeasyBase {
-    @SpeakeasyMetadata()
-    contentType: string;
-
-    @SpeakeasyMetadata()
-    statusCode: number;
-
-    @SpeakeasyMetadata()
-    rawResponse?: AxiosResponse;
-
     /**
      * OK
      */
     @SpeakeasyMetadata()
-    getRelation200ApplicationJSONObject?: GetRelation200ApplicationJSON;
+    twoHundredApplicationJsonObject?: GetRelationResponseBody;
 
     /**
      * Unauthenticated
      */
     @SpeakeasyMetadata()
-    getRelation401ApplicationJSONObject?: GetRelation401ApplicationJSON;
+    fourHundredAndOneApplicationJsonObject?: GetRelationRelationsResponseBody;
 
     /**
      * Forbidden
      */
     @SpeakeasyMetadata()
-    getRelation403ApplicationJSONObject?: GetRelation403ApplicationJSON;
+    fourHundredAndThreeApplicationJsonObject?: GetRelationRelationsResponseResponseBody;
 
     /**
      * Not Found
      */
     @SpeakeasyMetadata()
-    getRelation404ApplicationJSONObject?: GetRelation404ApplicationJSON;
+    fourHundredAndFourApplicationJsonObject?: GetRelationRelationsResponse404ResponseBody;
+
+    /**
+     * HTTP response content type for this operation
+     */
+    @SpeakeasyMetadata()
+    contentType: string;
+
+    /**
+     * HTTP response status code for this operation
+     */
+    @SpeakeasyMetadata()
+    statusCode: number;
+
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
+    @SpeakeasyMetadata()
+    rawResponse: AxiosResponse;
 }

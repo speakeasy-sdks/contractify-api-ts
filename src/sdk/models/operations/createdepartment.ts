@@ -3,19 +3,9 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
-
-export class CreateDepartmentSecurity extends SpeakeasyBase {
-    @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2;name=Authorization" })
-    oAuth2: string;
-
-    @SpeakeasyMetadata({
-        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-    })
-    personalAccessToken: string;
-}
 
 export class CreateDepartmentRequest extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "request, media_type=application/json" })
@@ -28,7 +18,7 @@ export class CreateDepartmentRequest extends SpeakeasyBase {
     company: number;
 }
 
-export class CreateDepartment422ApplicationJSONErrors extends SpeakeasyBase {
+export class CreateDepartmentErrors extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "errors" })
     errors?: string[];
@@ -41,11 +31,11 @@ export class CreateDepartment422ApplicationJSONErrors extends SpeakeasyBase {
 /**
  * Invalid data posted
  */
-export class CreateDepartment422ApplicationJSON extends SpeakeasyBase {
-    @SpeakeasyMetadata({ elemType: CreateDepartment422ApplicationJSONErrors })
+export class CreateDepartmentDepartmentsResponse422ResponseBody extends SpeakeasyBase {
+    @SpeakeasyMetadata({ elemType: CreateDepartmentErrors })
     @Expose({ name: "errors" })
-    @Type(() => CreateDepartment422ApplicationJSONErrors)
-    errors?: CreateDepartment422ApplicationJSONErrors[];
+    @Type(() => CreateDepartmentErrors)
+    errors?: CreateDepartmentErrors[];
 
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
@@ -55,7 +45,7 @@ export class CreateDepartment422ApplicationJSON extends SpeakeasyBase {
 /**
  * Forbidden
  */
-export class CreateDepartment403ApplicationJSON extends SpeakeasyBase {
+export class CreateDepartmentDepartmentsResponseResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -64,7 +54,7 @@ export class CreateDepartment403ApplicationJSON extends SpeakeasyBase {
 /**
  * Unauthenticated
  */
-export class CreateDepartment401ApplicationJSON extends SpeakeasyBase {
+export class CreateDepartmentDepartmentsResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message?: string;
@@ -73,7 +63,7 @@ export class CreateDepartment401ApplicationJSON extends SpeakeasyBase {
 /**
  * Created
  */
-export class CreateDepartment201ApplicationJSON extends SpeakeasyBase {
+export class CreateDepartmentResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "data" })
     @Type(() => shared.DepartmentRead)
@@ -81,36 +71,45 @@ export class CreateDepartment201ApplicationJSON extends SpeakeasyBase {
 }
 
 export class CreateDepartmentResponse extends SpeakeasyBase {
-    @SpeakeasyMetadata()
-    contentType: string;
-
-    @SpeakeasyMetadata()
-    statusCode: number;
-
-    @SpeakeasyMetadata()
-    rawResponse?: AxiosResponse;
-
     /**
      * Created
      */
     @SpeakeasyMetadata()
-    createDepartment201ApplicationJSONObject?: CreateDepartment201ApplicationJSON;
+    twoHundredAndOneApplicationJsonObject?: CreateDepartmentResponseBody;
 
     /**
      * Unauthenticated
      */
     @SpeakeasyMetadata()
-    createDepartment401ApplicationJSONObject?: CreateDepartment401ApplicationJSON;
+    fourHundredAndOneApplicationJsonObject?: CreateDepartmentDepartmentsResponseBody;
 
     /**
      * Forbidden
      */
     @SpeakeasyMetadata()
-    createDepartment403ApplicationJSONObject?: CreateDepartment403ApplicationJSON;
+    fourHundredAndThreeApplicationJsonObject?: CreateDepartmentDepartmentsResponseResponseBody;
 
     /**
      * Invalid data posted
      */
     @SpeakeasyMetadata()
-    createDepartment422ApplicationJSONObject?: CreateDepartment422ApplicationJSON;
+    fourHundredAndTwentyTwoApplicationJsonObject?: CreateDepartmentDepartmentsResponse422ResponseBody;
+
+    /**
+     * HTTP response content type for this operation
+     */
+    @SpeakeasyMetadata()
+    contentType: string;
+
+    /**
+     * HTTP response status code for this operation
+     */
+    @SpeakeasyMetadata()
+    statusCode: number;
+
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
+    @SpeakeasyMetadata()
+    rawResponse: AxiosResponse;
 }
